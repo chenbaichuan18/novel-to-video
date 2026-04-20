@@ -1,0 +1,239 @@
+{
+    "task_id": "f05-test-001",
+    "scenes": {
+        "total": 2,
+        "list": [
+            {
+                "id": "scene_1",
+                "name": "厨房·内部",
+                "aliases": [
+                    "厨房"
+                ],
+                "scene_type": "indoor",
+                "location_type": "residential",
+                "time_setting": {
+                    "periods_appeared": [
+                        "morning"
+                    ],
+                    "season": "unspecified"
+                },
+                "environment": {
+                    "spatial_layout": "紧凑型厨房布局，包含厨台和烹饪设备",
+                    "size_scale": "medium",
+                    "enclosure": "fully_enclosed"
+                },
+                "visual_description": {
+                    "summary": "厨房内部紧凑型布局，有厨台和日常烹饪设备，整体呈现简洁实用的风格",
+                    "architectural_style": [
+                        "现代简约风格"
+                    ],
+                    "key_features": [
+                        "厨台",
+                        "烹饪设备"
+                    ],
+                    "textural_details": [
+                        "瓷砖地面",
+                        "木质橱柜"
+                    ]
+                },
+                "visual_description_raw": "陈童趴在厨台上，向窗外张望；陈治和往家的方面望了一眼",
+                "lighting_condition": {
+                    "primary_light_sources": [
+                        "天花板顶灯"
+                    ],
+                    "base_light_quality": "varies_by_time",
+                    "base_lighting_description": "厨房内部主要依赖顶灯照明，部分区域可能有自然光"
+                },
+                "color_scheme": {
+                    "dominant_colors": [
+                        "#FFFFFF",
+                        "#808080"
+                    ],
+                    "accent_color": "#000000",
+                    "mood_tone": "压抑、沉重的日常空间氛围",
+                    "material_textures": [
+                        "瓷砖",
+                        "木质"
+                    ]
+                },
+                "key_props": [
+                    {
+                        "name": "花圈",
+                        "description": "殡仪馆相关物品，用于悼念",
+                        "significance": "major"
+                    },
+                    {
+                        "name": "烟",
+                        "description": "烟草制品，象征压抑情绪",
+                        "significance": "major"
+                    }
+                ],
+                "atmosphere_keywords": [
+                    "压抑",
+                    "沉重",
+                    "私密",
+                    "死亡气息",
+                    "烟雾"
+                ],
+                "scene_function": "家庭场景，用于殡仪馆事务的私密讨论与准备",
+                "frequency": 2,
+                "key_traits": [
+                    "家庭空间",
+                    "压抑氛围"
+                ]
+            },
+            {
+                "id": "scene_2",
+                "name": "单元门口·院子小道",
+                "aliases": [
+                    "单元门口",
+                    "小道"
+                ],
+                "scene_type": "outdoor",
+                "location_type": "residential",
+                "time_setting": {
+                    "periods_appeared": [
+                        "morning"
+                    ],
+                    "season": "unspecified"
+                },
+                "environment": {
+                    "spatial_layout": "住宅区入口与庭院路径",
+                    "size_scale": "intimate",
+                    "enclosure": "semi_open"
+                },
+                "visual_description": {
+                    "summary": "住宅区单元门口与庭院小道，设有花圈并伴有烟雾",
+                    "architectural_style": [
+                        "现代住宅风格"
+                    ],
+                    "key_features": [
+                        "花圈",
+                        "烟雾"
+                    ],
+                    "textural_details": [
+                        "水泥地面",
+                        "花圈纸张"
+                    ]
+                },
+                "visual_description_raw": "陈治和和客人并排沿着院子小道向外走去；宾客看着花圈，抱着胸抽烟",
+                "lighting_condition": {
+                    "primary_light_sources": [
+                        "自然光(玻璃门)"
+                    ],
+                    "base_light_quality": "cool",
+                    "base_lighting_description": "早晨的自然光从门缝进入，地面较暗"
+                },
+                "color_scheme": {
+                    "dominant_colors": [
+                        "#808080",
+                        "#2F4F4F"
+                    ],
+                    "accent_color": "#000000",
+                    "mood_tone": "冷清、压抑的户外告别氛围",
+                    "material_textures": [
+                        "水泥",
+                        "纸张"
+                    ]
+                },
+                "key_props": [
+                    {
+                        "name": "花圈",
+                        "description": "用于悼念的物品，位于小道旁",
+                        "significance": "major"
+                    },
+                    {
+                        "name": "烟",
+                        "description": "烟草制品，象征压抑情绪",
+                        "significance": "major"
+                    }
+                ],
+                "atmosphere_keywords": [
+                    "冷清",
+                    "压抑",
+                    "告别",
+                    "清晨",
+                    "烟雾"
+                ],
+                "scene_function": "殡仪馆事务的过渡空间，承载告别与情绪释放",
+                "frequency": 2,
+                "key_traits": [
+                    "户外路径",
+                    "压抑氛围"
+                ]
+            }
+        ]
+    },
+    "visual_tone": {
+        "genre": {
+            "primary": "家庭伦理",
+            "secondary": "现实主义",
+            "tags": [
+                "生死",
+                "亲情",
+                "压抑",
+                "日常",
+                "沉默"
+            ]
+        },
+        "visual_style": {
+            "medium": "cinematic",
+            "reference_works": [
+                "《活着》",
+                "《一一》"
+            ],
+            "director_style": "现实主义细腻观察，注重人物微表情",
+            "cinematography": "低角度平视构图，自然光与人造光交织"
+        },
+        "era_setting": {
+            "era": "现代2020s"
+        },
+        "world_setting": {
+            "primary_locations": [
+                "殡仪馆",
+                "单元楼",
+                "庭院"
+            ],
+            "geographic_context": "中国南方城市",
+            "social_class": "普通市民阶层"
+        },
+        "color_palette": {
+            "dominant_colors": [
+                "#2e2e2e",
+                "#4a4a4a",
+                "#7f7f7f"
+            ],
+            "accent_color": "#d9534f",
+            "mood_tone": "灰暗压抑，偶有暗红点缀"
+        },
+        "lighting_philosophy": "冷调顶光模拟殡仪馆灯光，侧逆光勾勒人物轮廓，窗边暖光作为情绪光源",
+        "atmosphere": {
+            "overall_mood": "压抑、克制、沉静",
+            "pacing_rhythm": "缓慢"
+        },
+        "visual_constraints": {
+            "character_design_rules": [
+                "中性色调服装，避免鲜艳色彩",
+                "人物表情克制，突出面部肌肉细节",
+                "吸烟动作需强调机械重复性"
+            ],
+            "scene_design_rules": [
+                "突出空间封闭感与压抑感",
+                "保持场景真实质感",
+                "烟雾需呈现颗粒化视觉效果"
+            ]
+        },
+        "mood_keywords": [
+            "灰暗",
+            "压抑",
+            "克制",
+            "烟雾",
+            "花圈",
+            "沉默",
+            "家庭羁绊",
+            "现实主义",
+            "生活褶皱",
+            "低饱和度"
+        ]
+    }
+}

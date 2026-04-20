@@ -1,0 +1,199 @@
+{
+    "task_id": "f04-test-001",
+    "characters": {
+        "total": 4,
+        "list": [
+            {
+                "id": "char_1",
+                "name": "陈童",
+                "aliases": [],
+                "gender": "female",
+                "age": "20-25岁",
+                "appearance": "普通面容，匀称体型",
+                "appearance_raw": "",
+                "clothing": "厨师服",
+                "personality": "安静，善于观察",
+                "role_type": "protagonist",
+                "is_temporary": false,
+                "family_role": "none",
+                "relationship_context": {
+                    "referred_by_whom": {
+                        "char_2": [
+                            "陈治和"
+                        ]
+                    },
+                    "refers_to_others_as": {}
+                },
+                "key_traits": [
+                    "厨师",
+                    "安静"
+                ]
+            },
+            {
+                "id": "char_2",
+                "name": "陈治和",
+                "aliases": [],
+                "gender": "male",
+                "age": "40岁",
+                "appearance": "中等身材，面容略显疲惫",
+                "appearance_raw": "",
+                "clothing": "日常服装",
+                "personality": "不拘小节，易咳嗽",
+                "role_type": "supporting",
+                "is_temporary": false,
+                "family_role": "none",
+                "relationship_context": {
+                    "referred_by_whom": {
+                        "char_1": [
+                            "陈治和"
+                        ]
+                    },
+                    "refers_to_others_as": {
+                        "char_3": [
+                            "客人"
+                        ],
+                        "char_4": [
+                            "宾客"
+                        ]
+                    }
+                },
+                "key_traits": [
+                    "吸烟者",
+                    "与客人同行"
+                ]
+            },
+            {
+                "id": "char_3",
+                "name": "客人1",
+                "aliases": [],
+                "gender": "male",
+                "age": "30-35岁",
+                "appearance": "普通面容，体型适中",
+                "appearance_raw": "",
+                "clothing": "休闲装",
+                "personality": "随和，遵循指示",
+                "role_type": "supporting",
+                "is_temporary": false,
+                "family_role": "none",
+                "relationship_context": {
+                    "referred_by_whom": {
+                        "char_2": [
+                            "客人"
+                        ]
+                    },
+                    "refers_to_others_as": {
+                        "char_2": [
+                            "陈治和"
+                        ]
+                    }
+                },
+                "key_traits": [
+                    "客人",
+                    "与陈治和同行"
+                ]
+            },
+            {
+                "id": "char_4",
+                "name": "宾客1",
+                "aliases": [],
+                "gender": "male",
+                "age": "35-40岁",
+                "appearance": "普通面容，略显严肃",
+                "appearance_raw": "",
+                "clothing": "深色外套",
+                "personality": "直接，动作利落",
+                "role_type": "supporting",
+                "is_temporary": false,
+                "family_role": "none",
+                "relationship_context": {
+                    "referred_by_whom": {
+                        "char_2": [
+                            "宾客"
+                        ]
+                    },
+                    "refers_to_others_as": {
+                        "char_2": [
+                            "陈治和"
+                        ]
+                    }
+                },
+                "key_traits": [
+                    "宾客",
+                    "看花圈"
+                ]
+            }
+        ]
+    },
+    "visual_tone": {
+        "genre": {
+            "primary": "家庭伦理",
+            "secondary": "现实主义",
+            "tags": [
+                "生死",
+                "亲情",
+                "压抑",
+                "日常",
+                "沉默"
+            ]
+        },
+        "visual_style": {
+            "medium": "cinematic",
+            "reference_works": [
+                "《活着》",
+                "《一一》"
+            ],
+            "director_style": "现实主义细腻观察，注重人物微表情",
+            "cinematography": "低角度平视构图，自然光与人造光交织"
+        },
+        "era_setting": {
+            "era": "现代2020s"
+        },
+        "world_setting": {
+            "primary_locations": [
+                "殡仪馆",
+                "单元楼",
+                "庭院"
+            ],
+            "geographic_context": "中国南方城市",
+            "social_class": "普通市民阶层"
+        },
+        "color_palette": {
+            "dominant_colors": [
+                "#2e2e2e",
+                "#4a4a4a",
+                "#7f7f7f"
+            ],
+            "accent_color": "#d9534f",
+            "mood_tone": "灰暗压抑，偶有暗红点缀"
+        },
+        "lighting_philosophy": "冷调顶光模拟殡仪馆灯光，侧逆光勾勒人物轮廓，窗边暖光作为情绪光源",
+        "atmosphere": {
+            "overall_mood": "压抑、克制、沉静",
+            "pacing_rhythm": "缓慢"
+        },
+        "visual_constraints": {
+            "character_design_rules": [
+                "中性色调服装，避免鲜艳色彩",
+                "人物表情克制，突出面部肌肉细节",
+                "吸烟动作需强调机械重复性"
+            ],
+            "scene_design_rules": [
+                "突出空间封闭感与压抑感",
+                "保持场景真实质感",
+                "烟雾需呈现颗粒化视觉效果"
+            ]
+        },
+        "mood_keywords": [
+            "灰暗",
+            "压抑",
+            "克制",
+            "烟雾",
+            "花圈",
+            "沉默",
+            "家庭羁绊",
+            "现实主义",
+            "生活褶皱",
+            "低饱和度"
+        ]
+    }
+}
