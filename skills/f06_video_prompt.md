@@ -231,17 +231,17 @@
 
 ## final_video_prompt 模板与格式要求
 
-**final_video_prompt 必须使用以下语义标签格式输出**，每段以 `**标签名**：` 开头：
+final_video_prompt 必须使用以下语义标签格式输出，每段以 `标签名：` 开头：
 
 ```
 【DURATION】秒镜头/画面。
-**场景空间**：【场景描述（不含人物）】。
-**时代地域**：【时代+地域+阶层氛围】（从 era_setting / world_setting 提炼）。
-**人物与动作**：【角色外貌 + 动作链用→串联】。
-**镜头语言**：【类型/角度/运动】。
-**光线氛围**：【光线描述】。
-**情绪弧线**：【起始→过渡→结束】。
-**风格锚定**：
+场景空间：【场景描述（不含人物）】。
+时代地域：【时代+地域+阶层氛围】（从 era_setting / world_setting 提炼）。
+人物与动作：【角色外貌 + 动作链用→串联】。
+镜头语言：【类型/角度/运动】。
+光线氛围：【光线描述】。
+情绪弧线：【起始→过渡→结束】。
+风格锚定：
 - 媒介质感：【medium_style】
 - 导演美学：【director_anchor】
 - 摄影特点：【cinematography_anchor】
@@ -251,8 +251,8 @@
 - 情绪关键词：【mood_keywords 选3-5个融入】
 - 角色设计约束：【character_design_rules 如有则写入】
 - 场景设计约束：【scene_design_rules 如有则写入】
-**质量要求**：【quality_tags】。
-**避免项**：【negative_prompt】。
+质量要求：【quality_tags】。
+避免项：【negative_prompt】。
 ```
 
 ## final_video_prompt 必须包含的语义段落

@@ -27,23 +27,23 @@
 
 请生成一张【name】的角色设定参考图（character reference sheet）。
 
-**画面构图**：
-- **背景为纯白或浅灰干净背景（clean background），无任何场景元素干扰**
-- **画面仅包含该人物，不得出现第二个人物**
-- 采用**专业级三视图展示（professional character sheet / orthographic layout）**：严格为正交视图无透视夸张，包含正面（front view）、侧面 90°（true side view）、背面（full back view）三个等比例视角
+画面构图：
+- 背景为纯白干净背景（clean background），无任何场景元素干扰
+- 画面仅包含该人物，不得出现第二个人物
+- 采用专业级三视图展示（professional character sheet / orthographic layout）：严格为正交视图无透视夸张，包含正面（front view）、侧面 90°（true side view）、背面（full back view）三个等比例视角
 - 三人物等比例排列、对齐统一、间距一致，必须为同一人物（same identity），禁止脸部或结构变化
 - 人物为全身展示（full body），头部与脚部完整不得裁剪
 - 站姿统一（自然站姿/A-pose），双臂自然下垂，身体直立但不僵硬，表情中性无情绪变化
 
-**外貌描述**：【appearance_cn】。
-**服装描述**：【clothing_cn】。
-**时代与地域背景**：【era_and_region】（影响面部骨骼特征、肤质质感、体格气质）。
-**不可变识别特征**：【immutable_features逗号分隔】（跨图像一致性核心锚点）。
-**色彩规范**：肤色【skin_tone】，发色【hair_color】，瞳色【eye_color】，主服装颜色【clothing_colors逗号分隔】。
+外貌描述：【appearance_cn】。
+服装描述：【clothing_cn】。
+时代与地域背景：【era_and_region】（影响面部骨骼特征、肤质质感、体格气质）。
+不可变识别特征：【immutable_features逗号分隔】（跨图像一致性核心锚点）。
+色彩规范：肤色【skin_tone】，发色【hair_color】，瞳色【eye_color】，主服装颜色【clothing_colors逗号分隔】。
 
-**光线**：【lighting_spec】（均匀棚拍光，突出人物结构与服装材质细节）。
+光线：【lighting_spec】（均匀棚拍光，突出人物结构与服装材质细节）。
 
-**风格锚定**（逐项融合视觉基调）：
+风格锚定（逐项融合视觉基调）：
 - 媒介质感：【medium_style】
 - 导演美学：【director_anchor】
 - 色彩氛围：【color_atmosphere】
@@ -83,7 +83,7 @@
 选 3-6 条核心识别锚点。
 
 ### background_spec（新增）
-固定格式：**纯白或浅灰干净背景（clean background），无任何场景元素干扰，画面仅包含该人物，不得出现第二个人物**
+固定格式：**纯白干净背景（clean background），无任何场景元素干扰，画面仅包含该人物，不得出现第二个人物**
 - 不得包含任何场景元素（门窗、家具、天空、地面纹理等）
 - 不得出现任何其他人物或人形轮廓
 - 目的：确保角色本身成为唯一焦点，便于下游抠图/合成

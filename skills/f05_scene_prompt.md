@@ -27,20 +27,20 @@
 
 请生成一张【name】的场景参考图（environment reference sheet）。
 
-**场景描述**：【scene_description_cn】。
-**时代与地域背景**：【era_and_region】（影响建筑风格、材质年代感、空间气质）。
-**核心不可变元素**：【immutable_elements逗号分隔】（跨图像一致性锚点）。
-**色彩方案**：主色调为【dominant_colors_from_visual_tone逗号分隔】，点缀色【accent_color_from_visual_tone】，场景固有色彩【scene_colors逗号分隔】。
-**光线设定**：【lighting_description】。
-**氛围基调**：【atmosphere_mood】。
+场景描述：【scene_description_cn】。
+时代与地域背景：【era_and_region】（影响建筑风格、材质年代感、空间气质）。
+核心不可变元素：【immutable_elements逗号分隔】（跨图像一致性锚点）。
+色彩方案：主色调为【dominant_colors_from_visual_tone逗号分隔】，点缀色【accent_color_from_visual_tone】，场景固有色彩【scene_colors逗号分隔】。
+光线设定：【lighting_description】。
+氛围基调：【atmosphere_mood】。
 
-**画面构图**：
-- **纯场景展示，不得出现任何人物或人形轮廓**
+画面构图：
+- 纯场景展示，不得出现任何人物或人形轮廓
 - 背景为该场景的自然空间边界（非纯白——区别于人物定妆照），完整展现场景的空间纵深
 - 采用环境设定图构图（environment layout）：展现场景的核心区域+关键视角，可包含广角总览或关键局部特写的组合
 - 突出空间的封闭感/开放感/质感细节
 
-**风格锚定**（逐项融合视觉基调）：
+风格锚定（逐项融合视觉基调）：
 - 媒介质感：【medium_style】
 - 导演美学：【director_anchor】
 - 摄影特点改写：【cinematography_anchor】
