@@ -162,29 +162,3 @@ def generate_character_prompts(f02_output: dict, f01_visual_tone: dict) -> dict:
                  batch_task_id, output["successful_count"], output["failed_count"])
     return output
 
-
-# # ── CLI 入口 ───────────────────────────────────────────────
-# if __name__ == "__main__":
-#     import logging as _logging
-#     _logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-
-#     # 用法: python src/f04_character_prompt.py [f02_output.json] [f01_output.json]
-#     # 默认读取 tests/output/f02_output.json + f01_output.json
-#     f02_path = _sys.argv[1] if len(_sys.argv) > 1 else str(
-#         _PROJECT_ROOT / "tests" / "output" / "f02_output.json")
-#     f01_path = _sys.argv[2] if len(_sys.argv) > 2 else str(
-#         _PROJECT_ROOT / "tests" / "output" / "f01_output.json")
-
-#     with open(f02_path, encoding="utf-8") as f:
-#         f02_data = json.load(f)
-#     with open(f01_path, encoding="utf-8") as f:
-#         f01_data = json.load(f)
-
-#     result = generate_character_prompts(f02_data, f01_data)
-
-#     out_dir = _PROJECT_ROOT / "tests" / "output"
-#     out_dir.mkdir(parents=True, exist_ok=True)
-#     out_path = out_dir / "f04_output.json"
-#     out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
-
-#     print(json.dumps(result, ensure_ascii=False, indent=2))

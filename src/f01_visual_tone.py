@@ -1,6 +1,7 @@
 """F01 导演视觉基调提取。
 
-输入：小说全文文本 → 调用 LLM + Skill 提示词 → 输出结构化视觉基调 JSON。
+输入：小说全文文本 + 用户自定义设置 → 调用 LLM + Skill 提示词 → 输出结构化视觉基调 JSON。
+用户可自定义：制作媒体、类型、年代、地点（直接填充）；其余字段由 LLM 从剧本分析提取。
 """
 
 # ── 确保 import 可用（支持直接 python src/f01_xxx.py 运行）──
@@ -18,6 +19,23 @@ from src.llm_client import get_llm_client
 
 logger = logging.getLogger(__name__)
 
+# ── medium 中文 → 枚举值映射 ─────────────────────────────
+_MEDIUM_MAP = {
+    "真人电影": "cinematic",
+    "动画": "anime",
+    "电视剧": "tv_series",
+    "纪录片": "documentary",
+}
+
+
+def _resolve_medium(medium: str) -> str:
+    """将用户输入的中文 medium 映射为英文枚举值，已是枚举值则直接返回。"""
+    if not medium:
+        return ""
+    if medium.lower() in ("cinematic", "anime", "tv_series", "documentary"):
+        return medium.lower()
+    return _MEDIUM_MAP.get(medium, medium)
+
 # ── Skill 文件路径 ────────────────────────────────────────
 SKILL_PATH = _P(__file__).resolve().parent.parent / "skills" / "f01_visual_tone.md"
 
@@ -27,12 +45,18 @@ def load_skill_prompt() -> str:
     return SKILL_PATH.read_text(encoding="utf-8")
 
 
-def extract_visual_tone(text: str, task_id: str | None = None) -> dict:
+def extract_visual_tone(text: str, user_settings: dict | None = None, task_id: str | None = None) -> dict:
     """
     执行 F01：从小说全文中提取导演视觉基调。
 
     Args:
         text: 小说全文文本
+        user_settings: 用户自定义的基础设置（可选），包含：
+            - medium: 制作媒体类型，如 "cinematic" / "anime"
+            - genre: 作品类型，如 "悬疑推理" / "仙侠" / "科幻"
+            - era: 年代背景，如 "现代2020s" / "民国1930s"
+            - location: 地点背景，如 "中国北方一线城市" / "架空仙侠世界"
+            若不传或某字段为空，则由 LLM 自行推断。
         task_id: 任务标识（UUID）；若不传则自动生成
 
     Returns:
@@ -40,19 +64,30 @@ def extract_visual_tone(text: str, task_id: str | None = None) -> dict:
     """
     if task_id is None:
         task_id = str(uuid.uuid4())
+    if user_settings is None:
+        user_settings = {}
 
     client = get_llm_client()
     system_prompt = load_skill_prompt()
 
-    # 构造用户消息：仅传入原始文本
-    user_content = text
+    # 构造用户消息：传入原始文本 + 用户自定义设置
+    user_content = json.dumps({
+        "novel_text": text,
+        "user_settings": {
+            "medium": user_settings.get("medium", ""),
+            "genre": user_settings.get("genre", ""),
+            "era": user_settings.get("era", ""),
+            "location": user_settings.get("location", ""),
+        },
+    }, ensure_ascii=False, indent=2)
 
     messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_content},
     ]
 
-    logger.info("F01 开始处理: task_id=%s, 文本长度=%d 字", task_id, len(text))
+    logger.info("F01 开始处理: task_id=%s, 文本长度=%d 字, 用户设置=%s",
+                task_id, len(text), bool(user_settings))
 
     raw_response = client.chat(
         messages=messages,
@@ -62,6 +97,16 @@ def extract_visual_tone(text: str, task_id: str | None = None) -> dict:
 
     # 解析 LLM 返回的 JSON
     result = json.loads(raw_response)
+
+    # 用用户设置强制覆盖对应字段（确保用户输入不被 LLM 改写）
+    if user_settings.get("medium"):
+        result.setdefault("visual_style", {})["medium"] = _resolve_medium(user_settings["medium"])
+    if user_settings.get("genre"):
+        result.setdefault("genre", {})["primary"] = user_settings["genre"]
+    if user_settings.get("era"):
+        result.setdefault("era_setting", {})["era"] = user_settings["era"]
+    if user_settings.get("location"):
+        result.setdefault("world_setting", {})["geographic_context"] = user_settings["location"]
 
     # 强制覆盖 task_id（确保与上游一致）
     result["task_id"] = task_id
@@ -81,11 +126,19 @@ if __name__ == "__main__":
 店内白色荧光灯管嗡嗡作响，收银台旁的小台灯发出昏黄的光。窗外是深蓝色的夜空和稀疏的车流。林默靠在货架边，看着窗外出神。这时，一个穿红色风衣的女人推门进来，冷风卷着落叶跟了进来。
 """
 
+    # 示例用户自定义设置
+    sample_user_settings = {
+        "medium": "真人电影",
+        "genre": "都市情感",
+        "era": "现代2020s",
+        "location": "中国北方一线城市",
+    }
+
     # 支持命令行参数传入文件路径
     if len(_sys.argv) > 1:
         filepath = _sys.argv[1]
         with open(filepath, encoding="utf-8") as f:
             sample_text = f.read()
 
-    result = extract_visual_tone(sample_text)
+    result = extract_visual_tone(sample_text, sample_user_settings)
     print(json.dumps(result, ensure_ascii=False, indent=2))

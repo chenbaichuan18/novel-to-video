@@ -1,0 +1,122 @@
+{
+    "medium": {
+        "_note": "枚举值：必须在代码中映射为英文枚举值（cinematic/anime/tv_series/documentary）",
+        "label": "制作媒体",
+        "options": [
+            {
+                "value": "真人电影",
+                "description": "写实电影质感，适合现实主义题材"
+            },
+            {
+                "value": "动画",
+                "description": "2D/3D动画风格，适合奇幻/科幻/二次元"
+            },
+            {
+                "value": "电视剧",
+                "description": "剧集制作规格，偏日常叙事节奏"
+            },
+            {
+                "value": "纪录片",
+                "description": "纪实风格，手持镜头感强"
+            }
+        ]
+    },
+    "genre": {
+        "_note": "自由输入：用户可自由输入任意值，或从选项中选择",
+        "label": "作品类型",
+        "options": [
+            {
+                "value": "都市情感",
+                "description": "城市背景，以人物关系和情感为主线"
+            },
+            {
+                "value": "古装武侠",
+                "description": "古代背景，江湖侠义与武打"
+            },
+            {
+                "value": "玄幻仙侠",
+                "description": "修仙、法术、东方幻想世界"
+            },
+            {
+                "value": "科幻",
+                "description": "未来科技/太空/赛博朋克等设定"
+            },
+            {
+                "value": "奇幻",
+                "description": "魔法、异世界、超自然元素"
+            },
+            {
+                "value": "悬疑推理",
+                "description": "悬疑氛围，强调悬念与解谜"
+            },
+            {
+                "value": "恐怖惊悚",
+                "description": "悬疑恐怖氛围，强调心理压迫"
+            },
+            {
+                "value": "青春校园",
+                "description": "学生群体，成长与青春故事"
+            },
+            {
+                "value": "喜剧",
+                "description": "轻松幽默基调，节奏轻快"
+            },
+            {
+                "value": "战争",
+                "description": "战争场景，宏大叙事或个体视角"
+            }
+        ]
+    },
+    "era": {
+        "_note": "自由输入：用户可自由输入任意值，或从选项中选择",
+        "label": "年代背景",
+        "options": [
+            {
+                "value": "现代",
+                "description": "当代背景，智能手机、社交媒体"
+            },
+            {
+                "value": "近代",
+                "description": "80-90年代，改革开放时期"
+            },
+            {
+                "value": "古代",
+                "description": "古代背景，传统服饰与文化"
+            },
+            {
+                "value": "未来",
+                "description": "未来世界，高科技/AI"
+            }
+        ]
+    },
+    "location": {
+        "_note": "自由输入：用户可自由输入任意值，或从选项中选择",
+        "label": "地点背景",
+        "options": [
+            {
+                "value": "城市",
+                "description": "城市环境，高楼大厦与街景"
+            },
+            {
+                "value": "乡村",
+                "description": "农村或乡镇，田园风光"
+            },
+            {
+                "value": "古代",
+                "description": "古代场景，传统建筑与街道"
+            },
+            {
+                "value": "架空世界",
+                "description": "幻想世界，仙侠或奇幻场景"
+            },
+            {
+                "value": "未来",
+                "description": "未来都市，科技感十足"
+            },
+            {
+                "value": "海外",
+                "description": "海外国家城市风光"
+            }
+        ]
+    }
+}

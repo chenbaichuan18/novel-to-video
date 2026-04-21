@@ -166,7 +166,7 @@
     },
     "visual_tone": {
         "genre": {
-            "primary": "家庭伦理",
+            "primary": "现实主义",
             "secondary": "现实主义",
             "tags": [
                 "生死",
@@ -186,7 +186,7 @@
             "cinematography": "低角度平视构图，自然光与人造光交织"
         },
         "era_setting": {
-            "era": "现代2020s"
+            "era": "现代2025s"
         },
         "world_setting": {
             "primary_locations": [
@@ -194,7 +194,7 @@
                 "单元楼",
                 "庭院"
             ],
-            "geographic_context": "中国南方城市",
+            "geographic_context": "中国南方小城",
             "social_class": "普通市民阶层"
         },
         "color_palette": {

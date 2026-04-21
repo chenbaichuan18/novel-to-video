@@ -25,16 +25,23 @@ def main():
     print("F01 测试：导演视觉基调提取")
     print("=" * 60)
 
-    # 从 fixtures 读取输入（按 F01 输入格式: {task_id, text}）
+    # 从 fixtures 读取输入（按 F01 输入格式: {task_id, text, user_settings}）
     inpath = os.path.join(FIXTURES_DIR, "f01_input.json")
     with open(inpath, "r", encoding="utf-8") as f:
         test_input = json.load(f)
     print(f"\n>>> 输入 (F01 格式): {inpath}")
     print(f"    task_id: {test_input['task_id']}")
     print(f"    文本长度: {len(test_input['text'])} 字")
+    user_settings = test_input.get("user_settings", {})
+    if user_settings:
+        print(f"    用户设置: {json.dumps(user_settings, ensure_ascii=False)}")
 
     # 调用 F01
-    result = extract_visual_tone(test_input["text"], task_id=test_input["task_id"])
+    result = extract_visual_tone(
+        test_input["text"],
+        user_settings=user_settings,
+        task_id=test_input["task_id"]
+    )
 
     # 写入输出文件
     outpath = os.path.join(OUTPUT_DIR, "f01_output.json")

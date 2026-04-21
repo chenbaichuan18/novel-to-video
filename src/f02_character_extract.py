@@ -64,24 +64,3 @@ def extract_characters(text: str, task_id: str = None) -> dict:
     return result
 
 
-# ── CLI 入口（方便单独测试）──────────────────────────────
-if __name__ == "__main__":
-    import logging as _logging
-    _logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-
-    # 默认读 fixtures 输入文件
-    default_input = _PROJECT_ROOT / "tests" / "fixtures" / "f02_input.json"
-    input_path = _sys.argv[1] if len(_sys.argv) > 1 else str(default_input)
-
-    with open(input_path, encoding="utf-8") as f:
-        test_data = json.load(f)
-
-    result = extract_characters(test_data["text"], task_id=test_data.get("task_id"))
-
-    # 写入 output 目录
-    out_dir = _PROJECT_ROOT / "tests" / "output"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / "f02_output.json"
-    out_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
-
-    print(json.dumps(result, ensure_ascii=False, indent=2))
