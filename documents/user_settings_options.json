@@ -1,6 +1,6 @@
 {
     "medium": {
-        "_note": "枚举值：必须在代码中映射为英文枚举值（cinematic/anime/tv_series/documentary）",
+        "_note": "枚举值：在代码中映射为英文枚举值（cinematic/anime/tv_series/documentary）",
         "label": "制作媒体",
         "options": [
             {
