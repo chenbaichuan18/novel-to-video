@@ -3,6 +3,7 @@
 import sys
 import os
 import json
+import time
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if PROJECT_ROOT not in sys.path:
@@ -41,7 +42,9 @@ def main():
         print(f"      - [{s['id']}] {s['name']} ({s['scene_type']}/{s['location_type']})")
     print(f"    视觉基调: {visual_tone.get('genre', {}).get('primary')}")
 
+    start_time = time.time()
     result = generate_scene_prompts(test_data, visual_tone)
+    elapsed = time.time() - start_time
 
     outpath = os.path.join(OUTPUT_DIR, "f05_output.json")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
@@ -60,6 +63,9 @@ def main():
         print(f"      {status} {sid}: {len(prompt)} 字")
 
     print(f"\n>>> 完整结果已写入: {outpath}")
+    minutes = int(elapsed // 60)
+    seconds = int(elapsed % 60)
+    print(f">>> 耗时: {minutes}m {seconds}s")
     return result
 
 

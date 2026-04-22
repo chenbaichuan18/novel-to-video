@@ -55,7 +55,9 @@ def main():
     stage_b = result.get("stage_b", {})
 
     print(f"\n{'='*60}")
-    print(f"F06 完成！耗时 {elapsed:.1f}s")
+    minutes = int(elapsed // 60)
+    seconds = int(elapsed % 60)
+    print(f"F06 完成！耗时 {minutes}m {seconds}s")
     print(f"{'='*60}")
     print(f"\n>>> 阶段 A — 文本分段与实体绑定:")
     print(f"    总 segment 数: {stage_a.get('total_segments', 0)}")

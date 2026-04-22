@@ -50,11 +50,29 @@ def extract_characters(text: str, task_id: str = None) -> dict:
     raw_response = client.chat(
         messages=messages,
         temperature=0.7,
-        max_tokens=4096,
+        max_tokens=8192,  # 增加以支持完整剧本的人物提取
     )
 
     # 解析 LLM 返回的 JSON
-    result = json.loads(raw_response)
+    logger.info(f"LLM 原始响应长度: {len(raw_response)} 字")
+    # 尝试清理响应（去除可能的 markdown 代码块标记）
+    cleaned_response = raw_response.strip()
+    if cleaned_response.startswith("```json"):
+        cleaned_response = cleaned_response[7:]
+    if cleaned_response.startswith("```"):
+        cleaned_response = cleaned_response[3:]
+    if cleaned_response.endswith("```"):
+        cleaned_response = cleaned_response[:-3]
+    cleaned_response = cleaned_response.strip()
+
+    try:
+        result = json.loads(cleaned_response)
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON 解析失败: {e}")
+        logger.error(f"原始响应前500字: {raw_response[:500]}")
+        logger.error(f"清理后响应前500字: {cleaned_response[:500]}")
+        logger.error(f"响应后200字: {raw_response[-200:]}")
+        raise
 
     # 强制覆盖 task_id 确保一致
     result["task_id"] = task_id

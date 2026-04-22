@@ -157,6 +157,8 @@ def segment_and_bind(
         messages=messages,
         temperature=0.5,
         max_tokens=8000,
+        timeout=900,  # F06 数据量大，超时时间增加到 15 分钟
+        max_retries=1,  # 减少重试次数，避免浪费时间
     )
 
     _logger.info("F06-A 原始响应长度: %d 字符", len(raw_response))
@@ -376,6 +378,7 @@ def generate_video_prompts(
                 messages=messages,
                 temperature=0.7,
                 max_tokens=4096,
+                timeout=300,  # F06-B 单个 segment 处理，5 分钟超时足够
             )
             vp_result: dict[str, Any] = _safe_parse_json(raw_response)
             if vp_result is None:

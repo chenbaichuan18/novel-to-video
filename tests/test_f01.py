@@ -21,6 +21,8 @@ OUTPUT_DIR = os.path.join(PROJECT_ROOT, "tests", "output")
 
 
 def main():
+    import time
+
     print("=" * 60)
     print("F01 测试：导演视觉基调提取")
     print("=" * 60)
@@ -37,11 +39,13 @@ def main():
         print(f"    用户设置: {json.dumps(user_settings, ensure_ascii=False)}")
 
     # 调用 F01
+    start_time = time.time()
     result = extract_visual_tone(
         test_input["text"],
         user_settings=user_settings,
         task_id=test_input["task_id"]
     )
+    elapsed = time.time() - start_time
 
     # 写入输出文件
     outpath = os.path.join(OUTPUT_DIR, "f01_output.json")
@@ -61,6 +65,9 @@ def main():
             print(f"    {key}: {preview}")
 
     print(f"\n>>> 完整结果已写入: {outpath}")
+    minutes = int(elapsed // 60)
+    seconds = int(elapsed % 60)
+    print(f">>> 耗时: {minutes}m {seconds}s")
     return result
 
 

@@ -1,169 +1,93 @@
 {
-    "task_id": "f06-test-001",
-    "original_text": "暮 内\n 陈童趴在厨台上，向窗外张望。\n 陈治和在单元门口与客人并排沿着院子小道向外走去，陈治和边走边从衣服的右口袋掏出一盒芙蓉王。两人站在花圈前点上烟。宾客看着花圈，抱着胸抽烟。\n陈治和看着宾客\n陈治和\n\"一大早出发，殡仪馆不让很多人去，明天你们就直接去墓地。\"\n陈治和说着，往家的方面望了一眼。被烟呛一口，捂着嘴发出阵阵咳嗽。宾客拍了拍陈治和的肩膀。\n陈治和客气的冲着宾客点了点头，缓过来劲儿，看着宾客的背影，嘬一口烟，扔掉剩下半截的烟，走回家。\n陈童从厨房台下跳下，走出厨房。",
-    "characters": [
-        {
-            "id": "char_1",
-            "name": "陈童",
-            "aliases": [],
-            "gender": "female",
-            "family_role": null,
-            "relationship_context": {
-                "referred_by_whom": {},
-                "refers_to_others_as": {}
-            }
-        },
-        {
-            "id": "char_2",
-            "name": "陈治和",
-            "aliases": [],
-            "gender": "male",
-            "family_role": null,
-            "relationship_context": {
-                "referred_by_whom": {
-                    "char_1": [
-                        "陈治和"
-                    ]
-                },
-                "refers_to_others_as": {
-                    "char_3": [
-                        "客人"
-                    ],
-                    "char_4": [
-                        "宾客"
-                    ]
-                }
-            }
-        },
-        {
-            "id": "char_3",
-            "name": "客人1",
-            "aliases": [],
-            "gender": "male",
-            "family_role": null,
-            "relationship_context": {
-                "referred_by_whom": {
-                    "char_2": [
-                        "客人"
-                    ]
-                },
-                "refers_to_others_as": {
-                    "char_2": [
-                        "陈治和"
-                    ]
-                }
-            }
-        },
-        {
-            "id": "char_4",
-            "name": "宾客1",
-            "aliases": [],
-            "gender": "male",
-            "family_role": null,
-            "relationship_context": {
-                "referred_by_whom": {
-                    "char_2": [
-                        "宾客"
-                    ]
-                },
-                "refers_to_others_as": {
-                    "char_2": [
-                        "陈治和"
-                    ]
-                }
-            }
-        }
-    ],
-    "scenes": [
-        {
-            "id": "scene_1",
-            "name": "厨房·内部",
-            "aliases": [
-                "厨房"
-            ]
-        },
-        {
-            "id": "scene_2",
-            "name": "单元门口·外部",
-            "aliases": [
-                "住宅入口",
-                "单元门",
-                "门口"
-            ]
-        },
-        {
-            "id": "scene_3",
-            "name": "院子小道·户外",
-            "aliases": [
-                "庭院小道",
-                "院子",
-                "小道"
-            ]
-        }
-    ],
-    "visual_tone": {
-        "genre": {
-            "primary": "现实主义",
-            "secondary": "现实主义"
-        },
-        "visual_style": {
-            "medium": "cinematic",
-            "reference_works": [
-                "《活着》",
-                "《一一》"
-            ],
-            "director_style": "现实主义细腻观察，注重人物微表情",
-            "cinematography": "低角度平视构图，自然光与人造光交织"
-        },
-        "era_setting": {
-            "era": "现代2025s"
-        },
-        "world_setting": {
-            "primary_locations": [
-                "殡仪馆",
-                "单元楼",
-                "庭院"
-            ],
-            "geographic_context": "中国南方小城",
-            "social_class": "普通市民阶层"
-        },
-        "color_palette": {
-            "dominant_colors": [
-                "#2e2e2e",
-                "#4a4a4a",
-                "#7f7f7f"
-            ],
-            "accent_color": "#d9534f",
-            "mood_tone": "灰暗压抑，偶有暗红点缀"
-        },
-        "lighting_philosophy": "冷调顶光模拟殡仪馆灯光，侧逆光勾勒人物轮廓，窗边暖光作为情绪光源",
-        "atmosphere": {
-            "overall_mood": "压抑、克制、沉静",
-            "pacing_rhythm": "缓慢"
-        },
-        "visual_constraints": {
-            "character_design_rules": [
-                "中性色调服装，避免鲜艳色彩",
-                "人物表情克制，突出面部肌肉细节",
-                "吸烟动作需强调机械重复性"
-            ],
-            "scene_design_rules": [
-                "突出空间封闭感与压抑感",
-                "保持场景真实质感",
-                "烟雾需呈现颗粒化视觉效果"
-            ]
-        },
-        "mood_keywords": [
-            "灰暗",
-            "压抑",
-            "克制",
-            "烟雾",
-            "花圈",
-            "沉默",
-            "家庭羁绊",
-            "现实主义",
-            "生活褶皱",
-            "低饱和度"
-        ]
+  "task_id": "f06-test-001",
+  "original_text": "暮春时节，江南雨细。青石巷深处，有一间旧茶铺，门前垂着褪色竹帘，帘下常坐着一位白衣女子，名唤沈清辞。她生得眉目如画，却寡言少语，只在黄昏时分，替往来客商温一壶新茶。坊间传言，她在等一个多年未归的人。\n\n十年前，清辞尚是相府千金，因家门获罪，一夜之间风流云散。彼时押送罪籍北去的雪夜里，唯有少年将军顾长渊冒死放走了她。他只说了一句：\"活下去，等我回来。\"自那以后，她改名换姓，隐于这烟雨小城，而顾长渊则披甲远征，自此音讯断绝。\n\n这一等，便是十年。\n\n那年秋末，边关忽传大捷，敌国退兵三百里，主帅顾长渊班师回朝。城中百姓夹道相迎，万人空巷。清辞站在茶铺门后，指尖发颤，终究没有迈出去。她怕，怕归来的不是旧人，怕旧人已忘前尘。\n\n谁知当夜，大雨如注，茶铺木门被轻轻叩响。清辞提灯开门，只见门外立着一名黑衣男子，肩头湿透，眉宇之间尽是风霜，却仍是她梦里那双沉静眼眸。\n\n\"沈姑娘，\"他低声笑道，\"这壶茶，可还等得起故人？\"\n\n灯火摇曳，映得清辞眼底微红。她张了张口，十年委屈与思念俱堵在喉间，竟一句也说不出。顾长渊缓步入内，将一方旧玉佩放在桌上。那是当年雪夜分别时，她偷偷塞入他掌心的信物，玉上裂痕犹在，人却已隔了万重山。\n\n\"我回来晚了。\"他说。\n\n清辞望着他，忽而轻笑，眼泪却无声落进茶盏中。\"你若再晚些，这茶铺便不开了。\"\n\n顾长渊沉默片刻，忽向她深深一揖：\"当年未能护你周全，是我此生之憾。如今功名已成，我愿辞去官职，携你远离京华，再不问庙堂风雪。你可愿随我走？\"\n\n窗外雨声淅沥，似将十年孤寂一寸寸洗去。清辞抬手将那枚玉佩重新系回他腰间，声音轻得像江南水雾：\"我守这盏灯，不是为了听你一句愧疚。\"\n\n顾长渊怔然抬眸。\n\n她望着他，笑意温柔如旧：\"我是等你，带我回家。\"\n\n翌日清晨，茶铺闭门，竹帘轻卷。有人说白衣掌柜远嫁他乡，也有人说她随一位将军策马出了城，再未归来。唯有巷口老槐树下，偶尔还能闻见淡淡茶香，像极了那年江南细雨里，一场迟了十年的重逢。",
+  "characters": [
+    {
+      "id": "char_1",
+      "name": "沈清辞",
+      "aliases": [],
+      "gender": "female",
+      "family_role": "none"
+    },
+    {
+      "id": "char_2",
+      "name": "顾长渊",
+      "aliases": [],
+      "gender": "male",
+      "family_role": "none"
     }
+  ],
+  "scenes": [
+    {
+      "id": "scene_1",
+      "name": "青石巷·茶铺门前",
+      "aliases": ["茶铺门前", "旧茶铺"]
+    },
+    {
+      "id": "scene_2",
+      "name": "茶铺·内部",
+      "aliases": ["茶铺内", "旧茶铺内"]
+    },
+    {
+      "id": "scene_3",
+      "name": "边关·雪夜",
+      "aliases": ["北地", "雪夜"]
+    },
+    {
+      "id": "scene_4",
+      "name": "城中·街道",
+      "aliases": ["街道", "城内"]
+    },
+    {
+      "id": "scene_5",
+      "name": "茶铺·夜晚",
+      "aliases": ["茶铺夜间", "雨夜茶铺"]
+    }
+  ],
+  "visual_tone": {
+    "genre": {
+      "primary": "现实主义",
+      "secondary": "社会写实"
+    },
+    "visual_style": {
+      "medium": "cinematic",
+      "reference_works": [
+        "《一一》",
+        "《重庆森林》"
+      ],
+      "director_style": "真实主义导演的观察视角",
+      "cinematography": "自然光拍摄，手持镜头增强临场感"
+    },
+    "era_setting": {
+      "era": "现代"
+    },
+    "world_setting": {
+      "primary_locations": [
+        "城市街道",
+        "居民区",
+        "公共空间"
+      ],
+      "geographic_context": "城市",
+      "social_class": "普通市民阶层"
+    },
+    "color_palette": {
+      "dominant_colors": [
+        "#6c757d",
+        "#808080",
+        "#c0c0c0"
+      ],
+      "accent_color": "#ff8c00",
+      "mood_tone": "冷调灰蓝为主，带有生活化暖色点缀"
+    },
+    "lighting_philosophy": "自然光与城市环境灯光结合，突出真实感",
+    "atmosphere": {
+      "overall_mood": "克制、疏离、存在主义思考",
+      "pacing_rhythm": "中等"
+    },
+    "visual_constraints": {
+      "character_design_rules": [],
+      "scene_design_rules": []
+    },
+    "mood_keywords": []
+  }
 }

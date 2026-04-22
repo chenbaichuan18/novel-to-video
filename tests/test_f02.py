@@ -3,6 +3,7 @@
 import sys
 import os
 import json
+import time
 
 # 确保项目根目录在 sys.path 中
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,7 +35,9 @@ def main():
     print(f"    文本长度: {len(test_input['text'])} 字")
 
     # 调用 F02
+    start_time = time.time()
     result = extract_characters(test_input["text"], task_id=test_input["task_id"])
+    elapsed = time.time() - start_time
 
     # 写入输出文件
     outpath = os.path.join(OUTPUT_DIR, "f02_output.json")
@@ -53,6 +56,9 @@ def main():
     print(f">>> 推断字段: {summary.get('inferred_fields', [])}")
 
     print(f"\n>>> 完整结果已写入: {outpath}")
+    minutes = int(elapsed // 60)
+    seconds = int(elapsed % 60)
+    print(f">>> 耗时: {minutes}m {seconds}s")
     return result
 
 

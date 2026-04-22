@@ -1,0 +1,441 @@
+{
+  "task_id": "f04-test-001",
+  "characters": {
+    "total": 6,
+    "list": [
+      {
+        "id": "char_1",
+        "name": "陈治和",
+        "aliases": [],
+        "gender": "male",
+        "age": "35-45岁",
+        "appearance": "中等身材，面容疲惫，双目无神",
+        "appearance_raw": "看着陈莉十分疲惫的姿态，双目无神的叠着祭祀折纸",
+        "clothing": "普通外套",
+        "personality": "沉默、内向、有责任感",
+        "role_type": "supporting",
+        "is_temporary": false,
+        "family_role": "son",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_2": [
+              "哥"
+            ],
+            "char_3": [
+              "父亲"
+            ],
+            "char_4": [
+              "你"
+            ],
+            "char_5": [
+              "父亲"
+            ],
+            "char_6": [
+              "你"
+            ],
+            "char_7": [
+              "你"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_2": [
+              "李军"
+            ],
+            "char_3": [
+              "宾客"
+            ],
+            "char_4": [
+              "你"
+            ],
+            "char_5": [
+              "陈莉"
+            ],
+            "char_6": [
+              "丹丹"
+            ],
+            "char_7": [
+              "韩倩"
+            ]
+          }
+        },
+        "key_traits": [
+          "陈治和",
+          "沉默",
+          "责任感"
+        ]
+      },
+      {
+        "id": "char_2",
+        "name": "李军",
+        "aliases": [],
+        "gender": "male",
+        "age": "35-45岁",
+        "appearance": "普通面容，略显笨拙",
+        "appearance_raw": "略显笨拙的起身，从陈治和身旁走过",
+        "clothing": "普通外套",
+        "personality": "略显笨拙、温和",
+        "role_type": "supporting",
+        "is_temporary": false,
+        "family_role": "husband",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_1": [
+              "哥"
+            ],
+            "char_3": [
+              "陈治和"
+            ],
+            "char_4": [
+              "你"
+            ],
+            "char_5": [
+              "陈治和"
+            ],
+            "char_6": [
+              "丹丹"
+            ],
+            "char_7": [
+              "陈治和"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_1": [
+              "哥"
+            ],
+            "char_3": [
+              "宾客"
+            ],
+            "char_4": [
+              "你"
+            ],
+            "char_5": [
+              "陈莉"
+            ],
+            "char_6": [
+              "陈童"
+            ],
+            "char_7": [
+              "陈童"
+            ]
+          }
+        },
+        "key_traits": [
+          "李军",
+          "温和",
+          "笨拙"
+        ]
+      },
+      {
+        "id": "char_3",
+        "name": "陈童",
+        "aliases": [],
+        "gender": "female",
+        "age": "15-18岁",
+        "appearance": "普通面容，略显疲惫",
+        "appearance_raw": "趴在厨台上，从厨房台下跳下，坐在浦垫上，吃劲儿的攥着火盆",
+        "clothing": "普通衣物",
+        "personality": "好奇、敏感、依赖性强",
+        "role_type": "protagonist",
+        "is_temporary": false,
+        "family_role": "daughter",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_1": [
+              "你"
+            ],
+            "char_2": [
+              "陈童"
+            ],
+            "char_4": [
+              "陈童"
+            ],
+            "char_5": [
+              "陈童"
+            ],
+            "char_6": [
+              "陈童"
+            ],
+            "char_7": [
+              "陈童"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_1": [
+              "你"
+            ],
+            "char_2": [
+              "陈童"
+            ],
+            "char_4": [
+              "你"
+            ],
+            "char_5": [
+              "陈童"
+            ],
+            "char_6": [
+              "你"
+            ],
+            "char_7": [
+              "你"
+            ]
+          }
+        },
+        "key_traits": [
+          "陈童",
+          "好奇",
+          "敏感"
+        ]
+      },
+      {
+        "id": "char_4",
+        "name": "丹丹",
+        "aliases": [],
+        "gender": "female",
+        "age": "25-30岁",
+        "appearance": "普通面容，略显疲惫",
+        "appearance_raw": "坐在灵堂后墙的椅子上，望着门外过道架子上枯萎的爬山虎",
+        "clothing": "日常衣物",
+        "personality": "沉默、关心他人、略显疲惫",
+        "role_type": "supporting",
+        "is_temporary": false,
+        "family_role": "girlfriend",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_1": [
+              "丹丹"
+            ],
+            "char_2": [
+              "丹丹"
+            ],
+            "char_3": [
+              "丹丹"
+            ],
+            "char_6": [
+              "丹丹"
+            ],
+            "char_7": [
+              "丹丹"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_1": [
+              "你"
+            ],
+            "char_2": [
+              "陈童"
+            ],
+            "char_3": [
+              "你"
+            ],
+            "char_6": [
+              "你"
+            ],
+            "char_7": [
+              "你"
+            ]
+          }
+        },
+        "key_traits": [
+          "丹丹",
+          "关心",
+          "疲惫"
+        ]
+      },
+      {
+        "id": "char_5",
+        "name": "陈莉",
+        "aliases": [],
+        "gender": "female",
+        "age": "30-40岁",
+        "appearance": "略显疲惫，神情呆滞",
+        "appearance_raw": "低着头机械的叠着祈嗣纸，有气无力的说着",
+        "clothing": "日常衣物",
+        "personality": "疲惫、麻木、略显无力",
+        "role_type": "supporting",
+        "is_temporary": false,
+        "family_role": "sister",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_1": [
+              "陈莉"
+            ],
+            "char_2": [
+              "陈莉"
+            ],
+            "char_3": [
+              "陈莉"
+            ],
+            "char_4": [
+              "陈莉"
+            ],
+            "char_6": [
+              "陈莉"
+            ],
+            "char_7": [
+              "陈莉"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_1": [
+              "陈莉"
+            ],
+            "char_2": [
+              "陈莉"
+            ],
+            "char_3": [
+              "陈莉"
+            ],
+            "char_4": [
+              "陈莉"
+            ],
+            "char_6": [
+              "陈莉"
+            ],
+            "char_7": [
+              "陈莉"
+            ]
+          }
+        },
+        "key_traits": [
+          "陈莉",
+          "疲惫",
+          "麻木"
+        ]
+      },
+      {
+        "id": "char_6",
+        "name": "韩倩",
+        "aliases": [],
+        "gender": "female",
+        "age": "30-40岁",
+        "appearance": "普通面容，略显疲惫",
+        "appearance_raw": "低着头煮着一锅素面，靠着墙擦拭收音机",
+        "clothing": "日常衣物",
+        "personality": "沉默、略显麻木",
+        "role_type": "supporting",
+        "is_temporary": false,
+        "family_role": "none",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_1": [
+              "韩倩"
+            ],
+            "char_2": [
+              "韩倩"
+            ],
+            "char_3": [
+              "韩倩"
+            ],
+            "char_4": [
+              "韩倩"
+            ],
+            "char_5": [
+              "韩倩"
+            ],
+            "char_7": [
+              "韩倩"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_1": [
+              "韩倩"
+            ],
+            "char_2": [
+              "韩倩"
+            ],
+            "char_3": [
+              "韩倩"
+            ],
+            "char_4": [
+              "韩倩"
+            ],
+            "char_5": [
+              "韩倩"
+            ],
+            "char_7": [
+              "韩倩"
+            ]
+          }
+        },
+        "key_traits": [
+          "韩倩",
+          "沉默",
+          "麻木"
+        ]
+      }
+    ]
+  },
+  "visual_tone": {
+    "task_id": "6ac8dae5-dd66-4133-8167-215aa21effb3",
+    "genre": {
+      "primary": "都市情感",
+      "secondary": "家庭伦理",
+      "tags": [
+        "家庭",
+        "悲伤",
+        "现实",
+        "成长"
+      ]
+    },
+    "visual_style": {
+      "medium": "cinematic",
+      "reference_works": [
+        "《人生大事》",
+        "《地久天长》"
+      ],
+      "director_style": "现实主义风格，细腻的人物刻画与环境描写",
+      "cinematography": "自然光为主，低饱和色调，强调人物与环境的互动"
+    },
+    "era_setting": {
+      "era": "现代"
+    },
+    "world_setting": {
+      "primary_locations": [
+        "家庭住宅",
+        "灵堂",
+        "厨房",
+        "餐厅"
+      ],
+      "geographic_context": "中国南方小城",
+      "social_class": "普通家庭，中产阶层"
+    },
+    "color_palette": {
+      "dominant_colors": [
+        "#2c3e50",
+        "#7f8c8d",
+        "#c0392b"
+      ],
+      "accent_color": "#f1c40f",
+      "mood_tone": "灰暗中透露出一丝温暖"
+    },
+    "lighting_philosophy": "以自然光和室内柔和灯光为主，强调夜晚的沉静与孤独感",
+    "atmosphere": {
+      "overall_mood": "沉重、压抑但带着希望",
+      "pacing_rhythm": "缓慢"
+    },
+    "visual_constraints": {
+      "character_design_rules": [
+        "自然朴素的服装，无夸张装饰",
+        "人物表情内敛，动作缓慢而真实",
+        "避免过度美化或戏剧化的人物形象"
+      ],
+      "scene_design_rules": [
+        "场景中突出家庭生活细节，如厨房、餐厅、卧室",
+        "使用冷色调表现悲伤氛围，暖色点缀体现希望",
+        "强调夜晚环境的安静与人物的孤独感"
+      ]
+    },
+    "mood_keywords": [
+      "真实",
+      "沉重",
+      "家庭",
+      "压抑",
+      "希望",
+      "缓慢",
+      "现实主义",
+      "内敛",
+      "悲伤",
+      "孤独"
+    ]
+  }
+}

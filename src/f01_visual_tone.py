@@ -92,11 +92,29 @@ def extract_visual_tone(text: str, user_settings: dict | None = None, task_id: s
     raw_response = client.chat(
         messages=messages,
         temperature=0.7,
-        max_tokens=4096,
+        max_tokens=8192,  # 增加以支持完整剧本的视觉基调提取
     )
 
     # 解析 LLM 返回的 JSON
-    result = json.loads(raw_response)
+    logger.info(f"LLM 原始响应长度: {len(raw_response)} 字")
+    # 尝试清理响应（去除可能的 markdown 代码块标记）
+    cleaned_response = raw_response.strip()
+    if cleaned_response.startswith("```json"):
+        cleaned_response = cleaned_response[7:]
+    if cleaned_response.startswith("```"):
+        cleaned_response = cleaned_response[3:]
+    if cleaned_response.endswith("```"):
+        cleaned_response = cleaned_response[:-3]
+    cleaned_response = cleaned_response.strip()
+
+    try:
+        result = json.loads(cleaned_response)
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON 解析失败: {e}")
+        logger.error(f"原始响应前500字: {raw_response[:500]}")
+        logger.error(f"清理后响应前500字: {cleaned_response[:500]}")
+        logger.error(f"响应后200字: {raw_response[-200:]}")
+        raise
 
     # 用用户设置强制覆盖对应字段（确保用户输入不被 LLM 改写）
     if user_settings.get("medium"):
@@ -113,32 +131,3 @@ def extract_visual_tone(text: str, user_settings: dict | None = None, task_id: s
 
     logger.info("F01 处理完成: task_id=%s", task_id)
     return result
-
-
-# ── CLI 入口（方便单独测试）──────────────────────────────
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
-
-    sample_text = """《深夜的便利店》小说片段：
-
-林默是这家便利店的值班店员，每天深夜独自守店。城市的高架桥在窗外延伸，路灯的暖黄光晕透过玻璃洒在货架上。他穿着褪色的深蓝工装，头发总是乱糟糟的。顾客很少，偶尔有加班的白领来买咖啡，或是流浪汉在门口徘徊。
-
-店内白色荧光灯管嗡嗡作响，收银台旁的小台灯发出昏黄的光。窗外是深蓝色的夜空和稀疏的车流。林默靠在货架边，看着窗外出神。这时，一个穿红色风衣的女人推门进来，冷风卷着落叶跟了进来。
-"""
-
-    # 示例用户自定义设置
-    sample_user_settings = {
-        "medium": "真人电影",
-        "genre": "都市情感",
-        "era": "现代2020s",
-        "location": "中国北方一线城市",
-    }
-
-    # 支持命令行参数传入文件路径
-    if len(_sys.argv) > 1:
-        filepath = _sys.argv[1]
-        with open(filepath, encoding="utf-8") as f:
-            sample_text = f.read()
-
-    result = extract_visual_tone(sample_text, sample_user_settings)
-    print(json.dumps(result, ensure_ascii=False, indent=2))

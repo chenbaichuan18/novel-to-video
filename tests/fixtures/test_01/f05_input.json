@@ -1,0 +1,1129 @@
+{
+  "task_id": "f05-test-001",
+  "scenes": {
+    "total": 10,
+    "list": [
+      {
+        "id": "scene_1",
+        "name": "厨房·内部",
+        "aliases": [
+          "厨房"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "dawn",
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "狭小的厨房空间，有厨台和窗户",
+          "size_scale": "intimate",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "厨房空间内有厨台和窗户，整体氛围压抑，有面条和绿植的细节",
+          "architectural_style": [],
+          "key_features": [
+            "厨台",
+            "窗户",
+            "绿植"
+          ],
+          "textural_details": [
+            "水泥地面",
+            "粗糙的木质厨台"
+          ]
+        },
+        "visual_description_raw": "陈童趴在厨台上，向窗外张望；陈童从厨房台下跳下，走出厨房。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(玻璃门)",
+            "天花板荧光灯管"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "白天有自然光进入，夜晚依靠人工照明"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#f5f5f5",
+            "#b0b0b0"
+          ],
+          "accent_color": "#808080",
+          "mood_tone": "压抑、灰暗",
+          "material_textures": [
+            "水泥地面",
+            "木质厨台"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "厨台",
+            "description": "厨房内的主要操作台",
+            "significance": "major"
+          },
+          {
+            "name": "窗户",
+            "description": "厨房的采光口",
+            "significance": "major"
+          },
+          {
+            "name": "绿植",
+            "description": "放置在过道处的植物",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "灰暗",
+          "寂静",
+          "潮湿",
+          "闭塞"
+        ],
+        "scene_function": "展现家庭日常活动和悲伤氛围的起点",
+        "frequency": 2,
+        "key_traits": [
+          "封闭性",
+          "日常活动空间"
+        ]
+      },
+      {
+        "id": "scene_2",
+        "name": "灵堂·内部",
+        "aliases": [
+          "灵堂"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "灵堂内有遗像、供桌、火盆和座椅",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "灵堂内有遗像、供桌、火盆和座椅，整体氛围庄重且悲伤",
+          "architectural_style": [
+            "传统中式"
+          ],
+          "key_features": [
+            "遗像",
+            "供桌",
+            "火盆",
+            "座椅"
+          ],
+          "textural_details": [
+            "木质供桌",
+            "布质窗帘"
+          ]
+        },
+        "visual_description_raw": "夜外挂起阵阵的风，吹动着过道处的陈利德生前种植的大量绿植；陈童小心翼翼地从客厅出来，走进灵堂坐在丹丹身边；陈治和站在后边的窗户前，抽着烟，看着过道处的雨水冲刷着的绿植；陈莉跪坐在浦垫上，拿着剪子在烧黑的老盆里钻眼；陈治和回过头看着陈莉的侧脸，叹了口气，扔掉了烟。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)",
+            "天花板荧光灯管"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "夜晚有自然光从窗户透入，灯光较暗"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#a0a0a0",
+            "#808080"
+          ],
+          "accent_color": "#404040",
+          "mood_tone": "压抑、庄重",
+          "material_textures": [
+            "木质供桌",
+            "布质窗帘"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "遗像",
+            "description": "陈利德的遗像",
+            "significance": "major"
+          },
+          {
+            "name": "火盆",
+            "description": "烧黑的老盆",
+            "significance": "major"
+          },
+          {
+            "name": "香炉",
+            "description": "用于烧香的器具",
+            "significance": "minor"
+          }
+        ],
+        "atmosphere_keywords": [
+          "肃穆",
+          "悲伤",
+          "庄重",
+          "潮湿",
+          "昏暗"
+        ],
+        "scene_function": "核心悼念空间，情感集中地",
+        "frequency": 6,
+        "key_traits": [
+          "庄重",
+          "悲伤氛围"
+        ]
+      },
+      {
+        "id": "scene_3",
+        "name": "楼道口·外部",
+        "aliases": [
+          "楼道口"
+        ],
+        "scene_type": "mixed",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "楼道连接室内和室外，有门和梯子",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "楼道口有门和梯子，连接室内与室外，光线较暗",
+          "architectural_style": [],
+          "key_features": [
+            "门",
+            "梯子",
+            "过道"
+          ],
+          "textural_details": [
+            "铁质门",
+            "水泥地面"
+          ]
+        },
+        "visual_description_raw": "陈治和把梯子架在稳定的墙面上，李军蹲着翻找工具；家门敞开着，陈童扒在门口看着父亲；李军坐在梯子上装着灯泡，陈治和左手扶着梯子，右手拿着换下来的灯泡。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)",
+            "天花板荧光灯管"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "夜晚有自然光从窗户透入，灯光较暗"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#b0b0b0",
+            "#808080"
+          ],
+          "accent_color": "#606060",
+          "mood_tone": "压抑、昏暗",
+          "material_textures": [
+            "水泥地面",
+            "铁质门"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "梯子",
+            "description": "用于换灯泡的工具",
+            "significance": "minor"
+          },
+          {
+            "name": "门",
+            "description": "连接室内与室外的通道",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "昏暗",
+          "寂静",
+          "潮湿",
+          "紧张"
+        ],
+        "scene_function": "连接室内外的重要通道，象征过渡与告别",
+        "frequency": 2,
+        "key_traits": [
+          "过渡空间",
+          "紧张氛围"
+        ]
+      },
+      {
+        "id": "scene_4",
+        "name": "餐厅·内部",
+        "aliases": [
+          "餐厅"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "狭小的餐厅，有餐桌、椅子和收音机",
+          "size_scale": "intimate",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "餐厅内有凌乱的餐桌、收音机和冷掉的素面，整体氛围压抑",
+          "architectural_style": [],
+          "key_features": [
+            "餐桌",
+            "收音机",
+            "冷掉的素面"
+          ],
+          "textural_details": [
+            "木质餐桌",
+            "布质椅子"
+          ]
+        },
+        "visual_description_raw": "凌乱的餐桌上腾出一块摆碗的地方；韩倩靠着墙在餐桌上一遍遍擦拭着陈利德生前喜欢的收音机；陈童坐在餐桌靠墙的位置；丹丹走向厨房，端出两碗素面，放在陈童的面前，给陈童摆好碗筷后，坐在陈童的旁边。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)",
+            "天花板荧光灯管"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "夜晚有自然光从窗户透入，灯光较暗"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#d0d0d0",
+            "#a0a0a0"
+          ],
+          "accent_color": "#c0c0c0",
+          "mood_tone": "压抑、沉闷",
+          "material_textures": [
+            "木质餐桌",
+            "布质椅子"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "收音机",
+            "description": "陈利德生前喜欢的收音机",
+            "significance": "major"
+          },
+          {
+            "name": "素面",
+            "description": "冷掉的面条",
+            "significance": "minor"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "沉闷",
+          "沉默",
+          "冷清",
+          "悲伤"
+        ],
+        "scene_function": "连接厨房与客厅的过渡空间，展现家庭的日常与悼念",
+        "frequency": 3,
+        "key_traits": [
+          "过渡空间",
+          "悲伤氛围"
+        ]
+      },
+      {
+        "id": "scene_5",
+        "name": "河道旁·外部",
+        "aliases": [
+          "河道旁"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "natural",
+        "time_setting": {
+          "periods_appeared": [
+            "night",
+            "day"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "河堤处有石头和桥，空间开阔",
+          "size_scale": "expansive",
+          "enclosure": "fully_open"
+        },
+        "visual_description": {
+          "summary": "一条河贯穿河道旁，有桥和石头，夜晚有灯光和呼啸的火车",
+          "architectural_style": [],
+          "key_features": [
+            "河堤",
+            "桥",
+            "石头",
+            "火车"
+          ],
+          "textural_details": [
+            "水泥桥面",
+            "粗糙的石头"
+          ]
+        },
+        "visual_description_raw": "陈童在河堤处拿着石头砸向水面，丹丹站在河道旁，望着后面的桥发呆；陈童不停地向前走，陈莉和丹丹哭出了声；陈童抱着陈利德的遗像，陈莉和丹丹将衣服堆放在一起，李军在衣服周边摆满了元宝。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "车灯光",
+            "自然光(太阳)"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "夜晚以车灯光为主，白天有自然光"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#707070",
+            "#a0a0a0"
+          ],
+          "accent_color": "#f0e68c",
+          "mood_tone": "沉重、压抑",
+          "material_textures": [
+            "水泥桥面",
+            "粗糙的石头"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "石头",
+            "description": "用于砸水面的石头",
+            "significance": "major"
+          },
+          {
+            "name": "桥",
+            "description": "连接两岸的桥梁",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "沉重",
+          "压抑",
+          "寂静",
+          "夜晚",
+          "潮湿"
+        ],
+        "scene_function": "象征过渡与告别，展现自然与情感的交汇",
+        "frequency": 3,
+        "key_traits": [
+          "开放空间",
+          "沉重氛围"
+        ]
+      },
+      {
+        "id": "scene_6",
+        "name": "卧室·内部",
+        "aliases": [
+          "卧室"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "卧室有双人床和单人床，窗户朝向过道",
+          "size_scale": "intimate",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "卧室有双人床和单人床，窗户朝向过道，氛围压抑",
+          "architectural_style": [],
+          "key_features": [
+            "双人床",
+            "单人床",
+            "窗户"
+          ],
+          "textural_details": [
+            "厚重的被子",
+            "布质窗帘"
+          ]
+        },
+        "visual_description_raw": "奶奶侧躺在单人床上，面对着窗户，盖着厚厚的被子；陈莉坐在双人床边，从柜子里拿出陈利德的衣服；陈莉面露不忍的走出卧室，关上了卧室的门。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "夜晚有自然光从窗户透入"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#b0b0b0",
+            "#a0a0a0"
+          ],
+          "accent_color": "#808080",
+          "mood_tone": "压抑、沉寂",
+          "material_textures": [
+            "厚重的被子",
+            "布质窗帘"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "双人床",
+            "description": "卧室内的主要床铺",
+            "significance": "major"
+          },
+          {
+            "name": "单人床",
+            "description": "堆叠的床铺",
+            "significance": "minor"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "沉寂",
+          "寂静",
+          "昏暗",
+          "悲伤"
+        ],
+        "scene_function": "展现家庭成员的休息与情感状态",
+        "frequency": 2,
+        "key_traits": [
+          "私密空间",
+          "沉寂氛围"
+        ]
+      },
+      {
+        "id": "scene_7",
+        "name": "隧道处·外部",
+        "aliases": [
+          "隧道处"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "transportation",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "隧道内部空间，有桥和火车，环境昏暗",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "隧道内部空间，有桥和火车，氛围压抑和紧张",
+          "architectural_style": [],
+          "key_features": [
+            "隧道",
+            "桥",
+            "火车",
+            "人群"
+          ],
+          "textural_details": [
+            "水泥隧道壁",
+            "铁质桥面"
+          ]
+        },
+        "visual_description_raw": "丹丹一手牵着陈童，一手拿着一大袋零食穿过隧道；火车在隧道上方呼啸而过。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "车灯光",
+            "自然光(隧道口)"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "隧道内以车灯光为主，光线昏暗"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#808080",
+            "#606060"
+          ],
+          "accent_color": "#404040",
+          "mood_tone": "压抑、紧张",
+          "material_textures": [
+            "水泥隧道壁",
+            "铁质桥面"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "隧道",
+            "description": "连接不同区域的通道",
+            "significance": "major"
+          },
+          {
+            "name": "桥",
+            "description": "隧道上方的桥梁",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "紧张",
+          "黑暗",
+          "人群",
+          "沉默"
+        ],
+        "scene_function": "象征过渡与告别，展现家庭成员的集体行动",
+        "frequency": 1,
+        "key_traits": [
+          "封闭空间",
+          "紧张氛围"
+        ]
+      },
+      {
+        "id": "scene_8",
+        "name": "客厅·内部",
+        "aliases": [
+          "客厅"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "客厅有沙发、窗户和餐桌",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "客厅有沙发、窗户和餐桌，氛围压抑，有雨声和哭泣声",
+          "architectural_style": [],
+          "key_features": [
+            "沙发",
+            "窗户",
+            "餐桌",
+            "雨声"
+          ],
+          "textural_details": [
+            "布质沙发",
+            "布质窗帘"
+          ]
+        },
+        "visual_description_raw": "陈童躺在丹丹的腿上，大口的嚼着零食；雨滴的声音渐渐落下，厨房里传出洗碗的声音，灵堂中传出陈莉阵阵抽泣的声音；丹丹轻抚着陈童的身体，一直望着客厅外的灵堂；陈童趴在沙发的枕头上熟睡，一阵火车的声音吵醒了陈童；李军站在灵堂的窗户口，用手擦拭着树叶上的水珠。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "夜晚有自然光从窗户透入"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#b0b0b0",
+            "#a0a0a0"
+          ],
+          "accent_color": "#808080",
+          "mood_tone": "压抑、沉闷",
+          "material_textures": [
+            "布质沙发",
+            "布质窗帘"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "沙发",
+            "description": "客厅内的主要家具",
+            "significance": "major"
+          },
+          {
+            "name": "餐桌",
+            "description": "连接厨房与客厅的家具",
+            "significance": "minor"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "沉闷",
+          "寂静",
+          "潮湿",
+          "悲伤"
+        ],
+        "scene_function": "家庭成员聚集的核心空间，情感集中地",
+        "frequency": 3,
+        "key_traits": [
+          "家庭聚集地",
+          "压抑氛围"
+        ]
+      },
+      {
+        "id": "scene_9",
+        "name": "家中·内部",
+        "aliases": [
+          "家中"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "家中有多个房间，门窗散开",
+          "size_scale": "large",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "家中有多个房间，门窗散开，氛围压抑",
+          "architectural_style": [],
+          "key_features": [
+            "多房间布局",
+            "门窗散开",
+            "过道"
+          ],
+          "textural_details": [
+            "白色窗帘",
+            "水泥地面"
+          ]
+        },
+        "visual_description_raw": "家里的门窗散开着。大风将白色的窗帘吹出。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "夜晚有自然光从窗户透入"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#d0d0d0",
+            "#a0a0a0"
+          ],
+          "accent_color": "#c0c0c0",
+          "mood_tone": "压抑、沉闷",
+          "material_textures": [
+            "白色窗帘",
+            "水泥地面"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "门窗",
+            "description": "家中散开的门窗",
+            "significance": "major"
+          },
+          {
+            "name": "窗帘",
+            "description": "白色的窗帘",
+            "significance": "minor"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "沉闷",
+          "混乱",
+          "悲伤",
+          "寂静"
+        ],
+        "scene_function": "家庭活动的主要空间，展现生活与死亡的交织",
+        "frequency": 1,
+        "key_traits": [
+          "开放性",
+          "压抑氛围"
+        ]
+      },
+      {
+        "id": "scene_10",
+        "name": "单元门口·外部",
+        "aliases": [
+          "单元门口"
+        ],
+        "scene_type": "mixed",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "单元门口有电线杆和树枝，与外界相连",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "单元门口有电线杆和树枝，夜晚有灯光和火车声",
+          "architectural_style": [],
+          "key_features": [
+            "电线杆",
+            "树枝",
+            "灯光",
+            "火车"
+          ],
+          "textural_details": [
+            "铁质电线杆",
+            "粗糙的树枝"
+          ]
+        },
+        "visual_description_raw": "黎明将至，几户人家亮起灯，路边的电线杆与树枝在风的吹拂下，发出沙沙的声音；陈童抱着遗像站在队伍的最前端，陈莉和丹丹抱着陈利德的旧衣物走在队伍的最后；陈治和停在院子门口，重重的将老盆摔碎。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(路灯)",
+            "车灯光"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "夜晚有路灯和车灯光"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#a0a0a0",
+            "#707070"
+          ],
+          "accent_color": "#505050",
+          "mood_tone": "压抑、悲伤",
+          "material_textures": [
+            "铁质电线杆",
+            "粗糙的树枝"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "老盆",
+            "description": "烧黑的老盆",
+            "significance": "major"
+          },
+          {
+            "name": "路灯",
+            "description": "单元门口的灯光",
+            "significance": "minor"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "悲伤",
+          "寂静",
+          "昏暗",
+          "紧张"
+        ],
+        "scene_function": "家庭成员离家的起点，象征告别与悲伤",
+        "frequency": 1,
+        "key_traits": [
+          "过渡空间",
+          "紧张氛围"
+        ]
+      },
+      {
+        "id": "scene_11",
+        "name": "侯寨桥下·外部",
+        "aliases": [
+          "侯寨桥下"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "natural",
+        "time_setting": {
+          "periods_appeared": [
+            "day"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "桥下有桥、衣服和元宝，空间开阔",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "桥下有桥、衣服和元宝，夜晚有火光和火车声",
+          "architectural_style": [],
+          "key_features": [
+            "桥",
+            "元宝",
+            "衣服",
+            "火光"
+          ],
+          "textural_details": [
+            "水泥桥面",
+            "布质衣物"
+          ]
+        },
+        "visual_description_raw": "陈童抱着陈利德的遗像；陈莉和丹丹将衣服堆放在一起，李军在衣服周边摆满了元宝；韩倩把陈童拉向一旁，他看到爸爸将一整条红双喜放在衣服上面，大家分开站在两侧，陈志和点燃了衣服。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "车灯光",
+            "自然光(太阳)"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "白天有自然光，夜晚有车灯光"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#b0b0b0",
+            "#c0c0c0"
+          ],
+          "accent_color": "#f0e68c",
+          "mood_tone": "沉重、压抑",
+          "material_textures": [
+            "水泥桥面",
+            "布质衣物"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "元宝",
+            "description": "用于祭祀的金属物件",
+            "significance": "major"
+          },
+          {
+            "name": "红双喜",
+            "description": "点燃的香烟",
+            "significance": "minor"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "沉重",
+          "沉默",
+          "火光",
+          "悲痛"
+        ],
+        "scene_function": "象征告别与祭祀，展现家庭成员的集体行动",
+        "frequency": 1,
+        "key_traits": [
+          "开放空间",
+          "压抑氛围"
+        ]
+      },
+      {
+        "id": "scene_12",
+        "name": "过道处·内部",
+        "aliases": [
+          "过道处"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "过道处有门、时钟和座椅",
+          "size_scale": "intimate",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "过道处有门、时钟和座椅，氛围压抑",
+          "architectural_style": [],
+          "key_features": [
+            "门",
+            "时钟",
+            "座椅",
+            "过道"
+          ],
+          "textural_details": [
+            "布质窗帘",
+            "木质座椅"
+          ]
+        },
+        "visual_description_raw": "陈莉有气无力的说着；李军站在餐厅与客厅的门口，看着墙上的时钟；陈童站在灵堂门口往客厅里看着。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)",
+            "天花板荧光灯管"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "夜晚有自然光从窗户透入"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#a0a0a0",
+            "#b0b0b0"
+          ],
+          "accent_color": "#808080",
+          "mood_tone": "压抑、沉闷",
+          "material_textures": [
+            "布质窗帘",
+            "木质座椅"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "时钟",
+            "description": "墙上的时钟",
+            "significance": "minor"
+          },
+          {
+            "name": "门",
+            "description": "连接不同区域的通道",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "沉闷",
+          "寂静",
+          "悲痛",
+          "紧张"
+        ],
+        "scene_function": "家庭成员交流与行动的通道，展现情感与行动的交织",
+        "frequency": 1,
+        "key_traits": [
+          "过渡空间",
+          "紧张氛围"
+        ]
+      },
+      {
+        "id": "scene_13",
+        "name": "灵堂内·内部",
+        "aliases": [
+          "灵堂内"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "unspecified"
+        },
+        "environment": {
+          "spatial_layout": "灵堂内有供桌、遗像、火盆和座椅",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "灵堂内有供桌、遗像、火盆和座椅，氛围压抑",
+          "architectural_style": [
+            "传统中式"
+          ],
+          "key_features": [
+            "供桌",
+            "遗像",
+            "火盆",
+            "座椅"
+          ],
+          "textural_details": [
+            "木质供桌",
+            "布质窗帘"
+          ]
+        },
+        "visual_description_raw": "陈治和、陈莉跪遗像的在两侧，韩倩和陈童跪在陈治和斜后方的垫子上；李军站在中间点燃香，插进香炉，拿过陈莉身旁的垫子跪在陈治和稍后一点的位置；同时，丹丹也给爸爸挪了挪地；李军向陈治和、陈莉招手示意，随即带着陈治和、陈莉、陈童、韩倩和丹丹深深叩头三下。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)",
+            "天花板荧光灯管"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "夜晚有自然光从窗户透入"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#a0a0a0",
+            "#b0b0b0"
+          ],
+          "accent_color": "#808080",
+          "mood_tone": "压抑、庄重",
+          "material_textures": [
+            "木质供桌",
+            "布质窗帘"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "香炉",
+            "description": "用于烧香的器具",
+            "significance": "major"
+          },
+          {
+            "name": "火盆",
+            "description": "烧黑的火盆",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "压抑",
+          "庄重",
+          "沉默",
+          "悲痛",
+          "紧张"
+        ],
+        "scene_function": "核心悼念空间，展现集体悼念与情感交流",
+        "frequency": 3,
+        "key_traits": [
+          "庄重",
+          "悲伤氛围"
+        ]
+      }
+    ]
+  },
+  "visual_tone": {
+    "task_id": "6ac8dae5-dd66-4133-8167-215aa21effb3",
+    "genre": {
+      "primary": "都市情感",
+      "secondary": "家庭伦理",
+      "tags": [
+        "家庭",
+        "悲伤",
+        "现实",
+        "成长"
+      ]
+    },
+    "visual_style": {
+      "medium": "cinematic",
+      "reference_works": [
+        "《人生大事》",
+        "《地久天长》"
+      ],
+      "director_style": "现实主义风格，细腻的人物刻画与环境描写",
+      "cinematography": "自然光为主，低饱和色调，强调人物与环境的互动"
+    },
+    "era_setting": {
+      "era": "现代"
+    },
+    "world_setting": {
+      "primary_locations": [
+        "家庭住宅",
+        "灵堂",
+        "厨房",
+        "餐厅"
+      ],
+      "geographic_context": "中国南方小城",
+      "social_class": "普通家庭，中产阶层"
+    },
+    "color_palette": {
+      "dominant_colors": [
+        "#2c3e50",
+        "#7f8c8d",
+        "#c0392b"
+      ],
+      "accent_color": "#f1c40f",
+      "mood_tone": "灰暗中透露出一丝温暖"
+    },
+    "lighting_philosophy": "以自然光和室内柔和灯光为主，强调夜晚的沉静与孤独感",
+    "atmosphere": {
+      "overall_mood": "沉重、压抑但带着希望",
+      "pacing_rhythm": "缓慢"
+    },
+    "visual_constraints": {
+      "character_design_rules": [
+        "自然朴素的服装，无夸张装饰",
+        "人物表情内敛，动作缓慢而真实",
+        "避免过度美化或戏剧化的人物形象"
+      ],
+      "scene_design_rules": [
+        "场景中突出家庭生活细节，如厨房、餐厅、卧室",
+        "使用冷色调表现悲伤氛围，暖色点缀体现希望",
+        "强调夜晚环境的安静与人物的孤独感"
+      ]
+    },
+    "mood_keywords": [
+      "真实",
+      "沉重",
+      "家庭",
+      "压抑",
+      "希望",
+      "缓慢",
+      "现实主义",
+      "内敛",
+      "悲伤",
+      "孤独"
+    ]
+  }
+}
