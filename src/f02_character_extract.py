@@ -98,11 +98,15 @@ if __name__ == "__main__":
         format='%(levelname)s: %(message)s'
     )
 
+    import time
+    start_time = time.time()
+
     print("=" * 60)
     print("F02 人物元数据提取")
     print("=" * 60)
     print(f"输入文件: {args.novel_txt}")
     print(f"输出文件: {args.output}")
+    print(f"开始时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
     # 读取原始小说文本
     novel_txt_path = _P(args.novel_txt)
@@ -137,11 +141,15 @@ if __name__ == "__main__":
 
     # 保存结果
     output_path = _P(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
+
+    elapsed_time = time.time() - start_time
     print(f"\n结果已保存到: {output_path}")
+    print(f"总耗时: {elapsed_time:.2f} 秒 ({elapsed_time/60:.2f} 分钟)")
     print("=" * 60)
 
 

@@ -208,46 +208,50 @@ def _fix_truncated_json(json_str: str) -> str:
     if fixed.endswith("}") or fixed.endswith("]"):
         return json_str  # 已经是完整结构，无需修复
 
-    # 策略1：如果最后是未闭合的字符串（有奇数个引号），截断到最后一个完整 key 的位置
-    # 找到最后一个完整的 key-value 对
-    # 先尝试简单补全：在末尾补 "" 和 }
-    open_braces = fixed.count("{") - fixed.count("}")
-    open_brackets = fixed.count("[") - fixed.count("]")
-
-    # 如果字符串内部有奇数个引号（未闭合字符串），去掉最后一个片段
+    # 策略：逐层修复
+    # 1. 首先处理未闭合的字符串
     in_string = False
+    quote_char = None
     last_complete_pos = -1
     i = 0
     while i < len(fixed):
         ch = fixed[i]
-        if ch == '"':
-            if not in_string:
-                in_string = True
-                start_of_string = i
-            else:
-                # 检查是否是转义引号
-                backslash_count = 0
-                j = i - 1
-                while j >= 0 and fixed[j] == '\\':
-                    backslash_count += 1
-                    j -= 1
-                if backslash_count % 2 == 0:
-                    in_string = False
-                    last_complete_pos = i
+        if not in_string and ch in ('"', "'"):
+            in_string = True
+            quote_char = ch
+        elif in_string and ch == quote_char:
+            # 检查是否是转义引号
+            backslash_count = 0
+            j = i - 1
+            while j >= 0 and fixed[j] == '\\':
+                backslash_count += 1
+                j -= 1
+            if backslash_count % 2 == 0:
+                in_string = False
+                quote_char = None
+                last_complete_pos = i
         elif not in_string and ch in (",", "}", "]"):
             last_complete_pos = i
         i += 1
 
-    if last_complete_pos >= 0:
-        # 截断到最后一个完整的位置
-        fixed = fixed[:last_complete_pos + 1]
-        # 移除尾部逗号（如果有）
-        fixed = fixed.rstrip(",")
-        # 补全闭合括号
-        fixed += " " * open_brackets + "]" * open_brackets + "}" * open_braces
-        return fixed
+    if in_string:
+        # 字符串未闭合，截断到最后一个完整位置
+        if last_complete_pos >= 0:
+            fixed = fixed[:last_complete_pos + 1]
+            # 移除尾部逗号
+            fixed = fixed.rstrip(",")
+        else:
+            # 没有找到完整位置，返回空字典
+            return "{}"
 
-    return json_str  # 无法修复，返回原始
+    # 2. 补全闭合的括号
+    open_braces = fixed.count("{") - fixed.count("}")
+    open_brackets = fixed.count("[") - fixed.count("]")
+
+    fixed = fixed.rstrip(",")
+    fixed += "]" * open_brackets + "}" * open_braces
+
+    return fixed
 
 
 def _safe_parse_json(raw_response: str) -> dict | None:
@@ -260,21 +264,29 @@ def _safe_parse_json(raw_response: str) -> dict | None:
     try:
         result = _json.loads(json_str, strict=False)
         return result
-    except _json.JSONDecodeError:
-        pass
+    except _json.JSONDecodeError as e:
+        logger.debug("JSON 解析失败: %s", e)
+        logger.debug("原始响应前 300 字: %s", raw_response[:300])
 
     # 第二次尝试：修复截断后解析
     try:
         fixed = _fix_truncated_json(json_str)
         logger.info("JSON 解析失败，尝试截断修复... 原始长度=%d, 修复后长度=%d",
                      len(json_str), len(fixed))
+        logger.debug("修复后前 300 字: %s", fixed[:300])
         result = _json.loads(fixed, strict=False)
         logger.info("截断修复成功")
         return result
     except _json.JSONDecodeError as e2:
         logger.warning("截断修复也失败: %s", e2)
+        logger.warning("原始响应长度=%d", len(raw_response))
+        logger.warning("原始响应前 500 字: %s", raw_response[:500])
+        logger.warning("原始响应后 200 字: %s", raw_response[-200:] if len(raw_response) > 200 else raw_response)
+        logger.warning("修复后前 500 字: %s", fixed[:500])
+        logger.warning("修复后后 200 字: %s", fixed[-200:] if len(fixed) > 200 else fixed)
 
     return None
+
 
 
 def _build_f06b_prompt(segment: dict, visual_tone: str, char_map: dict[str, str] | None = None) -> str:
@@ -379,8 +391,10 @@ def generate_video_prompts(
                 max_tokens=4096,
                 timeout=300,  # F06-B 单个 segment 处理，5 分钟超时足够
             )
+            logger.debug("F06-B 原始响应长度: %d 字符", len(raw_response))
             vp_result: dict[str, Any] = _safe_parse_json(raw_response)
             if vp_result is None:
+                logger.error("F06-B 原始响应: %s", raw_response)
                 raise ValueError("F06-B JSON 解析失败且无法修复")
             vp_result = _clean_result(vp_result)
             logger.info("  -> 解析成功, keys=%s", list(vp_result.keys()))
@@ -510,6 +524,9 @@ if __name__ == "__main__":
         format='%(levelname)s: %(message)s'
     )
 
+    import time
+    start_time = time.time()
+
     print("=" * 60)
     print("F06 视频生成提示词流水线")
     print("=" * 60)
@@ -518,6 +535,7 @@ if __name__ == "__main__":
     print(f"F03 输入: {args.f03_output}")
     print(f"F01 输入: {args.f01_output}")
     print(f"输出文件: {args.output}")
+    print(f"开始时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
     # 读取原始小说文本
     novel_txt_path = Path(args.novel_txt)
@@ -595,11 +613,17 @@ if __name__ == "__main__":
 
     # 保存结果
     output_path = Path(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
+
+    elapsed_time = time.time() - start_time
     print(f"\n结果已保存到: {output_path}")
+    print(f"总耗时: {elapsed_time:.2f} 秒 ({elapsed_time/60:.2f} 分钟)")
     print("=" * 60)
+
+
 
 

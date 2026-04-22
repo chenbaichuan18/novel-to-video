@@ -137,14 +137,8 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser(description="F01 导演视觉基调提取")
-    parser.add_argument("novel_txt", help="原始小说文本文件路径")
+    parser.add_argument("input_json", help="输入 JSON 文件路径（包含 text 和 user_settings）")
     parser.add_argument("-o", "--output", default="f01_output.json", help="输出文件路径 (默认: f01_output.json)")
-    parser.add_argument("--task-id", default=None, help="任务 ID (默认自动生成)")
-    parser.add_argument("--medium", help="制作媒体类型 (如: 真人电影/动画/电视剧/纪录片)")
-    parser.add_argument("--genre", help="作品类型 (如: 悬疑推理/仙侠/科幻)")
-    parser.add_argument("--era", help="年代背景 (如: 现代2020s/民国1930s)")
-    parser.add_argument("--location", help="地点背景 (如: 中国北方一线城市/架空仙侠世界)")
-    parser.add_argument("--settings", help="用户设置 JSON 文件路径 (覆盖其他单个设置)")
 
     args = parser.parse_args()
 
@@ -154,44 +148,39 @@ if __name__ == "__main__":
         format='%(levelname)s: %(message)s'
     )
 
+    import time
+    start_time = time.time()
+
     print("=" * 60)
     print("F01 导演视觉基调提取")
     print("=" * 60)
-    print(f"输入文件: {args.novel_txt}")
+    print(f"输入文件: {args.input_json}")
     print(f"输出文件: {args.output}")
+    print(f"开始时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
-    # 读取原始小说文本
-    novel_txt_path = _P(args.novel_txt)
-    text = novel_txt_path.read_text(encoding="utf-8")
+    # 读取输入 JSON
+    input_path = _P(args.input_json)
+    with open(input_path, "r", encoding="utf-8") as f:
+        input_data = json.load(f)
+
+    text = input_data.get("text", "")
+    user_settings = input_data.get("user_settings", {})
+    input_task_id = input_data.get("task_id", None)
+
     print(f"文本长度: {len(text)} 字")
-
-    # 构建用户设置
-    user_settings = {}
-    if args.settings:
-        with open(args.settings, "r", encoding="utf-8") as f:
-            user_settings = json.load(f)
-        print(f"使用设置文件: {args.settings}")
-    else:
-        if args.medium:
-            user_settings["medium"] = args.medium
-        if args.genre:
-            user_settings["genre"] = args.genre
-        if args.era:
-            user_settings["era"] = args.era
-        if args.location:
-            user_settings["location"] = args.location
-
     if user_settings:
         print(f"用户设置: {json.dumps(user_settings, ensure_ascii=False)}")
     else:
         print("用户设置: 无（使用默认值）")
+    if input_task_id:
+        print(f"输入任务 ID: {input_task_id}")
 
     # 运行提取
     print("\n开始调用 LLM...")
     result = extract_visual_tone(
         text=text,
         user_settings=user_settings if user_settings else None,
-        task_id=args.task_id,
+        task_id=input_task_id,
     )
 
     # 显示结果摘要
@@ -208,9 +197,15 @@ if __name__ == "__main__":
 
     # 保存结果
     output_path = _P(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
+
+    elapsed_time = time.time() - start_time
     print(f"\n结果已保存到: {output_path}")
+    print(f"总耗时: {elapsed_time:.2f} 秒 ({elapsed_time/60:.2f} 分钟)")
     print("=" * 60)
+
+

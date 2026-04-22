@@ -1,0 +1,73 @@
+{
+  "task_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "genre": {
+    "primary": "青春校园",
+    "secondary": "成长励志",
+    "tags": [
+      "校园",
+      "成长",
+      "奋斗",
+      "友情",
+      "励志"
+    ]
+  },
+  "visual_style": {
+    "medium": "cinematic",
+    "reference_works": [
+      "《怦然心动》",
+      "《少年派的奇幻漂流》"
+    ],
+    "director_style": "细腻写实风格，注重人物内心刻画与环境氛围",
+    "cinematography": "自然光为主，构图简洁，突出人物与场景的层次感"
+  },
+  "era_setting": {
+    "era": "现代"
+  },
+  "world_setting": {
+    "primary_locations": [
+      "武道高中校园",
+      "宿舍楼",
+      "教学楼"
+    ],
+    "geographic_context": "城市",
+    "social_class": "普通家庭出身，校园内有不同背景的学生"
+  },
+  "color_palette": {
+    "dominant_colors": [
+      "#a9a9a9",
+      "#e67e22",
+      "#dcdcdc"
+    ],
+    "accent_color": "#e67e22",
+    "mood_tone": "灰白为主色调，暖黄点缀，传递一种平静而坚定的情绪"
+  },
+  "lighting_philosophy": "自然光为主，利用阳光和阴影营造层次感，突出人物性格和环境氛围",
+  "atmosphere": {
+    "overall_mood": "平静、专注、略带压力但充满希望",
+    "pacing_rhythm": "中等"
+  },
+  "visual_constraints": {
+    "character_design_rules": [
+      "注重日常休闲装扮，干净整洁",
+      "人物表情自然，不过分夸张",
+      "动作流畅，突出人物专注与沉稳"
+    ],
+    "scene_design_rules": [
+      "校园建筑以灰白色调为主，突出成长环境的严肃与庄重",
+      "宿舍和教室等场景需体现日常生活的细节",
+      "光线需自然，强调环境与人物的互动"
+    ]
+  },
+  "mood_keywords": [
+    "青春",
+    "成长",
+    "校园",
+    "奋斗",
+    "友情",
+    "励志",
+    "专注",
+    "沉稳",
+    "希望",
+    "纯净"
+  ]
+}

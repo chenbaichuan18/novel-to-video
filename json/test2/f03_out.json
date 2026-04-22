@@ -1,0 +1,340 @@
+{
+  "task_id": "f934e46a-f0a4-4fa9-8d69-2e080dd134f0",
+  "scenes": {
+    "total": 4,
+    "list": [
+      {
+        "id": "scene_1",
+        "name": "南城第一武道高中·校门口",
+        "aliases": [
+          "校门"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "institutional",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "校门口是开放空间，有主干道和周围建筑",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "校门口有深蓝色校牌和银灰色字体，阳光照耀下校名闪闪发光，周围是人群和梧桐树",
+          "architectural_style": [
+            "传统名校外观"
+          ],
+          "key_features": [
+            "深蓝色校牌",
+            "阳光照射下的校名"
+          ],
+          "textural_details": [
+            "银灰色字体",
+            "校门地面的材质"
+          ]
+        },
+        "visual_description_raw": "林守一站在南城第一武道高中的校门口，仰头看着那块深蓝色底、银灰色字的校牌。阳光把“南城第一武道高中”几个字照得发亮，在他的瞳孔里映出淡淡的光；走进校门，是一条笔直的主干道，两侧种满了梧桐树，树荫把阳光切成碎金，洒在路面上。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(玻璃门)"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "自然光线从门窗进入，白天明亮，夜晚可能有路灯照明"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#000080",
+            "#808080"
+          ],
+          "accent_color": "#FFFFFF",
+          "mood_tone": "稳定、庄重，略带一丝紧张感",
+          "material_textures": [
+            "水泥地面",
+            "金属校牌"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "校牌",
+            "description": "深蓝色底、银灰色字的校牌，写着“南城第一武道高中”",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "紧张",
+          "庄重",
+          "阳光",
+          "校门",
+          "人群",
+          "梧桐树"
+        ],
+        "scene_function": "展示主角林守一进入南城第一武道高中的关键场景，暗示他的与众不同和环境的严肃氛围",
+        "frequency": 1,
+        "key_traits": [
+          "名校象征",
+          "入学仪式感"
+        ]
+      },
+      {
+        "id": "scene_2",
+        "name": "南城第一武道高中·主干道",
+        "aliases": [
+          "校园主路",
+          "梧桐树下"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "institutional",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "主干道两侧有梧桐树，通往教学楼和训练馆",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "主干道两侧种满了梧桐树，阳光透过树荫洒在路面上，尽头是灰白色教学楼",
+          "architectural_style": [
+            "现代教学楼风格"
+          ],
+          "key_features": [
+            "梧桐树",
+            "灰白色教学楼"
+          ],
+          "textural_details": [
+            "阳光透过树叶",
+            "反射阳光的玻璃幕墙"
+          ]
+        },
+        "visual_description_raw": "走进校门，是一条笔直的主干道，两侧种满了梧桐树，树荫把阳光切成碎金，洒在路面上。主干道尽头是一栋灰白色的教学楼，造型方正，看起来有年头了，但维护得极好，透着一种老牌名校的沉稳气质；操场上有几个高年级的学生在训练，拳脚带起的风声隔着几百米都能隐约听到。操场旁边是一排训练馆，玻璃幕墙反射着阳光，看起来比教学楼新得多。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(玻璃门)",
+            "太阳光"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "自然光从门窗进入，白天明亮，夜晚有路灯照明"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#A9A9A9",
+            "#D2B48C"
+          ],
+          "accent_color": "#FFFFFF",
+          "mood_tone": "充满活力与期待",
+          "material_textures": [
+            "梧桐树",
+            "灰白色教学楼"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "梧桐树",
+            "description": "主干道两侧种植的梧桐树，树荫洒在路面上",
+            "significance": "major"
+          },
+          {
+            "name": "训练馆",
+            "description": "玻璃幕墙反射阳光的建筑，比教学楼新",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "阳光",
+          "树荫",
+          "沉稳",
+          "活力",
+          "训练馆",
+          "教学楼"
+        ],
+        "scene_function": "展示校园环境，为后续剧情奠定基础，体现主角进入新环境的过渡",
+        "frequency": 1,
+        "key_traits": [
+          "校园风光",
+          "训练氛围"
+        ]
+      },
+      {
+        "id": "scene_3",
+        "name": "南城第一武道高中·礼堂",
+        "aliases": [
+          "报到大厅"
+        ],
+        "scene_type": "indoor",
+        "location_type": "institutional",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "礼堂门口有排队队伍，内部是办公区域",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "礼堂门口有一排排队的学生和家长，内部是办公区，有戴眼镜的女老师在处理入学事务",
+          "architectural_style": [
+            "传统礼堂风格"
+          ],
+          "key_features": [
+            "排队队伍",
+            "办公区域"
+          ],
+          "textural_details": [
+            "文件袋",
+            "工作牌"
+          ]
+        },
+        "visual_description_raw": "报到地点在教学楼一楼的礼堂。礼堂门口排着长长的队伍，大部分是学生，也有不少家长陪着来的。林守一看见好几个家长大包小包地拎着东西，比自己孩子还紧张；排队等了大概二十分钟，终于轮到他。报到台后面坐着一个戴眼镜的女老师，四十来岁，气质干练，胸前挂着一个工作牌：教务处副主任，方芸。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "室内日光灯"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "室内有日光灯照明，光线明亮"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#808080",
+            "#D2B48C"
+          ],
+          "accent_color": "#FFFFFF",
+          "mood_tone": "平静而严肃",
+          "material_textures": [
+            "木质桌椅",
+            "文件袋"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "文件袋",
+            "description": "包含入学材料、宿舍分配和军训安排的袋子",
+            "significance": "major"
+          },
+          {
+            "name": "工作牌",
+            "description": "教务处副主任方芸的牌子",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "排队",
+          "严肃",
+          "平静",
+          "报到",
+          "文件袋",
+          "工作牌"
+        ],
+        "scene_function": "展示主角林守一的报到过程，突出他与环境的互动和学校制度的严谨",
+        "frequency": 1,
+        "key_traits": [
+          "报到仪式",
+          "校方权威"
+        ]
+      },
+      {
+        "id": "scene_4",
+        "name": "南城第一武道高中·宿舍楼",
+        "aliases": [
+          "宿舍区"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "六层的灰白色宿舍楼，内部有四人间",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "宿舍楼是灰白色建筑，内部四人间布局，有床铺、床单和书桌",
+          "architectural_style": [
+            "简约宿舍楼风格"
+          ],
+          "key_features": [
+            "四人间",
+            "床铺"
+          ],
+          "textural_details": [
+            "床单",
+            "灰白色地板"
+          ]
+        },
+        "visual_description_raw": "宿舍楼是一栋六层的灰白色建筑，比教学楼旧一些，但内部翻新过。林守一的402在四楼，是个四人间；他推门进去的时候，里面已经有一个人了。那是一个和他年纪相仿的男生，正蹲在地上铺床单；林守一环顾了一圈，选了靠窗的下铺。另外两个室友到下午才来。一个是之前排队时站在他前面的白衣服男生，叫沈清辞，本市武道世家沈家的嫡系子弟。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "自然光从窗户进入，白天明亮"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#808080",
+            "#D2B48C"
+          ],
+          "accent_color": "#E65100",
+          "mood_tone": "温馨而有期待",
+          "material_textures": [
+            "灰白色地板",
+            "红色床单"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "床单",
+            "description": "大红色，印有牡丹花图案，像是窗帘",
+            "significance": "major"
+          },
+          {
+            "name": "文件袋",
+            "description": "包含入学材料、宿舍分配和军训安排的袋子",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "宿舍",
+          "床铺",
+          "床单",
+          "温馨",
+          "期待",
+          "四人间"
+        ],
+        "scene_function": "展示主角林守一的宿舍环境和室友关系，为后续生活铺垫",
+        "frequency": 1,
+        "key_traits": [
+          "宿舍生活",
+          "床铺细节"
+        ]
+      }
+    ]
+  },
+  "extraction_summary": {
+    "total_scenes": 4,
+    "has_inferred_data": true,
+    "inferred_fields": [
+      "scene_type",
+      "location_type",
+      "color_scheme.dominant_colors",
+      "lighting_condition.base_light_quality",
+      "mood_tone"
+    ],
+    "scene_types_distribution": {
+      "indoor": 2,
+      "outdoor": 2
+    }
+  }
+}

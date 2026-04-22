@@ -184,12 +184,16 @@ if __name__ == "__main__":
         format='%(levelname)s: %(message)s'
     )
 
+    import time
+    start_time = time.time()
+
     print("=" * 60)
     print("F04 人物提示词撰写（批量模式）")
     print("=" * 60)
     print(f"F02 输入: {args.f02_output}")
     print(f"F01 输入: {args.f01_output}")
     print(f"输出文件: {args.output}")
+    print(f"开始时间: {time.strftime('%Y-%m-%d %H:%M:%S')}")
 
     # 读取 f02 输出（角色）
     with open(args.f02_output, "r", encoding="utf-8") as f:
@@ -233,21 +237,26 @@ if __name__ == "__main__":
         print("\n生成的提示词:")
         for idx, res in enumerate(result["results"], 1):
             char_id = res.get("character_id", "N/A")
-            status = "✓" if res.get("success") else "✗"
-            if res.get("success"):
-                prompt = res.get("prompt", {})
-                prompt_text = prompt.get("prompt_text", "")[:100]
-                print(f"  [{idx}] {char_id} {status} - {prompt_text}...")
+            status = "✓" if "error" not in res else "✗"
+            if "error" not in res:
+                prompt_text = res.get("final_prompt", "")
+                # 截取前 100 个字符用于显示
+                display_text = prompt_text[:100] if len(prompt_text) > 100 else prompt_text
+                print(f"  [{idx}] {char_id} {status} - {display_text}...")
             else:
                 error = res.get("error", "未知错误")
                 print(f"  [{idx}] {char_id} {status} - 错误: {error}")
 
     # 保存结果
     output_path = _P(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(
         json.dumps(result, ensure_ascii=False, indent=2),
         encoding="utf-8"
     )
+
+    elapsed_time = time.time() - start_time
     print(f"\n结果已保存到: {output_path}")
+    print(f"总耗时: {elapsed_time:.2f} 秒 ({elapsed_time/60:.2f} 分钟)")
     print("=" * 60)
 
