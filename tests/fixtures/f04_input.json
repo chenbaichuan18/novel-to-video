@@ -5,62 +5,152 @@
     {
       "id": "char_1",
       "name": "沈清辞",
-      "aliases": [],
+      "aliases": [
+        "相府千金"
+      ],
       "gender": "female",
-      "family_role": "none"
+      "age": "28岁",
+      "appearance": "面容清秀，眉目如画，眼底微红",
+      "appearance_raw": "眉目如画；眼底微红",
+      "clothing": "白衣",
+      "personality": "沉默寡言，坚韧隐忍",
+      "role_type": "protagonist",
+      "is_temporary": false,
+      "family_role": "none",
+      "relationship_context": {
+        "referred_by_whom": {
+          "char_2": [
+            "沈姑娘",
+            "沈清辞"
+          ]
+        },
+        "refers_to_others_as": {
+          "char_2": [
+            "顾长渊",
+            "你"
+          ]
+        }
+      },
+      "key_traits": [
+        "白衣女子",
+        "等待十年",
+        "相府千金"
+      ]
     },
     {
       "id": "char_2",
       "name": "顾长渊",
-      "aliases": [],
+      "aliases": [
+        "少年将军",
+        "主帅"
+      ],
       "gender": "male",
-      "family_role": "none"
+      "age": "32岁",
+      "appearance": "面容疲惫，风霜之色，沉静眼眸",
+      "appearance_raw": "黑衣男子，肩头湿透，眉宇之间尽是风霜，却仍是她梦里那双沉静眼眸",
+      "clothing": "黑衣",
+      "personality": "深情执着，责任感强",
+      "role_type": "antagonist",
+      "is_temporary": false,
+      "family_role": "none",
+      "relationship_context": {
+        "referred_by_whom": {
+          "char_1": [
+            "沈姑娘",
+            "沈清辞"
+          ]
+        },
+        "refers_to_others_as": {
+          "char_1": [
+            "沈姑娘",
+            "你"
+          ]
+        }
+      },
+      "key_traits": [
+        "黑衣男子",
+        "风霜之色",
+        "少年将军"
+      ]
     }
   ],
   "visual_tone": {
+    "task_id": "f01-test-001",
     "genre": {
       "primary": "现实主义",
-      "secondary": "社会写实"
+      "secondary": "历史爱情",
+      "tags": [
+        "古代",
+        "等待",
+        "身份落差",
+        "重逢",
+        "人性挣扎"
+      ]
     },
     "visual_style": {
       "medium": "cinematic",
       "reference_works": [
-        "《一一》",
-        "《重庆森林》"
+        "《霸王别姬》",
+        "《色，戒》"
       ],
-      "director_style": "真实主义导演的观察视角",
-      "cinematography": "自然光拍摄，手持镜头增强临场感"
+      "director_style": "注重人物心理刻画与环境氛围渲染",
+      "cinematography": "低角度构图突出人物渺小感，大量运用雨景长镜头"
     },
     "era_setting": {
-      "era": "现代"
+      "era": "古代"
     },
     "world_setting": {
       "primary_locations": [
-        "城市街道",
-        "居民区",
-        "公共空间"
+        "旧茶铺",
+        "青石巷",
+        "城郊槐树"
       ],
-      "geographic_context": "城市",
-      "social_class": "普通市民阶层"
+      "geographic_context": "江南小城",
+      "social_class": "旧贵族阶层与平民身份的双重性"
     },
     "color_palette": {
       "dominant_colors": [
-        "#6c757d",
-        "#808080",
-        "#c0c0c0"
+        "#ffffff",
+        "#008080",
+        "#8B4513",
+        "#8A9A9C",
+        "#2F4F4F"
       ],
-      "accent_color": "#ff8c00",
-      "mood_tone": "冷调灰蓝为主，带有生活化暖色点缀"
+      "accent_color": "#FFD700",
+      "mood_tone": "冷色调中带暖意，思念与等待交织的情感"
     },
-    "lighting_philosophy": "自然光与城市环境灯光结合，突出真实感",
+    "lighting_philosophy": "侧逆光勾勒人物轮廓，暖黄灯笼与青灰天光形成对比",
     "atmosphere": {
-      "overall_mood": "克制、疏离、存在主义思考",
-      "pacing_rhythm": "中等"
+      "overall_mood": "克制的哀愁与隐忍的期待",
+      "pacing_rhythm": "缓慢"
     },
     "visual_constraints": {
-      "character_design_rules": [],
-      "scene_design_rules": []
+      "character_design_rules": [
+        "女性角色素雅服饰，强调白衣意象",
+        "男性角色着装体现军旅沧桑感",
+        "人物表情保持含蓄内敛的克制",
+        "动作设计注重传统礼仪规范"
+      ],
+      "scene_design_rules": [
+        "茶铺场景突出木质纹理与陈旧器物",
+        "雨景需呈现朦胧水汽效果",
+        "青石巷布局强调纵深感与幽闭感",
+        "灯光设计注重光晕与阴影层次"
+      ]
     },
-    "mood_keywords": []
+    "mood_keywords": [
+      "江南烟雨",
+      "等待",
+      "旧茶铺",
+      "白衣女子",
+      "温柔",
+      "思念",
+      "青石巷",
+      "岁月静好",
+      "战争创伤",
+      "身份隐喻",
+      "孤寂",
+      "重逢"
+    ]
   }
 }

@@ -112,7 +112,12 @@ def generate_scene_prompts(f03_output: dict, f01_visual_tone: dict) -> dict:
         }
     """
     batch_task_id = f"batch-{uuid.uuid4()}"
-    scenes_list = f03_output.get("scenes", {}).get("list", [])
+    # 兼容两种格式：直接数组或包含 list 属性的对象
+    scenes_data = f03_output.get("scenes", [])
+    if isinstance(scenes_data, dict) and "list" in scenes_data:
+        scenes_list = scenes_data["list"]
+    else:
+        scenes_list = scenes_data
 
     if not scenes_list:
         raise ValueError("f03_output 中没有找到 scenes.list，请检查输入格式")

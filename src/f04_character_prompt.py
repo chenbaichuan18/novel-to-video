@@ -118,7 +118,12 @@ def generate_character_prompts(f02_output: dict, f01_visual_tone: dict) -> dict:
         }
     """
     batch_task_id = f"batch-{uuid.uuid4()}"
-    characters_list = f02_output.get("characters", {}).get("list", [])
+    # 兼容两种格式：直接数组或包含 list 属性的对象
+    characters_data = f02_output.get("characters", [])
+    if isinstance(characters_data, dict) and "list" in characters_data:
+        characters_list = characters_data["list"]
+    else:
+        characters_list = characters_data
 
     if not characters_list:
         raise ValueError("f02_output 中没有找到 characters.list，请检查输入格式")

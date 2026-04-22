@@ -1,0 +1,133 @@
+{
+  "total_segments": 8,
+  "segments": [
+    {
+      "id": "seg_1",
+      "sequence_order": 1,
+      "text_original": "暮春时节，江南雨细。青石巷深处，有一间旧茶铺，门前垂着褪色竹帘，帘下常坐着一位白衣女子，名唤沈清辞。她生得眉目如画，却寡言少语，只在黄昏时分，替往来客商温一壶新茶。坊间传言，她在等一个多年未归的人。",
+      "text_resolved": "暮春时节，江南雨细。青石巷深处，有一间旧茶铺，门前垂着褪色竹帘，帘下常坐着一位白衣女子，名唤沈清辞。她生得眉目如画，却寡言少语，只在黄昏时分，替往来客商温一壶新茶。坊间传言，她在等一个多年未归的人。",
+      "characters_present": [
+        "char_1"
+      ],
+      "scene_id": "scene_1",
+      "scene_name": "旧茶铺·内部",
+      "duration_estimate": 12,
+      "split_reason": "scene_switch"
+    },
+    {
+      "id": "seg_2",
+      "sequence_order": 2,
+      "text_original": "十年前，清辞尚是相府千金，因家门获罪，一夜之间风流云散。彼时押送罪籍北去的雪夜里，唯有少年将军顾长渊冒死放走了她。他只说了一句：'活下去，等我回来。'自那以后，她改名换姓，隐于这烟雨小城，而顾长渊则披甲远征，自此音讯断绝。",
+      "text_resolved": "十年前，沈清辞尚是相府千金，因家门获罪，一夜之间风流云散。彼时押送罪籍北去的雪夜里，唯有少年将军顾长渊冒死放走了她。顾长渊只说了一句：'活下去，等我回来。'自那以后，她改名换姓，隐于这烟雨小城，而顾长渊则披甲远征，自此音讯断绝。",
+      "characters_present": [
+        "char_1",
+        "char_2"
+      ],
+      "scene_id": "scene_1",
+      "scene_name": "旧茶铺·内部",
+      "duration_estimate": 15,
+      "split_reason": "action_boundary"
+    },
+    {
+      "id": "seg_3",
+      "sequence_order": 3,
+      "text_original": "这一等，便是十年。",
+      "text_resolved": "这一等，便是十年。",
+      "characters_present": [
+        "char_1"
+      ],
+      "scene_id": "scene_1",
+      "scene_name": "旧茶铺·内部",
+      "duration_estimate": 5,
+      "split_reason": "action_boundary"
+    },
+    {
+      "id": "seg_4",
+      "sequence_order": 4,
+      "text_original": "那年秋末，边关忽传大捷，敌国退兵三百里，主帅顾长渊班师回朝。城中百姓夹道相迎，万人空巷。清辞站在茶铺门后，指尖发颤，终究没有迈出去。她怕，怕归来的不是旧人，怕旧人已忘前尘。",
+      "text_resolved": "那年秋末，边关忽传大捷，敌国退兵三百里，主帅顾长渊班师回朝。城中百姓夹道相迎，万人空巷。沈清辞站在茶铺门后，指尖发颤，终究没有迈出去。她怕，怕归来的不是旧人，怕旧人已忘前尘。",
+      "characters_present": [
+        "char_1",
+        "char_2"
+      ],
+      "scene_id": "scene_2",
+      "scene_name": "青石巷·外部",
+      "duration_estimate": 14,
+      "split_reason": "scene_switch"
+    },
+    {
+      "id": "seg_5",
+      "sequence_order": 5,
+      "text_original": "谁知当夜，大雨如注，茶铺木门被轻轻叩响。清辞提灯开门，只见门外立着一名黑衣男子，肩头湿透，眉宇之间尽是风霜，却仍是她梦里那双沉静眼眸。",
+      "text_resolved": "谁知当夜，大雨如注，茶铺木门被轻轻叩响。沈清辞提灯开门，只见门外立着一名黑衣男子，肩头湿透，眉宇之间尽是风霜，却仍是她梦里那双沉静眼眸。",
+      "characters_present": [
+        "char_1",
+        "char_2"
+      ],
+      "scene_id": "scene_1",
+      "scene_name": "旧茶铺·内部",
+      "duration_estimate": 12,
+      "split_reason": "action_boundary"
+    },
+    {
+      "id": "seg_6",
+      "sequence_order": 6,
+      "text_original": "'沈姑娘，'他低声笑道，'这壶茶，可还等得起故人？'",
+      "text_resolved": "'沈姑娘，'顾长渊低声笑道，'这壶茶，可还等得起故人？'",
+      "characters_present": [
+        "char_1",
+        "char_2"
+      ],
+      "scene_id": "scene_1",
+      "scene_name": "旧茶铺·内部",
+      "duration_estimate": 8,
+      "split_reason": "action_boundary"
+    },
+    {
+      "id": "seg_7",
+      "sequence_order": 7,
+      "text_original": "灯火摇曳，映得清辞眼底微红。她张了张口，十年委屈与思念俱堵在喉间，竟一句也说不出。顾长渊缓步入内，将一方旧玉佩放在桌上。那是当年雪夜分别时，她偷偷塞入他掌心的信物，玉上裂痕犹在，人却已隔了万重山。",
+      "text_resolved": "灯火摇曳，映得沈清辞眼底微红。她张了张口，十年委屈与思念俱堵在喉间，竟一句也说不出。顾长渊缓步入内，将一方旧玉佩放在桌上。那是当年雪夜分别时，沈清辞偷偷塞入顾长渊掌心的信物，玉上裂痕犹在，人却已隔了万重山。",
+      "characters_present": [
+        "char_1",
+        "char_2"
+      ],
+      "scene_id": "scene_1",
+      "scene_name": "旧茶铺·内部",
+      "duration_estimate": 15,
+      "split_reason": "length_split"
+    },
+    {
+      "id": "seg_8",
+      "sequence_order": 8,
+      "text_original": "顾长渊沉默片刻，忽向她深深一揖：'当年未能护你周全，是我此生之憾。如今功名已成，我愿辞去官职，携你远离京华，再不问庙堂风雪。你可愿随我走？'窗外雨声淅沥，似将十年孤寂一寸寸洗去。沈清辞抬手将那枚玉佩重新系回他腰间，声音轻得像江南水雾：'我守这盏灯，不是为了听你一句愧疚。'顾长渊怔然抬眸。",
+      "text_resolved": "顾长渊沉默片刻，忽向她深深一揖：'当年未能护你周全，是我此生之憾。如今功名已成，我愿辞去官职，携你远离京华，再不问庙堂风雪。你可愿随我走？'窗外雨声淅沥，似将十年孤寂一寸寸洗去。沈清辞抬手将那枚玉佩重新系回顾长渊腰间，声音轻得像江南水雾：'我守这盏灯，不是为了听你一句愧疚。'顾长渊怔然抬眸。",
+      "characters_present": [
+        "char_1",
+        "char_2"
+      ],
+      "scene_id": "scene_1",
+      "scene_name": "旧茶铺·内部",
+      "duration_estimate": 15,
+      "split_reason": "length_split"
+    },
+    {
+      "id": "seg_9",
+      "sequence_order": 9,
+      "text_original": "翌日清晨，茶铺闭门，竹帘轻卷。有人说白衣掌柜远嫁他乡，也有人说她随一位将军策马出了城，再未归来。唯有巷口老槐树下，偶尔还能闻见淡淡茶香，像极了那年江南细雨里，一场迟了十年的重逢。",
+      "text_resolved": "翌日清晨，茶铺闭门，竹帘轻卷。有人说白衣掌柜远嫁他乡，也有人说她随一位将军策马出了城，再未归来。唯有巷口老槐树下，偶尔还能闻见淡淡茶香，像极了那年江南细雨里，一场迟了十年的重逢。",
+      "characters_present": [
+        "char_1"
+      ],
+      "scene_id": "scene_2",
+      "scene_name": "青石巷·外部",
+      "duration_estimate": 10,
+      "split_reason": "scene_switch"
+    }
+  ],
+  "resolution_stats": {
+    "pronouns_found": 12,
+    "pronouns_resolved": 12
+  },
+  "task_id": "f06-test-001"
+}

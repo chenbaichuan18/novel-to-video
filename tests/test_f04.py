@@ -32,7 +32,13 @@ def main():
     with open(input_path, "r", encoding="utf-8") as f:
         test_data = json.load(f)
 
-    characters_list = test_data.get("characters", {}).get("list", [])
+    # characters 可以是直接数组，也可以是包含 list 属性的对象（兼容 f02 输出格式）
+    characters_data = test_data.get("characters", [])
+    if isinstance(characters_data, dict) and "list" in characters_data:
+        characters_list = characters_data["list"]
+    else:
+        characters_list = characters_data
+
     visual_tone = test_data.get("visual_tone", {})
 
     print(f"\n>>> 输入: {input_path}")

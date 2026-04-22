@@ -32,7 +32,13 @@ def main():
     with open(input_path, "r", encoding="utf-8") as f:
         test_data = json.load(f)
 
-    scenes_list = test_data.get("scenes", {}).get("list", [])
+    # scenes 可以是直接数组，也可以是包含 list 属性的对象（兼容 f03 输出格式）
+    scenes_data = test_data.get("scenes", [])
+    if isinstance(scenes_data, dict) and "list" in scenes_data:
+        scenes_list = scenes_data["list"]
+    else:
+        scenes_list = scenes_data
+
     visual_tone = test_data.get("visual_tone", {})
 
     print(f"\n>>> 输入: {input_path}")

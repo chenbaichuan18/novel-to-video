@@ -1,0 +1,196 @@
+{
+  "task_id": "f03-test-001",
+  "scenes": {
+    "total": 2,
+    "list": [
+      {
+        "id": "scene_1",
+        "name": "旧茶铺·内部",
+        "aliases": [
+          "茶铺"
+        ],
+        "scene_type": "indoor",
+        "location_type": "commercial",
+        "time_setting": {
+          "periods_appeared": [
+            "night",
+            "daytime",
+            "morning"
+          ],
+          "season": "spring"
+        },
+        "environment": {
+          "spatial_layout": "狭长的店面，有柜台、茶桌和木制货架",
+          "size_scale": "intimate",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "旧茶铺内部陈设简朴，有木制家具与茶具，空间紧凑而温馨",
+          "architectural_style": [
+            "江南传统建筑风格"
+          ],
+          "key_features": [
+            "褪色竹帘",
+            "茶桌与茶具",
+            "老式木门"
+          ],
+          "textural_details": [
+            "木质纹理",
+            "竹帘的粗糙质感"
+          ]
+        },
+        "visual_description_raw": "青石巷深处，有一间旧茶铺，门前垂着褪色竹帘；她生得眉目如画，却寡言少语，只在黄昏时分，替往来客商温一壶新茶；清辞站在茶铺门后，指尖发颤，终究没有迈出去；翌日清晨，茶铺闭门，竹帘轻卷。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "天花板灯",
+            "自然光(玻璃门)"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "白天有自然光与灯照明，夜晚则依赖室内灯光"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#8B7355",
+            "#D2B48C"
+          ],
+          "accent_color": "#FFFFFF",
+          "mood_tone": "柔和而略带忧伤的氛围",
+          "material_textures": [
+            "木质",
+            "竹制"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "竹帘",
+            "description": "门前的褪色竹帘",
+            "significance": "major"
+          },
+          {
+            "name": "玉佩",
+            "description": "顾长渊带回的旧玉佩",
+            "significance": "major"
+          },
+          {
+            "name": "茶具",
+            "description": "茶桌上的茶具",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "雨天",
+          "静谧",
+          "等待",
+          "回忆",
+          "重逢",
+          "茶香",
+          "旧物",
+          "温情"
+        ],
+        "scene_function": "象征沈清辞的等待与命运转折，是两人重逢的关键场所",
+        "frequency": 4,
+        "key_traits": [
+          "江南风格",
+          "承载回忆"
+        ]
+      },
+      {
+        "id": "scene_2",
+        "name": "青石巷·外部",
+        "aliases": [
+          "青石巷"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "natural",
+        "time_setting": {
+          "periods_appeared": [
+            "night",
+            "daytime"
+          ],
+          "season": "spring"
+        },
+        "environment": {
+          "spatial_layout": "狭窄的巷道，两侧为老式建筑",
+          "size_scale": "intimate",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "青石巷狭窄幽深，两侧是老式建筑，雨后青石湿润泛光，空气湿润",
+          "architectural_style": [
+            "传统江南建筑"
+          ],
+          "key_features": [
+            "青石地面",
+            "老式建筑",
+            "雨天氛围"
+          ],
+          "textural_details": [
+            "青石的湿润质地",
+            "墙壁的斑驳"
+          ]
+        },
+        "visual_description_raw": "暮春时节，江南雨细；清辞站在茶铺门后，指尖发颤，终究没有迈出去；窗外雨声淅沥，似将十年孤寂一寸寸洗去；翌日清晨，茶铺闭门，竹帘轻卷。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(雨天)"
+          ],
+          "base_light_quality": "cool",
+          "base_lighting_description": "雨天的青石巷，光线柔和而朦胧"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#4682B4",
+            "#A9A9A9"
+          ],
+          "accent_color": "#6B8E23",
+          "mood_tone": "朦胧而充满故事性的氛围",
+          "material_textures": [
+            "青石",
+            "砖墙"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "竹帘",
+            "description": "茶铺门前的竹帘",
+            "significance": "major"
+          },
+          {
+            "name": "青石",
+            "description": "巷道的地面材质",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "雨天",
+          "湿润",
+          "古老",
+          "静谧",
+          "街道",
+          "孤独",
+          "等待"
+        ],
+        "scene_function": "作为沈清辞生活与等待的背景环境，增强故事的江南风情与孤独感",
+        "frequency": 3,
+        "key_traits": [
+          "江南巷道",
+          "雨天氛围"
+        ]
+      }
+    ]
+  },
+  "extraction_summary": {
+    "total_scenes": 2,
+    "has_inferred_data": true,
+    "inferred_fields": [
+      "scene_type",
+      "location_type",
+      "color_scheme",
+      "lighting_condition"
+    ],
+    "scene_types_distribution": {
+      "indoor": 1,
+      "outdoor": 1
+    }
+  }
+}
