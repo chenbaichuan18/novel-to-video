@@ -1,0 +1,17 @@
+# F01 - 视觉基调提取
+python src/f01_visual_tone.py .\json\test2\f01_in.json -o .\json\test2\f01_out.json 
+
+# F02 - 角色提取
+python src/f02_character_extract.py .\json\test2\yw.txt -o .\json\test2\f02_out.json
+
+# F03 - 场景提取
+python src/f03_scene_extract.py .\json\test2\yw.txt -o .\json\test2\f03_out.json
+
+# F04 - 人物提示词（需要 f02 和 f01 输出）
+python src/f04_character_prompt.py .\json\test2\f02_out.json .\json\test2\f01_out.json -o .\json\test2\f04_out.json
+
+# F05 - 场景提示词（需要 f03 和 f01 输出）
+python src/f05_scene_prompt.py .\json\test2\f03_out.json .\json\test2\f01_out.json -o .\json\test2\f05_out.json
+
+# F06 - 视频提示词（需要小说 txt + f02 + f03 + f01 输出）
+python src/f06_video_prompt.py .\json\test2\yw.txt .\json\test2\f02_out.json .\json\test2\f03_out.json .\json\test2\f01_out.json -o .\json\f06_out.json 
