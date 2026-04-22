@@ -162,4 +162,88 @@ def generate_scene_prompts(f03_output: dict, f01_visual_tone: dict) -> dict:
     return output
 
 
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="F05 场景提示词撰写（批量模式）")
+    parser.add_argument("f03_output", help="F03 场景提取输出 JSON 文件路径")
+    parser.add_argument("f01_output", help="F01 视觉基调输出 JSON 文件路径")
+    parser.add_argument("-o", "--output", default="f05_output.json", help="输出文件路径 (默认: f05_output.json)")
+
+    args = parser.parse_args()
+
+    # 配置日志输出到控制台
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(levelname)s: %(message)s'
+    )
+
+    print("=" * 60)
+    print("F05 场景提示词撰写（批量模式）")
+    print("=" * 60)
+    print(f"F03 输入: {args.f03_output}")
+    print(f"F01 输入: {args.f01_output}")
+    print(f"输出文件: {args.output}")
+
+    # 读取 f03 输出（场景）
+    with open(args.f03_output, "r", encoding="utf-8") as f:
+        f03_data = json.load(f)
+
+    scenes_data = f03_data.get("scenes", [])
+    if isinstance(scenes_data, dict) and "list" in scenes_data:
+        scenes_list = scenes_data["list"]
+    else:
+        scenes_list = scenes_data
+    print(f"场景数量: {len(scenes_list)}")
+
+    if scenes_list:
+        print("\n场景列表:")
+        for idx, scene in enumerate(scenes_list, 1):
+            name = scene.get("name", "未知")
+            location_type = scene.get("location_type", "未知")
+            time_period = scene.get("time_period", "未知")
+            print(f"  [{idx}] {name} ({location_type}, {time_period})")
+
+    # 读取 f01 输出（视觉基调）
+    with open(args.f01_output, "r", encoding="utf-8") as f:
+        f01_data = json.load(f)
+
+    visual_style = f01_data.get("visual_style", {})
+    print(f"\n视觉基调: {visual_style.get('style_name', '未知')}")
+
+    # 运行批量生成
+    print("\n开始批量生成提示词...")
+    result = generate_scene_prompts(f03_data, f01_data)
+
+    # 显示结果摘要
+    print("\n" + "=" * 60)
+    print("处理结果:")
+    print("=" * 60)
+    print(f"批次 ID: {result.get('batch_task_id', 'N/A')}")
+    print(f"成功: {result.get('successful_count', 0)} 个")
+    print(f"失败: {result.get('failed_count', 0)} 个")
+
+    if result.get("results"):
+        print("\n生成的提示词:")
+        for idx, res in enumerate(result["results"], 1):
+            scene_id = res.get("scene_id", "N/A")
+            status = "✓" if res.get("success") else "✗"
+            if res.get("success"):
+                prompt = res.get("prompt", {})
+                prompt_text = prompt.get("prompt_text", "")[:100]
+                print(f"  [{idx}] {scene_id} {status} - {prompt_text}...")
+            else:
+                error = res.get("error", "未知错误")
+                print(f"  [{idx}] {scene_id} {status} - 错误: {error}")
+
+    # 保存结果
+    output_path = _P(args.output)
+    output_path.write_text(
+        json.dumps(result, ensure_ascii=False, indent=2),
+        encoding="utf-8"
+    )
+    print(f"\n结果已保存到: {output_path}")
+    print("=" * 60)
+
+
 

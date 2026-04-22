@@ -131,3 +131,86 @@ def extract_visual_tone(text: str, user_settings: dict | None = None, task_id: s
 
     logger.info("F01 处理完成: task_id=%s", task_id)
     return result
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="F01 导演视觉基调提取")
+    parser.add_argument("novel_txt", help="原始小说文本文件路径")
+    parser.add_argument("-o", "--output", default="f01_output.json", help="输出文件路径 (默认: f01_output.json)")
+    parser.add_argument("--task-id", default=None, help="任务 ID (默认自动生成)")
+    parser.add_argument("--medium", help="制作媒体类型 (如: 真人电影/动画/电视剧/纪录片)")
+    parser.add_argument("--genre", help="作品类型 (如: 悬疑推理/仙侠/科幻)")
+    parser.add_argument("--era", help="年代背景 (如: 现代2020s/民国1930s)")
+    parser.add_argument("--location", help="地点背景 (如: 中国北方一线城市/架空仙侠世界)")
+    parser.add_argument("--settings", help="用户设置 JSON 文件路径 (覆盖其他单个设置)")
+
+    args = parser.parse_args()
+
+    # 配置日志输出到控制台
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(levelname)s: %(message)s'
+    )
+
+    print("=" * 60)
+    print("F01 导演视觉基调提取")
+    print("=" * 60)
+    print(f"输入文件: {args.novel_txt}")
+    print(f"输出文件: {args.output}")
+
+    # 读取原始小说文本
+    novel_txt_path = _P(args.novel_txt)
+    text = novel_txt_path.read_text(encoding="utf-8")
+    print(f"文本长度: {len(text)} 字")
+
+    # 构建用户设置
+    user_settings = {}
+    if args.settings:
+        with open(args.settings, "r", encoding="utf-8") as f:
+            user_settings = json.load(f)
+        print(f"使用设置文件: {args.settings}")
+    else:
+        if args.medium:
+            user_settings["medium"] = args.medium
+        if args.genre:
+            user_settings["genre"] = args.genre
+        if args.era:
+            user_settings["era"] = args.era
+        if args.location:
+            user_settings["location"] = args.location
+
+    if user_settings:
+        print(f"用户设置: {json.dumps(user_settings, ensure_ascii=False)}")
+    else:
+        print("用户设置: 无（使用默认值）")
+
+    # 运行提取
+    print("\n开始调用 LLM...")
+    result = extract_visual_tone(
+        text=text,
+        user_settings=user_settings if user_settings else None,
+        task_id=args.task_id,
+    )
+
+    # 显示结果摘要
+    print("\n" + "=" * 60)
+    print("处理结果:")
+    print("=" * 60)
+    print(f"任务 ID: {result.get('task_id', 'N/A')}")
+    print(f"类型: {result.get('genre', 'N/A')}")
+    print(f"视觉风格: {result.get('visual_style', {}).get('style_name', 'N/A')}")
+    if 'color_palette' in result:
+        colors = result['color_palette'].get('dominant_colors', [])
+        if colors:
+            print(f"主色调: {', '.join(colors[:3])}")
+
+    # 保存结果
+    output_path = _P(args.output)
+    output_path.write_text(
+        json.dumps(result, ensure_ascii=False, indent=2),
+        encoding="utf-8"
+    )
+    print(f"\n结果已保存到: {output_path}")
+    print("=" * 60)

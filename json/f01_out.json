@@ -1,0 +1,72 @@
+{
+  "task_id": "52541228-eb02-44ee-9803-ea65810416bb",
+  "genre": {
+    "primary": "都市情感",
+    "secondary": "青春校园",
+    "tags": [
+      "青春",
+      "校园",
+      "成长",
+      "励志"
+    ]
+  },
+  "visual_style": {
+    "medium": "cinematic",
+    "reference_works": [
+      "《少年的你》",
+      "《闪光少女》"
+    ],
+    "director_style": "张艺谋式的青春写实与光影对比",
+    "cinematography": "自然手持镜头与固定机位交替，捕捉真实情感瞬间"
+  },
+  "era_setting": {
+    "era": "现代2020s"
+  },
+  "world_setting": {
+    "primary_locations": [
+      "南城第一武道高中校园",
+      "宿舍",
+      "训练馆"
+    ],
+    "geographic_context": "中国北方一线城市",
+    "social_class": "普通工薪阶层、中产家庭子弟"
+  },
+  "color_palette": {
+    "dominant_colors": [
+      "#2c3e50",
+      "#f5f5dc",
+      "#e67e22"
+    ],
+    "accent_color": "#e74c3c",
+    "mood_tone": "温暖中带有一丝坚韧，青春气息与奋斗感并存"
+  },
+  "lighting_philosophy": "自然光为主，阳光透过梧桐树叶的斑驳光影，辅以黄昏暖色调营造温馨氛围",
+  "atmosphere": {
+    "overall_mood": "积极向上、温暖励志，略带怀旧感",
+    "pacing_rhythm": "中等"
+  },
+  "visual_constraints": {
+    "character_design_rules": [
+      "学生角色服装简洁自然，避免夸张品牌标志",
+      "角色发型符合现实校园风格，不浮夸",
+      "表情和动作自然，避免过度戏剧化"
+    ],
+    "scene_design_rules": [
+      "校园场景真实朴素，突出老牌名校的沉稳感",
+      "训练馆等设施现代感与实用性并重",
+      "避免过于饱和或刺眼的色彩，保持柔和"
+    ]
+  },
+  "mood_keywords": [
+    "青春",
+    "奋斗",
+    "温暖",
+    "校园",
+    "励志",
+    "真实",
+    "怀旧",
+    "希望",
+    "阳光",
+    "成长"
+  ]
+}

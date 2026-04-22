@@ -1,0 +1,452 @@
+{
+  "task_id": "20bead8b-789d-46f9-a32a-d19d62d0e439",
+  "scenes": {
+    "total": 5,
+    "list": [
+      {
+        "id": "scene_1",
+        "name": "南城第一武道高中·校门口",
+        "aliases": [
+          "校门"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "institutional",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "开阔的校门区域，入口处有深蓝色底银灰色字校牌，前方是主干道，两侧有梧桐树",
+          "size_scale": "medium",
+          "enclosure": "fully_open"
+        },
+        "visual_description": {
+          "summary": "南城第一武道高中校门口，六月底正午阳光下，深蓝色底银灰色字的校牌被照得发亮，校门口人来人往，新生背着装备包三两成群进入，有世家子弟穿着定制练功服袖口绣家族纹章。",
+          "architectural_style": [
+            "现代教育建筑"
+          ],
+          "key_features": [
+            "深蓝色底银灰色字校牌",
+            "阳光照射下校牌发亮",
+            "人来人往的新生人流",
+            "世家子弟定制练功服"
+          ],
+          "textural_details": [
+            "校牌金属质感",
+            "练功服布料质感"
+          ]
+        },
+        "visual_description_raw": "林守一站在南城第一武道高中的校门口，仰头看着那块深蓝色底、银灰色字的校牌。阳光把“南城第一武道高中”几个字照得发亮，在他的瞳孔里映出淡淡的光。；校门口人来人往，大部分是和他一样的新生，背着武道专用的装备包，三两成群地往里走。有几个一看就是世家出身，走路带风，身上的练功服是定制的，袖口绣着家族纹章。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "太阳光"
+          ],
+          "base_light_quality": "warm",
+          "base_lighting_description": "六月底正午的强烈阳光直射，校牌反光发亮，光线明亮刺眼"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#1a237e",
+            "#c0c0c0",
+            "#ffffff"
+          ],
+          "accent_color": "#ffd700",
+          "mood_tone": "明亮、充满希望、略带紧张",
+          "material_textures": [
+            "金属",
+            "布料"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "校牌",
+            "description": "深蓝色底、银灰色字的校牌，写着'南城第一武道高中'",
+            "significance": "major"
+          },
+          {
+            "name": "武道装备包",
+            "description": "新生背着的专用装备包",
+            "significance": "background"
+          }
+        ],
+        "atmosphere_keywords": [
+          "阳光明媚",
+          "热闹",
+          "新生报到",
+          "希望",
+          "竞争"
+        ],
+        "scene_function": "故事开场，引入主角林守一进入新学校，建立世界观和氛围",
+        "frequency": 1,
+        "key_traits": [
+          "校门口",
+          "报到日",
+          "夏季"
+        ]
+      },
+      {
+        "id": "scene_2",
+        "name": "南城第一武道高中·主干道",
+        "aliases": [
+          "梧桐大道"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "institutional",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "笔直的主干道，两侧种满梧桐树，树荫将阳光切碎洒在路面，尽头是一栋灰白色教学楼",
+          "size_scale": "large",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "南城第一武道高中校园主干道，笔直宽阔，两侧梧桐树高大茂密，树荫把阳光切成碎金洒在路面上，尽头是灰白色方正教学楼，透着老牌名校的沉稳气质，旁边有巨大操场和玻璃幕墙训练馆。",
+          "architectural_style": [
+            "老牌名校建筑",
+            "现代训练馆"
+          ],
+          "key_features": [
+            "梧桐树荫",
+            "碎金般的光影",
+            "灰白色教学楼",
+            "玻璃幕墙训练馆",
+            "巨大操场"
+          ],
+          "textural_details": [
+            "梧桐树皮纹理",
+            "教学楼灰白色墙面",
+            "玻璃幕墙反光"
+          ]
+        },
+        "visual_description_raw": "走进校门，是一条笔直的主干道，两侧种满了梧桐树，树荫把阳光切成碎金，洒在路面上。主干道尽头是一栋灰白色的教学楼，造型方正，看起来有年头了，但维护得极好，透着一种老牌名校的沉稳气质。；两人一起沿着主干道往里走，经过一个巨大的操场，操场上有几个高年级的学生在训练，拳脚带起的风声隔着几百米都能隐约听到。操场旁边是一排训练馆，玻璃幕墙反射着阳光，看起来比教学楼新得多。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "太阳光",
+            "玻璃幕墙反射光"
+          ],
+          "base_light_quality": "warm",
+          "base_lighting_description": "阳光被梧桐树荫切割成碎金般的光斑洒在路面，玻璃幕墙反射阳光，整体明亮但有树荫遮蔽"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#c0c0c0",
+            "#8b4513",
+            "#90ee90"
+          ],
+          "accent_color": "#ffd700",
+          "mood_tone": "宁静、沉稳、充满生机",
+          "material_textures": [
+            "水泥路面",
+            "梧桐树皮",
+            "玻璃"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "梧桐树",
+            "description": "主干道两侧的高大梧桐树，提供树荫",
+            "significance": "background"
+          },
+          {
+            "name": "训练馆",
+            "description": "玻璃幕墙训练馆，内有灵气模拟室",
+            "significance": "minor"
+          }
+        ],
+        "atmosphere_keywords": [
+          "宁静",
+          "沉稳",
+          "生机勃勃",
+          "名校气质",
+          "光影斑驳"
+        ],
+        "scene_function": "展示校园环境，衬托主角对新环境的感受和期待",
+        "frequency": 1,
+        "key_traits": [
+          "主干道",
+          "梧桐树",
+          "校园景观"
+        ]
+      },
+      {
+        "id": "scene_3",
+        "name": "教学楼·礼堂",
+        "aliases": [
+          "报到礼堂"
+        ],
+        "scene_type": "indoor",
+        "location_type": "institutional",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "教学楼一楼的礼堂，门口排着长队，内部有报到台和工作人员",
+          "size_scale": "large",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "教学楼一楼的礼堂作为新生报到地点，门口排着长队，学生和家长混杂，报到台后坐着干练的女老师，气氛正式而有序。",
+          "architectural_style": [
+            "学校礼堂"
+          ],
+          "key_features": [
+            "排队队伍",
+            "报到台",
+            "工作人员"
+          ],
+          "textural_details": [
+            "木质或金属报到台",
+            "纸质文件"
+          ]
+        },
+        "visual_description_raw": "报到地点在教学楼一楼的礼堂。礼堂门口排着长长的队伍，大部分是学生，也有不少家长陪着来的。林守一看见好几个家长大包小包地拎着东西，比自己孩子还紧张。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "天花板日光灯"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "室内人工照明，光线均匀明亮，适合办公和报到流程"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#f5f5f5",
+            "#808080"
+          ],
+          "accent_color": "#0000ff",
+          "mood_tone": "正式、有序、略带紧张",
+          "material_textures": [
+            "金属",
+            "塑料",
+            "纸张"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "报到台",
+            "description": "礼堂内的报到台，后面坐着教务处副主任方芸",
+            "significance": "major"
+          },
+          {
+            "name": "文件袋",
+            "description": "装有入学材料、宿舍分配、军训安排的袋子",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "正式",
+          "有序",
+          "紧张",
+          "期待"
+        ],
+        "scene_function": "完成主角报到流程，引入重要NPC方芸老师，暗示主角背景特殊",
+        "frequency": 1,
+        "key_traits": [
+          "礼堂",
+          "报到",
+          "正式场合"
+        ]
+      },
+      {
+        "id": "scene_4",
+        "name": "三号楼·402宿舍",
+        "aliases": [
+          "宿舍",
+          "402"
+        ],
+        "scene_type": "indoor",
+        "location_type": "institutional",
+        "time_setting": {
+          "periods_appeared": [
+            "afternoon",
+            "evening"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "四人间宿舍，有四个床位（上下铺），靠窗有下铺和上铺，空间紧凑但整洁",
+          "size_scale": "intimate",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "灰白色建筑六层宿舍楼的四楼四人间，内部经过翻新，陈设简单，有四个床位和基本家具，窗外可见夕阳，地板为灰白色，整体整洁但略显陈旧。",
+          "architectural_style": [
+            "学校宿舍楼"
+          ],
+          "key_features": [
+            "四人间",
+            "上下铺",
+            "灰白色地板",
+            "窗边有夕阳"
+          ],
+          "textural_details": [
+            "灰白色地板",
+            "床单布料",
+            "木质床架"
+          ]
+        },
+        "visual_description_raw": "宿舍楼是一栋六层的灰白色建筑，比教学楼旧一些，但内部翻新过。林守一的402在四楼，是个四人间。；窗外的夕阳把宿舍染成橘红色，楼下有人在喊“食堂开饭了”；走廊尽头的窗户透进来最后一缕光，落在灰白色的地板上，像是一条浅浅的路，伸向不知道哪里的远方。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "窗户自然光",
+            "天花板吸顶灯"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "下午有自然光从窗户进入，傍晚夕阳将宿舍染成橘红色，夜间有人工照明"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#c0c0c0",
+            "#ff8c00",
+            "#ffffff"
+          ],
+          "accent_color": "#ff0000",
+          "mood_tone": "温馨、宁静、略带陌生感",
+          "material_textures": [
+            "灰白色地板",
+            "木质床架",
+            "棉质床单"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "床铺",
+            "description": "四个床位，上下铺，林守一选了靠窗下铺",
+            "significance": "major"
+          },
+          {
+            "name": "牡丹花床单",
+            "description": "赵铁生带来的大红色牡丹花床单，像窗帘",
+            "significance": "minor"
+          },
+          {
+            "name": "纸条",
+            "description": "母亲林知夏手写的鼓励纸条",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "温馨",
+          "宁静",
+          "陌生",
+          "期待",
+          "友情"
+        ],
+        "scene_function": "建立主角的居住空间，引入室友角色，展现家庭温情和主角内心世界",
+        "frequency": 1,
+        "key_traits": [
+          "宿舍",
+          "四人间",
+          "室友"
+        ]
+      },
+      {
+        "id": "scene_5",
+        "name": "操场·训练区",
+        "aliases": [
+          "操场",
+          "训练馆旁"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "institutional",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "巨大操场，旁边是玻璃幕墙训练馆，操场上有高年级学生训练，拳风可传至百米外",
+          "size_scale": "large",
+          "enclosure": "fully_open"
+        },
+        "visual_description": {
+          "summary": "南城第一武道高中的巨大操场，旁边是现代化的玻璃幕墙训练馆，操场上高年级学生正在训练，拳脚带风，气势惊人，展现学校的武道氛围和实力。",
+          "architectural_style": [
+            "现代训练馆",
+            "标准操场"
+          ],
+          "key_features": [
+            "巨大操场",
+            "玻璃幕墙训练馆",
+            "高年级学生训练",
+            "拳风破空"
+          ],
+          "textural_details": [
+            "草坪或跑道",
+            "玻璃幕墙"
+          ]
+        },
+        "visual_description_raw": "经过一个巨大的操场，操场上有几个高年级的学生在训练，拳脚带起的风声隔着几百米都能隐约听到。操场旁边是一排训练馆，玻璃幕墙反射着阳光，看起来比教学楼新得多。；一道气流从他耳边擦过，带着轻微的灼热感。他停下脚步，转头看向操场——一个高年级的男生正在练习拳法，隔着一百多米，拳风居然能传到这边来。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "太阳光",
+            "玻璃幕墙反射光"
+          ],
+          "base_light_quality": "warm",
+          "base_lighting_description": "阳光直射，玻璃幕墙反射阳光，光线明亮强烈"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#90ee90",
+            "#c0c0c0",
+            "#87ceeb"
+          ],
+          "accent_color": "#ff4500",
+          "mood_tone": "活力、力量、震撼",
+          "material_textures": [
+            "草坪",
+            "玻璃",
+            "金属"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "训练馆",
+            "description": "玻璃幕墙训练馆，内有灵气模拟室",
+            "significance": "minor"
+          }
+        ],
+        "atmosphere_keywords": [
+          "活力",
+          "力量",
+          "震撼",
+          "竞争",
+          "训练"
+        ],
+        "scene_function": "展示学校武道实力，激发主角的斗志和学习欲望",
+        "frequency": 1,
+        "key_traits": [
+          "操场",
+          "训练",
+          "高年级"
+        ]
+      }
+    ]
+  },
+  "extraction_summary": {
+    "total_scenes": 5,
+    "has_inferred_data": true,
+    "inferred_fields": [
+      "time_setting.periods_appeared",
+      "lighting_condition.primary_light_sources",
+      "color_scheme.dominant_colors",
+      "color_scheme.material_textures",
+      "environment.size_scale",
+      "environment.enclosure"
+    ],
+    "scene_types_distribution": {
+      "indoor": 2,
+      "outdoor": 3,
+      "mixed": 0
+    }
+  }
+}

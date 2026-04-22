@@ -167,3 +167,87 @@ def generate_character_prompts(f02_output: dict, f01_visual_tone: dict) -> dict:
                  batch_task_id, output["successful_count"], output["failed_count"])
     return output
 
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="F04 人物提示词撰写（批量模式）")
+    parser.add_argument("f02_output", help="F02 角色提取输出 JSON 文件路径")
+    parser.add_argument("f01_output", help="F01 视觉基调输出 JSON 文件路径")
+    parser.add_argument("-o", "--output", default="f04_output.json", help="输出文件路径 (默认: f04_output.json)")
+
+    args = parser.parse_args()
+
+    # 配置日志输出到控制台
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(levelname)s: %(message)s'
+    )
+
+    print("=" * 60)
+    print("F04 人物提示词撰写（批量模式）")
+    print("=" * 60)
+    print(f"F02 输入: {args.f02_output}")
+    print(f"F01 输入: {args.f01_output}")
+    print(f"输出文件: {args.output}")
+
+    # 读取 f02 输出（角色）
+    with open(args.f02_output, "r", encoding="utf-8") as f:
+        f02_data = json.load(f)
+
+    characters_data = f02_data.get("characters", [])
+    if isinstance(characters_data, dict) and "list" in characters_data:
+        characters_list = characters_data["list"]
+    else:
+        characters_list = characters_data
+    print(f"角色数量: {len(characters_list)}")
+
+    if characters_list:
+        print("\n角色列表:")
+        for idx, char in enumerate(characters_list, 1):
+            name = char.get("name", "未知")
+            gender = char.get("gender", "未知")
+            age = char.get("age", "未知")
+            print(f"  [{idx}] {name} ({gender}, {age})")
+
+    # 读取 f01 输出（视觉基调）
+    with open(args.f01_output, "r", encoding="utf-8") as f:
+        f01_data = json.load(f)
+
+    visual_style = f01_data.get("visual_style", {})
+    print(f"\n视觉基调: {visual_style.get('style_name', '未知')}")
+
+    # 运行批量生成
+    print("\n开始批量生成提示词...")
+    result = generate_character_prompts(f02_data, f01_data)
+
+    # 显示结果摘要
+    print("\n" + "=" * 60)
+    print("处理结果:")
+    print("=" * 60)
+    print(f"批次 ID: {result.get('batch_task_id', 'N/A')}")
+    print(f"成功: {result.get('successful_count', 0)} 个")
+    print(f"失败: {result.get('failed_count', 0)} 个")
+
+    if result.get("results"):
+        print("\n生成的提示词:")
+        for idx, res in enumerate(result["results"], 1):
+            char_id = res.get("character_id", "N/A")
+            status = "✓" if res.get("success") else "✗"
+            if res.get("success"):
+                prompt = res.get("prompt", {})
+                prompt_text = prompt.get("prompt_text", "")[:100]
+                print(f"  [{idx}] {char_id} {status} - {prompt_text}...")
+            else:
+                error = res.get("error", "未知错误")
+                print(f"  [{idx}] {char_id} {status} - 错误: {error}")
+
+    # 保存结果
+    output_path = _P(args.output)
+    output_path.write_text(
+        json.dumps(result, ensure_ascii=False, indent=2),
+        encoding="utf-8"
+    )
+    print(f"\n结果已保存到: {output_path}")
+    print("=" * 60)
+

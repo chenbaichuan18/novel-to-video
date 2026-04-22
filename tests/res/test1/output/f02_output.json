@@ -1,0 +1,83 @@
+{
+  "task_id": "f02-test-001",
+  "characters": {
+    "total": 2,
+    "list": [
+      {
+        "id": "char_1",
+        "name": "沈清辞",
+        "aliases": [
+          "白衣女子",
+          "沈姑娘"
+        ],
+        "gender": "female",
+        "age": "25-30岁",
+        "appearance": "眉目如画，面容清秀，气质孤寂",
+        "appearance_raw": "眉目如画；十年未归的人",
+        "clothing": "白色长裙",
+        "personality": "沉默寡言，内心坚韧，温柔克制",
+        "role_type": "protagonist",
+        "is_temporary": false,
+        "family_role": "none",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_2": [
+              "沈姑娘"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_2": [
+              "将军"
+            ]
+          }
+        },
+        "key_traits": [
+          "白衣女子",
+          "眉目如画",
+          "隐居者"
+        ]
+      },
+      {
+        "id": "char_2",
+        "name": "顾长渊",
+        "aliases": [],
+        "gender": "male",
+        "age": "30岁",
+        "appearance": "风霜满面，神情坚毅，沉静眼眸",
+        "appearance_raw": "黑衣男子，肩头湿透，眉宇之间尽是风霜，却仍是她梦里那双沉静眼眸",
+        "clothing": "黑色军装",
+        "personality": "深情隐忍，责任感强，历经沧桑",
+        "role_type": "antagonist",
+        "is_temporary": false,
+        "family_role": "none",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_1": [
+              "沈姑娘"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_1": [
+              "将军"
+            ]
+          }
+        },
+        "key_traits": [
+          "黑衣男子",
+          "风霜面容",
+          "将军"
+        ]
+      }
+    ]
+  },
+  "extraction_summary": {
+    "total_characters": 2,
+    "has_inferred_data": true,
+    "inferred_fields": [
+      "age",
+      "appearance",
+      "clothing",
+      "personality"
+    ]
+  }
+}

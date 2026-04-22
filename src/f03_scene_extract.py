@@ -82,4 +82,67 @@ def extract_scenes(text: str, task_id: str = None) -> dict:
     return result
 
 
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="F03 场景元数据提取")
+    parser.add_argument("novel_txt", help="原始小说文本文件路径")
+    parser.add_argument("-o", "--output", default="f03_output.json", help="输出文件路径 (默认: f03_output.json)")
+    parser.add_argument("--task-id", default=None, help="任务 ID (默认自动生成)")
+
+    args = parser.parse_args()
+
+    # 配置日志输出到控制台
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(levelname)s: %(message)s'
+    )
+
+    print("=" * 60)
+    print("F03 场景元数据提取")
+    print("=" * 60)
+    print(f"输入文件: {args.novel_txt}")
+    print(f"输出文件: {args.output}")
+
+    # 读取原始小说文本
+    novel_txt_path = _P(args.novel_txt)
+    text = novel_txt_path.read_text(encoding="utf-8")
+    print(f"文本长度: {len(text)} 字")
+
+    # 运行提取
+    print("\n开始调用 LLM...")
+    result = extract_scenes(
+        text=text,
+        task_id=args.task_id,
+    )
+
+    # 显示结果摘要
+    print("\n" + "=" * 60)
+    print("处理结果:")
+    print("=" * 60)
+    print(f"任务 ID: {result.get('task_id', 'N/A')}")
+
+    scenes_data = result.get("scenes", {})
+    total = scenes_data.get("total", 0)
+    scene_list = scenes_data.get("list", [])
+    print(f"提取场景数: {total} 个")
+
+    if scene_list:
+        print("\n场景列表:")
+        for idx, scene in enumerate(scene_list, 1):
+            name = scene.get("name", "未知")
+            location_type = scene.get("location_type", "未知")
+            time_period = scene.get("time_period", "未知")
+            print(f"  [{idx}] {name} ({location_type}, {time_period})")
+
+    # 保存结果
+    output_path = _P(args.output)
+    output_path.write_text(
+        json.dumps(result, ensure_ascii=False, indent=2),
+        encoding="utf-8"
+    )
+    print(f"\n结果已保存到: {output_path}")
+    print("=" * 60)
+
+
 

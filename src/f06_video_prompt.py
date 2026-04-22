@@ -5,6 +5,7 @@ import re
 import sys
 import os
 import uuid
+import logging
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -17,6 +18,8 @@ if str(PROJECT_ROOT) not in sys.path:
 os.chdir(PROJECT_ROOT)
 
 from src.llm_client import LLMClient
+
+logger = logging.getLogger(__name__)
 
 
 def _clean_text(text: str) -> str:
@@ -490,4 +493,117 @@ def run_f06_pipeline(
 
     logger.info("F06 流水线完成")
     return final_result
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="F06 视频生成提示词流水线")
+    parser.add_argument("novel_txt", help="原始小说文本文件路径")
+    parser.add_argument("f02_output", help="F02 角色提取输出 JSON 文件路径")
+    parser.add_argument("f03_output", help="F03 场景提取输出 JSON 文件路径")
+    parser.add_argument("f01_output", help="F01 视觉基调输出 JSON 文件路径")
+    parser.add_argument("-o", "--output", default="f06_output.json", help="输出文件路径 (默认: f06_output.json)")
+    parser.add_argument("--task-id", default=None, help="任务 ID (默认自动生成)")
+
+    args = parser.parse_args()
+
+    # 配置日志输出到控制台
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(levelname)s: %(message)s'
+    )
+
+    print("=" * 60)
+    print("F06 视频生成提示词流水线")
+    print("=" * 60)
+    print(f"小说文本: {args.novel_txt}")
+    print(f"F02 输入: {args.f02_output}")
+    print(f"F03 输入: {args.f03_output}")
+    print(f"F01 输入: {args.f01_output}")
+    print(f"输出文件: {args.output}")
+
+    # 读取原始小说文本
+    novel_txt_path = Path(args.novel_txt)
+    original_text = novel_txt_path.read_text(encoding="utf-8")
+    print(f"文本长度: {len(original_text)} 字")
+
+    # 读取 f02 输出（角色）
+    with open(args.f02_output, "r", encoding="utf-8") as f:
+        f02_data = json.load(f)
+    characters_data = f02_data.get("characters", [])
+    if isinstance(characters_data, dict) and "list" in characters_data:
+        characters = characters_data["list"]
+    else:
+        characters = characters_data
+    print(f"角色数量: {len(characters)}")
+
+    # 读取 f03 输出（场景）
+    with open(args.f03_output, "r", encoding="utf-8") as f:
+        f03_data = json.load(f)
+    scenes_data = f03_data.get("scenes", [])
+    if isinstance(scenes_data, dict) and "list" in scenes_data:
+        scenes = scenes_data["list"]
+    else:
+        scenes = scenes_data
+    print(f"场景数量: {len(scenes)}")
+
+    # 读取 f01 输出（视觉基调）
+    with open(args.f01_output, "r", encoding="utf-8") as f:
+        visual_tone = json.load(f)
+
+    visual_style = visual_tone.get("visual_style", {})
+    print(f"视觉基调: {visual_style.get('style_name', '未知')}")
+
+    # 运行流水线
+    print("\n开始执行 F06 流水线...")
+    result = run_f06_pipeline(
+        original_text=original_text,
+        characters=characters,
+        scenes=scenes,
+        visual_tone=visual_tone,
+        task_id=args.task_id,
+    )
+
+    # 显示结果摘要
+    print("\n" + "=" * 60)
+    print("处理结果:")
+    print("=" * 60)
+    print(f"任务 ID: {result.get('task_id', 'N/A')}")
+
+    # 显示阶段 A 结果
+    stage_a = result.get("stage_a", {})
+    if stage_a:
+        print(f"\n阶段 A (分段与绑定):")
+        segments = stage_a.get("segments", [])
+        print(f"  分段数量: {len(segments)}")
+        if segments:
+            print("  前3个分段:")
+            for i, seg in enumerate(segments[:3], 1):
+                text = seg.get("text", "")[:50]
+                entities = seg.get("entities", [])
+                print(f"    [{i}] {text}... (实体: {len(entities)})")
+
+    # 显示阶段 B 结果
+    stage_b = result.get("stage_b", {})
+    if stage_b:
+        print(f"\n阶段 B (视频提示词):")
+        shots = stage_b.get("shots", [])
+        print(f"  镜头数量: {len(shots)}")
+        if shots:
+            print("  前3个镜头:")
+            for i, shot in enumerate(shots[:3], 1):
+                shot_type = shot.get("shot_type", "未知")
+                duration = shot.get("duration", 0)
+                print(f"    [{i}] {shot_type} - {duration}秒")
+
+    # 保存结果
+    output_path = Path(args.output)
+    output_path.write_text(
+        json.dumps(result, ensure_ascii=False, indent=2),
+        encoding="utf-8"
+    )
+    print(f"\n结果已保存到: {output_path}")
+    print("=" * 60)
+
 
