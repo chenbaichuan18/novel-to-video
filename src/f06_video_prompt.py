@@ -137,8 +137,6 @@ def segment_and_bind(
 ) -> dict[str, Any]:
     """F06-A: 文本分段与实体绑定（使用精简提示词，不强制 JSON 格式）"""
     from src.config import DEFAULT_MODEL_ID
-    import logging
-    _logger = logging.getLogger(__name__)
 
     task_id = task_id or str(uuid.uuid4())
     client = LLMClient(model=DEFAULT_MODEL_ID)
@@ -164,7 +162,7 @@ def segment_and_bind(
         max_retries=1,  # 减少重试次数，避免浪费时间
     )
 
-    _logger.info("F06-A 原始响应长度: %d 字符", len(raw_response))
+    logger.info("F06-A 原始响应长度: %d 字符", len(raw_response))
 
     # 从文本中提取 JSON（处理 ```json ... ``` 包裹）
     json_str = _extract_json_from_text(raw_response)
@@ -174,7 +172,7 @@ def segment_and_bind(
         raise ValueError("F06-A JSON 解析失败且无法修复")
     result["task_id"] = task_id
     result = _clean_result(result)
-    _logger.info("F06-A 解析后 keys=%s, total_segments=%s",
+    logger.info("F06-A 解析后 keys=%s, total_segments=%s",
                  list(result.keys()), result.get("total_segments", 0))
 
     result["task_id"] = task_id
@@ -268,13 +266,13 @@ def _safe_parse_json(raw_response: str) -> dict | None:
     # 第二次尝试：修复截断后解析
     try:
         fixed = _fix_truncated_json(json_str)
-        _logger.info("JSON 解析失败，尝试截断修复... 原始长度=%d, 修复后长度=%d",
+        logger.info("JSON 解析失败，尝试截断修复... 原始长度=%d, 修复后长度=%d",
                      len(json_str), len(fixed))
         result = _json.loads(fixed, strict=False)
-        _logger.info("截断修复成功")
+        logger.info("截断修复成功")
         return result
     except _json.JSONDecodeError as e2:
-        _logger.warning("截断修复也失败: %s", e2)
+        logger.warning("截断修复也失败: %s", e2)
 
     return None
 
@@ -330,8 +328,6 @@ def generate_video_prompts(
     task_id: str | None = None,
 ) -> dict[str, Any]:
     """F06-B: 视频提示词生成（精简提示词）"""
-    import logging
-    _b_logger = logging.getLogger(__name__)
     from src.config import DEFAULT_MODEL_ID
 
     task_id = task_id or str(uuid.uuid4())
@@ -343,7 +339,7 @@ def generate_video_prompts(
         for ch in characters:
             if isinstance(ch, dict) and ch.get("id") and ch.get("name"):
                 char_map[ch["id"]] = ch["name"]
-    _b_logger.info("角色映射: %s", char_map)
+    logger.info("角色映射: %s", char_map)
 
     # 将 visual_tone 压缩为摘要字符串（避免输入过大）
     vt_genre = visual_tone.get("genre", {})
@@ -374,7 +370,7 @@ def generate_video_prompts(
             {"role": "user", "content": user_message},
         ]
 
-        _b_logger.info("F06-B 处理 segment %d/%d: %s", i + 1, total, seg.get("id"))
+        logger.info("F06-B 处理 segment %d/%d: %s", i + 1, total, seg.get("id"))
 
         try:
             raw_response = client.chat(
@@ -387,10 +383,10 @@ def generate_video_prompts(
             if vp_result is None:
                 raise ValueError("F06-B JSON 解析失败且无法修复")
             vp_result = _clean_result(vp_result)
-            _b_logger.info("  -> 解析成功, keys=%s", list(vp_result.keys()))
+            logger.info("  -> 解析成功, keys=%s", list(vp_result.keys()))
             video_prompts.append(vp_result)
         except Exception as e:
-            _b_logger.error("  -> segment %s 处理失败: %s", seg.get("id"), e)
+            logger.error("  -> segment %s 处理失败: %s", seg.get("id"), e)
             # 异常时也用格式化角色名
             _err_chars = [f"{char_map.get(c, c)}({c})" for c in seg.get("characters_present", [])]
             video_prompts.append({
