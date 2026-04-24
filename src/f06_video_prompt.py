@@ -42,8 +42,12 @@ def _clean_result(result: dict) -> dict:
     return result
 
 
+from functools import lru_cache
+
+
+@lru_cache(maxsize=1)
 def _load_skill_content() -> str:
-    """加载完整的 F06 Skill 文件内容"""
+    """加载完整的 F06 Skill 文件内容（lru_cache 保证只读一次磁盘）"""
     skill_path = PROJECT_ROOT / "skills" / "f06_video_prompt.md"
     with open(skill_path, "r", encoding="utf-8") as f:
         return f.read()
@@ -160,6 +164,7 @@ def segment_and_bind(
         max_tokens=8000,
         timeout=900,  # F06 数据量大，超时时间增加到 15 分钟
         max_retries=1,  # 减少重试次数，避免浪费时间
+        enable_thinking=True,  # 开启思考模式，提高分段与绑定的准确性
     )
 
     logger.info("F06-A 原始响应长度: %d 字符", len(raw_response))
@@ -176,6 +181,115 @@ def segment_and_bind(
                  list(result.keys()), result.get("total_segments", 0))
 
     result["task_id"] = task_id
+
+    # A 阶段后处理：规则修正 LLM 分段不合理的情况
+    result = _post_process_segments(result)
+    logger.info("F06-A 后处理后 total_segments=%s", result.get("total_segments", 0))
+
+    return result
+
+
+def _post_process_segments(result: dict) -> dict:
+    """A 阶段后处理：基于规则自动合并不合理的相邻 segment。
+
+    修正的问题：
+    1. 同一场景内相邻两段都是纯描写（无对话无新人物），合并为 1 段
+    2. 同一场景内相邻两段都是对话/反应且人物完全相同，时长都 <=10s，合并
+    3. 重新编号 segment id
+    """
+    segments: list[dict] = result.get("segments", [])
+    if not segments:
+        return result
+
+    def _is_pure_description(seg: dict) -> bool:
+        """判断该段是否为纯描写段（无对话标志，内容类型为 description_merge 或旁白）"""
+        reason = seg.get("split_reason", "")
+        text = seg.get("text_original", "") + seg.get("text_resolved", "")
+        has_dialogue = '"' in text or '"' in text or '"' in text or '「' in text
+        return reason == "description_merge" or (not has_dialogue and reason != "scene_switch")
+
+    def _can_merge(a: dict, b: dict) -> bool:
+        """判断相邻两段是否可以合并：
+        - 同一 scene_id（包括 scene_unknown 且 scene_name 相同）
+        - 合并后时长 <= 15s
+        - 条件 A：两段均为纯描写，人物集合相同或 b 没有新增主动角色
+        - 条件 B：两段均 <=10s 且人物集合完全相同且同一动作链（无场景切换）
+        """
+        # 场景必须相同
+        if a.get("scene_id") != b.get("scene_id"):
+            return False
+        if a.get("scene_id") == "scene_unknown" and a.get("scene_name") != b.get("scene_name"):
+            return False
+        # b 不能以 scene_switch 开头（说明有地点切换）
+        if b.get("split_reason") == "scene_switch":
+            return False
+        # 合并后时长检查
+        dur_a = a.get("duration_estimate", 10)
+        dur_b = b.get("duration_estimate", 10)
+        if dur_a + dur_b > 15:
+            return False
+        # 人物集合
+        chars_a = set(a.get("characters_present", []))
+        chars_b = set(b.get("characters_present", []))
+        # 条件 A：两段都是纯描写
+        if _is_pure_description(a) and _is_pure_description(b):
+            return True
+        # 条件 B：时长都短，人物完全一致，同一动作链
+        if dur_a <= 10 and dur_b <= 10 and chars_a == chars_b:
+            return True
+        return False
+
+    def _merge_two(a: dict, b: dict) -> dict:
+        """合并两段为一段"""
+        merged_text_orig = (a.get("text_original", "") + " " + b.get("text_original", "")).strip()
+        merged_text_res = (a.get("text_resolved", "") + " " + b.get("text_resolved", "")).strip()
+        merged_chars = list(dict.fromkeys(
+            a.get("characters_present", []) + b.get("characters_present", [])
+        ))
+        merged_dur = min(a.get("duration_estimate", 10) + b.get("duration_estimate", 10), 15)
+        reason = a.get("split_reason", "description_merge")
+        if reason != "description_merge":
+            reason = "description_merge"
+        return {
+            "id": a["id"],
+            "sequence_order": a.get("sequence_order", 1),
+            "text_original": merged_text_orig,
+            "text_resolved": merged_text_res,
+            "characters_present": merged_chars,
+            "scene_id": a.get("scene_id", ""),
+            "scene_name": a.get("scene_name", ""),
+            "duration_estimate": merged_dur,
+            "split_reason": reason,
+        }
+
+    # 迭代合并：每轮扫描一次，发生合并则重新扫描
+    changed = True
+    while changed:
+        changed = False
+        new_segs: list[dict] = []
+        i = 0
+        while i < len(segments):
+            if i + 1 < len(segments) and _can_merge(segments[i], segments[i + 1]):
+                merged = _merge_two(segments[i], segments[i + 1])
+                logger.info(
+                    "F06-A 后处理合并: %s + %s → %s (dur=%ds)",
+                    segments[i]["id"], segments[i + 1]["id"], merged["id"], merged["duration_estimate"]
+                )
+                new_segs.append(merged)
+                i += 2
+                changed = True
+            else:
+                new_segs.append(segments[i])
+                i += 1
+        segments = new_segs
+
+    # 重新编号
+    for idx, seg in enumerate(segments, 1):
+        seg["id"] = f"seg_{idx}"
+        seg["sequence_order"] = idx
+
+    result["segments"] = segments
+    result["total_segments"] = len(segments)
     return result
 
 
@@ -338,12 +452,13 @@ def generate_video_prompts(
     visual_tone: dict,
     characters: list[dict] | None = None,
     task_id: str | None = None,
+    max_workers: int = 5,
 ) -> dict[str, Any]:
-    """F06-B: 视频提示词生成（精简提示词）"""
+    """F06-B: 视频提示词生成（并发版本，max_workers 控制并发数）"""
     from src.config import DEFAULT_MODEL_ID
+    from concurrent.futures import ThreadPoolExecutor, as_completed
 
     task_id = task_id or str(uuid.uuid4())
-    client = LLMClient(model=DEFAULT_MODEL_ID)
 
     # 构建 char_id -> name 映射（用于 "角色名(char_id)" 格式）
     char_map: dict[str, str] = {}
@@ -370,52 +485,80 @@ def generate_video_prompts(
         f"氛围:{vt_atmosphere.get('overall_mood','')}"
     )
 
-    # 为每个 segment 生成视频提示词
-    video_prompts = []
     total = len(segments)
+    # 预加载 system prompt（只读一次磁盘，所有线程共享）
+    system_prompt_b = _load_system_prompt_b()
 
-    for i, seg in enumerate(segments):
+    def _process_one(args: tuple[int, dict]) -> tuple[int, dict]:
+        """处理单个 segment，返回 (原始索引, 结果)，失败时最多重试 2 次"""
+        i, seg = args
+        # 每个线程独立创建 LLMClient（requests.Session 非线程安全）
+        _client = LLMClient(model=DEFAULT_MODEL_ID)
         user_message = _build_f06b_prompt(seg, tone_summary, char_map=char_map)
-
-        messages = [
-            {"role": "system", "content": _load_system_prompt_b()},
-            {"role": "user", "content": user_message},
+        # 重试时在 system prompt 末尾加上强提示，并降低 temperature
+        retry_system = system_prompt_b + "\n\n⚠️ 注意：你必须只返回合法 JSON，不要输出任何 JSON 以外的文字、说明或代码块标记。"
+        attempts = [
+            (system_prompt_b, 0.7),   # 第 1 次：正常
+            (retry_system, 0.3),       # 第 2 次：强提示 + 低温
+            (retry_system, 0.0),       # 第 3 次：强提示 + 零温（最确定性）
         ]
-
+        last_exc: Exception = Exception("未知错误")
         logger.info("F06-B 处理 segment %d/%d: %s", i + 1, total, seg.get("id"))
+        for attempt_idx, (sys_prompt, temp) in enumerate(attempts):
+            try:
+                messages = [
+                    {"role": "system", "content": sys_prompt},
+                    {"role": "user", "content": user_message},
+                ]
+                if attempt_idx > 0:
+                    logger.warning("  -> segment %s 第 %d 次重试 (temperature=%.1f)",
+                                   seg.get("id"), attempt_idx, temp)
+                raw_response = _client.chat(
+                    messages=messages,
+                    temperature=temp,
+                    max_tokens=4096,
+                    timeout=300,
+                    enable_thinking=True,  # 开启思考模式，提高视频提示词生成质量
+                )
+                logger.debug("F06-B 原始响应长度: %d 字符", len(raw_response))
+                vp_result: dict[str, Any] = _safe_parse_json(raw_response)
+                if vp_result is None:
+                    logger.error("F06-B 原始响应(attempt %d): %s", attempt_idx + 1, raw_response[:500])
+                    raise ValueError("F06-B JSON 解析失败且无法修复")
+                vp_result = _clean_result(vp_result)
+                logger.info("  -> segment %s 解析成功(attempt %d), keys=%s",
+                            seg.get("id"), attempt_idx + 1, list(vp_result.keys()))
+                return i, vp_result
+            except Exception as e:
+                last_exc = e
+                logger.warning("  -> segment %s attempt %d 失败: %s", seg.get("id"), attempt_idx + 1, e)
 
-        try:
-            raw_response = client.chat(
-                messages=messages,
-                temperature=0.7,
-                max_tokens=4096,
-                timeout=300,  # F06-B 单个 segment 处理，5 分钟超时足够
-            )
-            logger.debug("F06-B 原始响应长度: %d 字符", len(raw_response))
-            vp_result: dict[str, Any] = _safe_parse_json(raw_response)
-            if vp_result is None:
-                logger.error("F06-B 原始响应: %s", raw_response)
-                raise ValueError("F06-B JSON 解析失败且无法修复")
-            vp_result = _clean_result(vp_result)
-            logger.info("  -> 解析成功, keys=%s", list(vp_result.keys()))
-            video_prompts.append(vp_result)
-        except Exception as e:
-            logger.error("  -> segment %s 处理失败: %s", seg.get("id"), e)
-            # 异常时也用格式化角色名
-            _err_chars = [f"{char_map.get(c, c)}({c})" for c in seg.get("characters_present", [])]
-            video_prompts.append({
-                "segment_id": seg.get("id"),
-                "duration_seconds": seg.get("duration_estimate", 10),
-                "entity_bindings": {
-                    "characters_present": _err_chars,
-                    "scene_binding": {
-                        "scene_id": seg.get("scene_id", ""),
-                        "scene_name": seg.get("scene_name", ""),
-                    },
-                    "time_of_day": "",
+        logger.error("  -> segment %s 全部重试失败: %s", seg.get("id"), last_exc)
+        _err_chars = [f"{char_map.get(c, c)}({c})" for c in seg.get("characters_present", [])]
+        return i, {
+            "segment_id": seg.get("id"),
+            "duration_seconds": seg.get("duration_estimate", 10),
+            "entity_bindings": {
+                "characters_present": _err_chars,
+                "scene_binding": {
+                    "scene_id": seg.get("scene_id", ""),
+                    "scene_name": seg.get("scene_name", ""),
                 },
-                "final_video_prompt": f"[处理失败] segment={seg.get('id')}, error={e}",
-            })
+                "time_of_day": "",
+            },
+            "final_video_prompt": f"[处理失败] segment={seg.get('id')}, error={last_exc}",
+        }
+
+    # 并发执行，按原始顺序收集结果
+    results: list[tuple[int, dict]] = []
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {executor.submit(_process_one, (i, seg)): i for i, seg in enumerate(segments)}
+        for future in as_completed(futures):
+            results.append(future.result())
+
+    # 按原始顺序排序
+    results.sort(key=lambda x: x[0])
+    video_prompts = [r for _, r in results]
 
     return {
         "task_id": task_id,
@@ -467,6 +610,17 @@ def run_f06_pipeline(
 
     if total_segments == 0:
         logger.warning("F06-A 返回 0 个 segment！原始结果已保存到 f06_stageA_raw.json，请检查 LLM 返回内容")
+
+    # 场景合理性校验：检测 scene_id 不在合法场景列表中的 segment
+    valid_scene_ids = {sc["id"] for sc in scenes if isinstance(sc, dict) and sc.get("id")}
+    for seg in segments:
+        sid = seg.get("scene_id", "")
+        if sid and sid not in valid_scene_ids and sid != "scene_unknown":
+            sname = seg.get("scene_name", "")
+            logger.warning(
+                "场景绑定异常: %s → scene_id='%s'(%s) 不在场景列表中，建议填 scene_unknown",
+                seg.get("id"), sid, sname,
+            )
 
     # 调试：保存 A 阶段原始结果
     _debug_path_a = PROJECT_ROOT / "tests" / "output" / "f06_stageA_raw.json"
@@ -567,7 +721,14 @@ if __name__ == "__main__":
         visual_tone = json.load(f)
 
     visual_style = visual_tone.get("visual_style", {})
-    print(f"视觉基调: {visual_style.get('style_name', '未知')}")
+    genre = visual_tone.get("genre", {})
+    tone_name = (
+        visual_style.get("style_name")
+        or visual_style.get("medium")
+        or genre.get("primary")
+        or "未知"
+    )
+    print(f"视觉基调: {tone_name}")
 
     # 运行流水线
     print("\n开始执行 F06 流水线...")
@@ -589,27 +750,21 @@ if __name__ == "__main__":
     stage_a = result.get("stage_a", {})
     if stage_a:
         print(f"\n阶段 A (分段与绑定):")
-        segments = stage_a.get("segments", [])
-        print(f"  分段数量: {len(segments)}")
-        if segments:
-            print("  前3个分段:")
-            for i, seg in enumerate(segments[:3], 1):
-                text = seg.get("text", "")[:50]
-                entities = seg.get("entities", [])
-                print(f"    [{i}] {text}... (实体: {len(entities)})")
+        print(f"  分段数量: {stage_a.get('total_segments', 0)}")
 
     # 显示阶段 B 结果
     stage_b = result.get("stage_b", {})
     if stage_b:
         print(f"\n阶段 B (视频提示词):")
-        shots = stage_b.get("shots", [])
-        print(f"  镜头数量: {len(shots)}")
-        if shots:
+        video_prompts = stage_b.get("video_prompts", [])
+        print(f"  镜头数量: {stage_b.get('total_video_prompts', len(video_prompts))}")
+        if video_prompts:
             print("  前3个镜头:")
-            for i, shot in enumerate(shots[:3], 1):
-                shot_type = shot.get("shot_type", "未知")
-                duration = shot.get("duration", 0)
-                print(f"    [{i}] {shot_type} - {duration}秒")
+            for i, vp in enumerate(video_prompts[:3], 1):
+                seg_id = vp.get("segment_id", "?")
+                duration = vp.get("duration_seconds", 0)
+                prompt_preview = vp.get("final_video_prompt", "")[:40]
+                print(f"    [{i}] {seg_id} - {duration}秒 | {prompt_preview}...")
 
     # 保存结果
     output_path = Path(args.output)

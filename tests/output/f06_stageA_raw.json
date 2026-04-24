@@ -1,356 +1,188 @@
 {
-  "total_segments": 11,
+  "total_segments": 13,
   "segments": [
     {
       "id": "seg_1",
       "sequence_order": 1,
-      "text_original": "六月底的南城，热浪翻涌。",
-      "text_resolved": "六月底的南城，热浪翻涌。",
-      "characters_present": [],
+      "text_original": "六月底的南城，热浪翻涌。 林守一站在南城第一武道高中的校门口，仰头看着那块深蓝色底、银灰色字的校牌。阳光把“南城第一武道高中”几个字照得发亮，在他的瞳孔里映出淡淡的光。 这是南城市最好的武道高中，也是全省排名前三的名校。 每年招生五百人，录取率不到百分之十。从这里毕业的学生，大半能进入省内一流的武道大学，尖子生更是被全国重点院校争抢。",
+      "text_resolved": "六月底的南城，热浪翻涌。 林守一站在南城第一武道高中·校门口，仰头看着那块深蓝色底、银灰色字的校牌。阳光把“南城第一武道高中”几个字照得发亮，在他的瞳孔里映出淡淡的光。 这是南城市最好的武道高中，也是全省排名前三的名校。 每年招生五百人，录取率不到百分之十。从这里毕业的学生，大半能进入省内一流的武道大学，尖子生更是被全国重点院校争抢。",
+      "characters_present": [
+        "char_1"
+      ],
       "scene_id": "scene_1",
       "scene_name": "南城第一武道高中·校门口",
-      "duration_estimate": 5,
-      "split_reason": "scene_switch"
+      "duration_estimate": 15,
+      "split_reason": "description_merge"
     },
     {
       "id": "seg_2",
       "sequence_order": 2,
-      "text_original": "林守一站在南城第一武道高中的校门口，仰头看着那块深蓝色底、银灰色字的校牌。阳光把“南城第一武道高中”几个字照得发亮，在他的瞳孔里映出淡淡的光。",
-      "text_resolved": "林守一站在南城第一武道高中的校门口，仰头看着那块深蓝色底、银灰色字的校牌。阳光把“南城第一武道高中”几个字照得发亮，在他的瞳孔里映出淡淡的光。",
+      "text_original": "而他，林守一，南城第七中学的普通学生，没有家族背景，没有名师指点，靠着中考武道实战全市前二十、文化课达标的成绩，拿到了这张入场券。 校门口人来人往，大部分是和他一样的新生，背着武道专用的装备包，三两成群地往里走。有几个一看就是世家出身，走路带风，身上的练功服是定制的，袖口绣着家族纹章。",
+      "text_resolved": "而他，林守一，南城第七中学的普通学生，没有家族背景，没有名师指点，靠着中考武道实战全市前二十、文化课达标的成绩，拿到了这张入场券。 校门口人来人往，大部分是和他一样的新生，背着武道专用的装备包，三两成群地往里走。有几个一看就是世家出身，走路带风，身上的练功服是定制的，袖口绣着家族纹章。",
+      "characters_present": [
+        "char_1"
+      ],
+      "scene_id": "scene_1",
+      "scene_name": "南城第一武道高中·校门口",
+      "duration_estimate": 15,
+      "split_reason": "description_merge"
+    },
+    {
+      "id": "seg_3",
+      "sequence_order": 3,
+      "text_original": "林守一拉了拉肩上的背包带，迈步往里走。 他今天穿得很简单——一件白色的短袖T恤，领口挺括，没有一丝褶皱；一条深灰色的休闲长裤，裤线笔直；脚上一双干净的白色运动鞋，鞋带系得整齐利落。衣服不是什么大牌子，但胜在干净、合身，整个人看起来清爽利索。",
+      "text_resolved": "林守一拉了拉肩上的背包带，迈步往里走。 他今天穿得很简单——一件白色的短袖T恤，领口挺括，没有一丝褶皱；一条深灰色的休闲长裤，裤线笔直；脚上一双干净的白色运动鞋，鞋带系得整齐利落。衣服不是什么大牌子，但胜在干净、合身，整个人看起来清爽利索。",
       "characters_present": [
         "char_1"
       ],
       "scene_id": "scene_1",
       "scene_name": "南城第一武道高中·校门口",
       "duration_estimate": 10,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_3",
-      "sequence_order": 3,
-      "text_original": "这是南城市最好的武道高中，也是全省排名前三的名校。",
-      "text_resolved": "这是南城市最好的武道高中，也是全省排名前三的名校。",
-      "characters_present": [
-        "char_1"
-      ],
-      "scene_id": "scene_1",
-      "scene_name": "南城第一武道高中·校门口",
-      "duration_estimate": 5,
       "split_reason": "action_boundary"
     },
     {
       "id": "seg_4",
       "sequence_order": 4,
-      "text_original": "每年招生五百人，录取率不到百分之十。从这里毕业的学生，大半能进入省内一流的武道大学，尖子生更是被全国重点院校争抢。",
-      "text_resolved": "每年招生五百人，录取率不到百分之十。从这里毕业的学生，大半能进入省内一流的武道大学，尖子生更是被全国重点院校争抢。",
+      "text_original": "他的五官轮廓清晰，眉骨高而舒展，鼻梁挺直，下颌线条利落。皮肤是那种常年户外训练晒出来的均匀小麦色，衬着一双很安静的眼睛，像山间不起波澜的湖水。 不是什么惊艳到让人移不开眼的长相，但干净、清秀，属于走在人群里会被多看两眼的那种。尤其笑起来的时候，眉眼弯成一个舒服的弧度，整个人都会跟着柔和下来。",
+      "text_resolved": "他的五官轮廓清晰，眉骨高而舒展，鼻梁挺直，下颌线条利落。皮肤是那种常年户外训练晒出来的均匀小麦色，衬着一双很安静的眼睛，像山间不起波澜的湖水。 不是什么惊艳到让人移不开眼的长相，但干净、清秀，属于走在人群里会被多看两眼的那种。尤其笑起来的时候，眉眼弯成一个舒服的弧度，整个人都会跟着柔和下来。",
       "characters_present": [
         "char_1"
       ],
       "scene_id": "scene_1",
       "scene_name": "南城第一武道高中·校门口",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
+      "duration_estimate": 10,
+      "split_reason": "description_merge"
     },
     {
       "id": "seg_5",
       "sequence_order": 5,
-      "text_original": "而他，林守一，南城第七中学的普通学生，没有家族背景，没有名师指点，靠着中考武道实战全市前二十、文化课达标的成绩，拿到了这张入场券。",
-      "text_resolved": "而他，林守一，南城第七中学的普通学生，没有家族背景，没有名师指点，靠着中考武道实战全市前二十、文化课达标的成绩，拿到了这张入场券。",
+      "text_original": "“还行吧。”他自言自语，嘴角微微弯了一下，跟着人流往里走。 背包里装的是母亲昨晚帮他整理好的东西：一个崭新的笔记本、两支笔、一瓶水、还有一张手写的小纸条。他还没看，但大概能猜到内容。",
+      "text_resolved": "“还行吧。”林守一自言自语，嘴角微微弯了一下，跟着人流往里走。 背包里装的是林知夏昨晚帮他整理好的东西：一个崭新的笔记本、两支笔、一瓶水、还有一张手写的小纸条。他还没看，但大概能猜到内容。",
       "characters_present": [
-        "char_1"
+        "char_1",
+        "char_2"
       ],
       "scene_id": "scene_1",
       "scene_name": "南城第一武道高中·校门口",
-      "duration_estimate": 5,
+      "duration_estimate": 10,
       "split_reason": "action_boundary"
     },
     {
       "id": "seg_6",
       "sequence_order": 6,
-      "text_original": "校门口人来人往，大部分是和他一样的新生，背着武道专用的装备包，三两成群地往里走。有几个一看就是世家出身，走路带风，身上的练功服是定制的，袖口绣着家族纹章。",
-      "text_resolved": "校门口人来人往，大部分是和林守一一样的新生，背着武道专用的装备包，三两成群地往里走。有几个一看就是世家出身，走路带风，身上的练功服是定制的，袖口绣着家族纹章。",
+      "text_original": "二十天前。 中考出分的那个下午，林守一查到了自己的武道特招录取结果。 “南城第一武道高中，录取。”屏幕上只有简简单单几个字，他却盯着看了足足一分钟。",
+      "text_resolved": "二十天前。 中考出分的那个下午，林守一查到了自己的武道特招录取结果。 “南城第一武道高中，录取。”屏幕上只有简简单单几个字，他却盯着看了足足一分钟。",
       "characters_present": [
         "char_1"
       ],
-      "scene_id": "scene_1",
-      "scene_name": "南城第一武道高中·校门口",
+      "scene_id": "scene_unknown",
+      "scene_name": "南城第七中学",
       "duration_estimate": 10,
-      "split_reason": "action_boundary"
+      "split_reason": "scene_switch"
     },
     {
       "id": "seg_7",
       "sequence_order": 7,
-      "text_original": "林守一拉了拉肩上的背包带，迈步往里走。",
-      "text_resolved": "林守一拉了拉肩上的背包带，迈步往里走。",
+      "text_original": "他走出房间，把手机递给正在厨房洗碗的母亲。 林知夏——他的母亲，南城三小的一名普通语文老师——擦了擦手，接过手机，看了一眼，愣住。 “录取了？” “嗯。” “南城第一武道高中？” “嗯。” 林知夏盯着屏幕又看了几秒，眼眶忽然就红了。她转过身，假装去拿抹布擦灶台，声音有点发紧：“我去给你爸打个电话。”",
+      "text_resolved": "他走出房间，把手机递给正在厨房洗碗的林知夏。 林知夏——南城三小的一名普通语文老师——擦了擦手，接过手机，看了一眼，愣住。 “录取了？” “嗯。” “南城第一武道高中？” “嗯。” 林知夏盯着屏幕又看了几秒，眼眶忽然就红了。她转过身，假装去拿抹布擦灶台，声音有点发紧：“我去给林建国打个电话。”",
       "characters_present": [
-        "char_1"
+        "char_1",
+        "char_2",
+        "char_3"
       ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
+      "scene_id": "scene_9",
+      "scene_name": "林家·厨房",
+      "duration_estimate": 10,
       "split_reason": "scene_switch"
     },
     {
       "id": "seg_8",
       "sequence_order": 8,
-      "text_original": "他今天穿得很简单——一件白色的短袖T恤，领口挺括，没有一丝褶皱；一条深灰色的休闲长裤，裤线笔直；脚上一双干净的白色运动鞋，鞋带系得整齐利落。衣服不是什么大牌子，但胜在干净、合身，整个人看起来清爽利索。",
-      "text_resolved": "林守一今天穿得很简单——一件白色的短袖T恤，领口挺括，没有一丝褶皱；一条深灰色的休闲长裤，裤线笔直；脚上一双干净的白色运动鞋，鞋带系得整齐利落。衣服不是什么大牌子，但胜在干净、合身，整个人看起来清爽利索。",
+      "text_original": "林守一站在厨房门口，看着母亲微微颤抖的肩膀，张了张嘴想说点什么，最后只是轻轻“嗯”了一声。 他爸林建国接到电话的时候正在公司加班——说是加班，其实就是帮同事顶个夜班，多赚一百块补贴。电话那头沉默了几秒，然后传来一个不太自然的声音：“行，我知道了。周末带他吃顿好的。”",
+      "text_resolved": "林守一站在厨房门口，看着林知夏微微颤抖的肩膀，张了张嘴想说点什么，最后只是轻轻“嗯”了一声。 林建国接到电话的时候正在公司加班——说是加班，其实就是帮同事顶个夜班，多赚一百块补贴。电话那头沉默了几秒，然后传来一个不太自然的声音：“行，我知道了。周末带他吃顿好的。”",
       "characters_present": [
-        "char_1"
+        "char_1",
+        "char_2",
+        "char_3"
       ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
+      "scene_id": "scene_9",
+      "scene_name": "林家·厨房",
       "duration_estimate": 10,
-      "split_reason": "action_boundary"
+      "split_reason": "scene_switch"
     },
     {
       "id": "seg_9",
       "sequence_order": 9,
-      "text_original": "他的五官轮廓清晰，眉骨高而舒展，鼻梁挺直，下颌线条利落。皮肤是那种常年户外训练晒出来的均匀小麦色，衬着一双很安静的眼睛，像山间不起波澜的湖水。",
-      "text_resolved": "林守一的五官轮廓清晰，眉骨高而舒展，鼻梁挺直，下颌线条利落。皮肤是那种常年户外训练晒出来的均匀小麦色，衬着一双很安静的眼睛，像山间不起波澜的湖水。",
+      "text_original": "挂掉电话后，林建国给他转了五百块钱，备注写的是：买双新鞋。 林守一看着那条转账信息，没忍住笑了。 他爸的转账备注永远写得像公文，上次转两百块备注“本月零用”，上上次转一百五备注“理发及日用品”，像是生怕哪天花呗对不上账。 他收了那五百块，回了一句：买了，已经穿上了。 三秒后，妈妈回复：好，早点睡。",
+      "text_resolved": "挂掉电话后，林建国给他转了五百块钱，备注写的是：买双新鞋。 林守一看着那条转账信息，没忍住笑了。 林建国的转账备注永远写得像公文，上次转两百块备注“本月零用”，上上次转一百五备注“理发及日用品”，像是生怕哪天花呗对不上账。 他收了那五百块，回了一句：买了，已经穿上了。 三秒后，林知夏回复：好，早点睡。",
       "characters_present": [
-        "char_1"
+        "char_1",
+        "char_2",
+        "char_3"
       ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
+      "scene_id": "scene_10",
+      "scene_name": "林家·客厅",
+      "duration_estimate": 15,
+      "split_reason": "scene_switch"
     },
     {
       "id": "seg_10",
       "sequence_order": 10,
-      "text_original": "“还行吧。”他自言自语，嘴角微微弯了一下，跟着人流往里走。",
-      "text_resolved": "“还行吧。”林守一自言自语，嘴角微微弯了一下，跟着人流往里走。",
+      "text_original": "又过了十秒，第二条消息：你爸说穿着舒服吗？不舒服再买一双。 林守一看着屏幕，笑了。 走出宿舍楼的时候，他回头看了一眼。 三号楼，402。 这是他未来三年的起点。 走廊尽头的窗户透进来最后一缕光，落在灰白色的地板上，像是一条浅浅的路，伸向不知道哪里的远方。 林守一转过身，加快了脚步。",
+      "text_resolved": "又过了十秒，第二条消息：林建国说穿着舒服吗？不舒服再买一双。 林守一看着屏幕，笑了。 走出宿舍楼的时候，他回头看了一眼。 三号楼，402。 这是他未来三年的起点。 校园走廊尽头的窗户透进来最后一缕光，落在灰白色的地板上，像是一条浅浅的路，伸向不知道哪里的远方。 林守一转过身，加快了脚步。",
       "characters_present": [
         "char_1"
       ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
+      "scene_id": "scene_11",
+      "scene_name": "南城第一武道高中·走廊",
+      "duration_estimate": 15,
+      "split_reason": "scene_switch"
     },
     {
       "id": "seg_11",
       "sequence_order": 11,
-      "text_original": "背包里装的是母亲昨晚帮他整理好的东西：一个崭新的笔记本、两支笔、一瓶水、还有一张手写的小纸条。他还没看，但大概能猜到内容。",
-      "text_resolved": "背包里装的是母亲昨晚帮他整理好的东西：一个崭新的笔记本、两支笔、一瓶水、还有一张手写的小纸条。林守一还没看，但大概能猜到内容。",
+      "text_original": "走进校门，是一条笔直的主干道，两侧种满了梧桐树，树荫把阳光切成碎金，洒在路面上。主干道尽头是一栋灰白色的教学楼，造型方正，看起来有年头了，但维护得极好，透着一种老牌名校的沉稳气质。",
+      "text_resolved": "走进校门，是一条笔直的主干道，两侧种满了梧桐树，树荫把阳光切成碎金，洒在路面上。主干道尽头是一栋灰白色的教学楼，造型方正，看起来有年头了，但维护得极好，透着一种老牌名校的沉稳气质。",
       "characters_present": [
         "char_1"
       ],
       "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
+      "scene_name": "南城第一武道高中·主干道",
       "duration_estimate": 10,
-      "split_reason": "action_boundary"
+      "split_reason": "scene_switch"
     },
     {
       "id": "seg_12",
       "sequence_order": 12,
-      "text_original": "二十天前。 中考出分的那个下午，林守一查到了自己的武道特招录取结果。 “南城第一武道高中，录取。”屏幕上只有简简单单几个字，他却盯着看了足足一分钟。",
-      "text_resolved": "二十天前。 中考出分的那个下午，林守一查到了自己的武道特招录取结果。 “南城第一武道高中，录取。”屏幕上只有简简单单几个字，林守一却盯着看了足足一分钟。",
+      "text_original": "林守一一边走一边看，心里默默和初中的校区做对比——初中那个校区只有这儿的四分之一大，操场是煤渣跑道，下雨天全是泥。 他正看得出神，旁边忽然有人拍了他一下。 “嘿！你也考上了？” 林守一侧头，看见一张圆乎乎的脸，笑得眼睛都快看不见了。是他初中的同学，陈圆。",
+      "text_resolved": "林守一一边走一边看，心里默默和初中的校区做对比——初中那个校区只有这儿的四分之一大，操场是煤渣跑道，下雨天全是泥。 他正看得出神，旁边忽然有人拍了他一下。 “嘿！你也考上了？” 林守一侧头，看见一张圆乎乎的脸，笑得眼睛都快看不见了。是陈圆。",
       "characters_present": [
-        "char_1"
+        "char_1",
+        "char_4"
       ],
       "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
+      "scene_name": "南城第一武道高中·主干道",
       "duration_estimate": 10,
       "split_reason": "action_boundary"
     },
     {
       "id": "seg_13",
       "sequence_order": 13,
-      "text_original": "然后他走出房间，把手机递给正在厨房洗碗的母亲。 林知夏——他的母亲，南城三小的一名普通语文老师——擦了擦手，接过手机，看了一眼，愣住。 “录取了？” “嗯。” “南城第一武道高中？” “嗯。”",
-      "text_resolved": "然后他走出房间，把手机递给正在厨房洗碗的母亲。 林知夏——林守一的母亲，南城三小的一名普通语文老师——擦了擦手，接过手机，看了一眼，愣住。 “录取了？” “嗯。” “南城第一武道高中？” “嗯。”",
+      "text_original": "“你不是说要考城南二中吗？”林守一问。 “二中没录上啊，差了两分。”陈圆一点也不难过，笑呵呵地说，“我妈说一高也挺好的，食堂好吃啊。” “……你就惦记食堂。” “人是铁饭是钢嘛！”陈圆理直气壮，凑过来压低声音，“哎，你听说了吗？今年这届新生里有个特别厉害的，好像从六岁就开始练了，已经能打通三段灵脉了。” 林守一没说话，盯着那个男生的动作看了几秒。 拳路刚猛，气息浑厚，核心发力点在下盘和腰腹之间……他在心里默默拆解着那一招的发力结构，就像拆一道数学题。",
+      "text_resolved": "“你不是说要考城南二中吗？”林守一问。 “二中没录上啊，差了两分。”陈圆一点也不难过，笑呵呵地说，“我妈说一高也挺好的，食堂好吃啊。” “……你就惦记食堂。” “人是铁饭是钢嘛！”陈圆理直气壮，凑过来压低声音，“哎，你听说了吗？今年这届新生里有个特别厉害的，好像从六岁就开始练了，已经能打通三段灵脉了。” 林守一没说话，盯着那个男生的动作看了几秒。 拳路刚猛，气息浑厚，核心发力点在下盘和腰腹之间……他在心里默默拆解着那一招的发力结构，就像拆一道数学题。",
       "characters_present": [
         "char_1",
-        "char_2"
+        "char_4"
       ],
       "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 10,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_14",
-      "sequence_order": 14,
-      "text_original": "林知夏盯着屏幕又看了几秒，眼眶忽然就红了。她转过身，假装去拿抹布擦灶台，声音有点发紧：“我去给你爸打个电话。”",
-      "text_resolved": "林知夏盯着屏幕又看了几秒，眼眶忽然就红了。她转过身，假装去拿抹布擦灶台，声音有点发紧：“我去给你爸打个电话。”",
-      "characters_present": [
-        "char_1",
-        "char_2"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_15",
-      "sequence_order": 15,
-      "text_original": "林守一站在厨房门口，看着母亲微微颤抖的肩膀，张了张嘴想说点什么，最后只是轻轻“嗯”了一声。",
-      "text_resolved": "林守一站在厨房门口，看着母亲微微颤抖的肩膀，张了张嘴想说点什么，最后只是轻轻“嗯”了一声。",
-      "characters_present": [
-        "char_1",
-        "char_2"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_16",
-      "sequence_order": 16,
-      "text_original": "他爸林建国接到电话的时候正在公司加班——说是加班，其实就是帮同事顶个夜班，多赚一百块补贴。电话那头沉默了几秒，然后传来一个不太自然的声音：“行，我知道了。周末带他吃顿好的。”",
-      "text_resolved": "林建国接到电话的时候正在公司加班——说是加班，其实就是帮同事顶个夜班，多赚一百块补贴。电话那头沉默了几秒，然后传来一个不太自然的声音：“行，我知道了。周末带他吃顿好的。”",
-      "characters_present": [
-        "char_1",
-        "char_3"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 10,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_17",
-      "sequence_order": 17,
-      "text_original": "挂掉电话后，林建国给他转了五百块钱，备注写的是：买双新鞋。",
-      "text_resolved": "挂掉电话后，林建国给他转了五百块钱，备注写的是：买双新鞋。",
-      "characters_present": [
-        "char_1",
-        "char_3"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_18",
-      "sequence_order": 18,
-      "text_original": "林守一看着那条转账信息，没忍住笑了。",
-      "text_resolved": "林守一看着那条转账信息，没忍住笑了。",
-      "characters_present": [
-        "char_1"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_19",
-      "sequence_order": 19,
-      "text_original": "他爸的转账备注永远写得像公文，上次转两百块备注“本月零用”，上上次转一百五备注“理发及日用品”，像是生怕哪天花呗对不上账。",
-      "text_resolved": "林建国的转账备注永远写得像公文，上次转两百块备注“本月零用”，上上次转一百五备注“理发及日用品”，像是生怕哪天花呗对不上账。",
-      "characters_present": [
-        "char_1",
-        "char_3"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 10,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_20",
-      "sequence_order": 20,
-      "text_original": "他收了那五百块，回了一句：买了，已经穿上了。",
-      "text_resolved": "林守一收了那五百块，回了一句：买了，已经穿上了。",
-      "characters_present": [
-        "char_1"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_21",
-      "sequence_order": 21,
-      "text_original": "三秒后，妈妈回复：好，早点睡。",
-      "text_resolved": "三秒后，林知夏回复：好，早点睡。",
-      "characters_present": [
-        "char_1",
-        "char_2"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_22",
-      "sequence_order": 22,
-      "text_original": "又过了十秒，第二条消息：你爸说穿着舒服吗？不舒服再买一双。",
-      "text_resolved": "又过了十秒，第二条消息：林建国说穿着舒服吗？不舒服再买一双。",
-      "characters_present": [
-        "char_1",
-        "char_3"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 10,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_23",
-      "sequence_order": 23,
-      "text_original": "林守一看着屏幕，笑了。",
-      "text_resolved": "林守一看着屏幕，笑了。",
-      "characters_present": [
-        "char_1"
-      ],
-      "scene_id": "scene_2",
-      "scene_name": "南城第一武道高中·教学楼",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_24",
-      "sequence_order": 24,
-      "text_original": "窗外的夕阳把宿舍染成橘红色，楼下有人在喊“食堂开饭了”，赵铁生第一个跳起来往外冲，许明朗慢悠悠地合上书跟上，沈清辞依旧在上铺岿然不动。",
-      "text_resolved": "窗外的夕阳把宿舍染成橘红色，楼下有人在喊“食堂开饭了”，赵铁生第一个跳起来往外冲，许明朗慢悠悠地合上书跟上，沈清辞依旧在上铺岿然不动。",
-      "characters_present": [
-        "char_1",
-        "char_4",
-        "char_5"
-      ],
-      "scene_id": "scene_3",
-      "scene_name": "南城第一武道高中·宿舍区",
-      "duration_estimate": 10,
-      "split_reason": "scene_switch"
-    },
-    {
-      "id": "seg_25",
-      "sequence_order": 25,
-      "text_original": "林守一翻身下床，拍了拍裤子上并不存在的灰，朝门口走去。",
-      "text_resolved": "林守一翻身下床，拍了拍裤子上并不存在的灰，朝门口走去。",
-      "characters_present": [
-        "char_1"
-      ],
-      "scene_id": "scene_3",
-      "scene_name": "南城第一武道高中·宿舍区",
-      "duration_estimate": 5,
-      "split_reason": "action_boundary"
-    },
-    {
-      "id": "seg_26",
-      "sequence_order": 26,
-      "text_original": "走出宿舍楼的时候，他回头看了一眼。 三号楼，402。 这是他未来三年的起点。",
-      "text_resolved": "走出宿舍楼的时候，林守一看了一眼。 三号楼，402。 这是他未来三年的起点。",
-      "characters_present": [
-        "char_1"
-      ],
-      "scene_id": "scene_3",
-      "scene_name": "南城第一武道高中·宿舍区",
-      "duration_estimate": 10,
-      "split_reason": "action_boundary"
+      "scene_name": "南城第一武道高中·主干道",
+      "duration_estimate": 15,
+      "split_reason": "description_merge"
     }
   ],
   "resolution_stats": {
-    "pronouns_found": 6,
-    "pronouns_resolved": 6
+    "pronouns_found": 18,
+    "pronouns_resolved": 18
   },
-  "task_id": "1fd565fc-464d-4cd1-83e2-a7c34f695d06"
+  "task_id": "ccc30b71-bedd-4afa-b034-3084a96e8e3a"
 }

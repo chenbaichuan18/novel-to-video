@@ -51,6 +51,7 @@ def extract_characters(text: str, task_id: str = None) -> dict:
         messages=messages,
         temperature=0.7,
         max_tokens=8192,  # 增加以支持完整剧本的人物提取
+        enable_thinking=True,  # 开启思考模式，提高人物提取准确性
     )
 
     # 解析 LLM 返回的 JSON
@@ -127,8 +128,8 @@ if __name__ == "__main__":
     print(f"任务 ID: {result.get('task_id', 'N/A')}")
 
     characters_data = result.get("characters", {})
-    total = characters_data.get("total", 0)
     char_list = characters_data.get("list", [])
+    total = len(char_list)
     print(f"提取人物数: {total} 人")
 
     if char_list:

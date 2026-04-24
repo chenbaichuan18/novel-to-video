@@ -1,6 +1,6 @@
 # F06 视频提示词撰写
 
-> 版本：v1.7（A/B 均改为模板加载）
+> 版本：v1.9（分段规则：合并描写段、最短时长5s）
 > 两阶段：A（文本分段与实体绑定）+ B（视频提示词生成）
 
 ---
@@ -28,13 +28,34 @@
   "visual_tone": { ... }
 }
 
-## 分段策略（三级优先级）
+## 分段策略（四级优先级）
 
 | 优先级 | 类型 | 规则 |
 |--------|------|------|
-| 第1优先级 | 场景切换（硬边界） | 地点变化必须拆分，保证 1 个 scene/segment |
-| 第2优先级 | 动作单元（软边界） | 按「谁+做了什么完整的一件事」划分 |
-| 第3优先级 | 时长控制（保护性） | >80字或>15s时按子动作切分 |
+| 第1优先级 | 场景切换（硬边界） | **仅当物理地点发生真实切换时**才拆分（如从校门→宿舍、从室内→操场）；同一地点内的段落切换、时间跳跃、视角转换**不算场景切换**，禁止滥用此规则 |
+| 第2优先级 | 描写段合并（软合并） | 连续的外貌描写、环境描写、心理描写、旁白叙述，**必须全部合并为同一个 segment**；只有合并后字数 >80 才允许切分 |
+| 第3优先级 | 动作单元（软边界） | 按「谁+做了什么完整的一件事」划分；单一动作句不单独成段，需与上下文合并 |
+| 第4优先级 | 时长控制（保护性） | >80字或>15s时才切分；每段时长不低于5秒（短于5秒必须与相邻段合并）|
+
+> ⚠️ **严格禁止**：不得将同一场景内的叙述/描写/对话切换标注为 `scene_switch`。误用 `scene_switch` 是最常见的过度分段错误。
+
+## 场景绑定规则
+
+- `scene_id` 必须从输入的场景列表中选取；
+- 场景匹配时，应进行**模糊匹配**：如果文本中的地点名称与场景列表中的名称**指向同一物理空间**，必须使用对应的 `scene_id`，即使名称不完全一致
+  - 判断依据：比较**空间限定符 + 核心空间标识**的组合，忽略同一限定符的不同表述方式
+  - 同一限定符的不同表述示例：
+    - "林守一家"、"林家"、"家里"（当上下文指向林守一时）→ 同一限定符
+    - "南城第一武道高中"、"学校"、"高中"、"校"（当上下文指向南城第一武道高中时）→ 同一限定符
+  - 不同限定符示例：
+    - "林守一家·厨房" 和 "王二狗家·厨房" → 不同限定符（不同家庭）→ **不是同一空间**
+    - "南城第一武道高中·校门口" 和 "北城第二武道高中·校门口" → 不同限定符（不同学校）→ **不是同一空间**
+  - 匹配示例：
+    - 示例1："林守一家·厨房" 和 "林家·厨房" → 同一限定符（林家）+ 同一核心（厨房） → 绑定到同一 `scene_id`
+    - 示例2："校门口" 和 "南城第一武道高中·校门口" → 同一限定符（南城第一武道高中）+ 同一核心（校门口） → 绑定到同一 `scene_id`
+    - 示例3："家里客厅" 和 "林家·客厅" → 同一限定符（林家）+ 同一核心（客厅） → 绑定到同一 `scene_id`
+- 只有当文本中的地点**确实不在场景列表中**（无法通过模糊匹配找到对应场景）时，才使用 `scene_unknown`
+- **禁止将发生在 A 地点的内容强行绑定到 B 场景**，即使 B 场景是最近出现的场景
 
 ## 代词消解规则
 
@@ -47,90 +68,40 @@
 
 ## 输出格式 (F06-A)
 
+返回以下精简 JSON（只输出 JSON，不要其他文字）：
+
+```json
 {
-  "task_id": "UUID",
   "total_segments": int,
-  "segmentation_strategy": {
-    "method": "four_dimension: scene × characters × action_unit → duration_control",
-    "criteria_applied": ["scene_switch (hard_boundary)", "action_unit_completion (soft_boundary)", "length_protection_split (>80chars)"],
-    "avg_segment_length": float,
-    "notes": "分段策略备注"
-  },
   "segments": [
     {
       "id": "seg_1",
       "sequence_order": 1,
       "text_original": "原始文本片段",
       "text_resolved": "代词替换后的规范化文本",
-      "entity_bindings": {
-        "characters_present": [
-          {
-            "character_id": "char_1",
-            "character_name": "规范名",
-            "appearances": [
-              {"original_text": "他","resolved_text":"陈治和","position_in_segment":{"start_offset":0,"end_offset":1,"sentence_index":0},"confidence":0.97}
-            ],
-            "role_in_segment": "protagonist / supporting / mentioned_only / observer",
-            "is_speaker": boolean,
-            "action_summary": "本片段中该角色的完整动作链描述"
-          }
-        ],
-        "scene_binding": {
-          "scene_id": "scene_1",
-          "scene_name": "场景名",
-          "confidence": float,
-          "evidence": ["判定依据关键词"],
-          "time_of_day_match": {"detected_period":"morning","matches_scene_setting":boolean}
-        }
-      },
-      "temporal_info": {
-        "relative_time": "相对时间描述",
-        "absolute_time_hint": "具体时刻提示",
-        "duration_estimate": "short (5-10s) / medium (10-15s) / long (15s)",
-        "time_transition_from_previous": {"has_time_jump":boolean,"jump_description":"描述"}
-      },
-      "narrative_analysis": {
-        "type": "dialogue / action / description / introspection / transition / montage",
-        "emotional_tone": "neutral / tense / warm / melancholic / joyful / dramatic",
-        "pacing": "slow / normal / fast",
-        "visual_priority": "character_focus / environment_focus / action_focus / atmosphere",
-        "key_visual_elements": ["元素1", "元素2"]
-      },
-      "segment_metadata": {
-        "char_count": int,
-        "sentence_count": int,
-        "split_reason": "scene_switch / action_boundary / length_split / paragraph_end",
-        "action_unit_type": "single_action / compound_action / dialogue / reaction_chain / transition / environmental",
-        "sub_action_count": int,
-        "estimated_duration_seconds": "int 或 range",
-        "complexity_score": float,
-        "generation_difficulty": "easy / medium / hard"
-      }
+      "characters_present": ["char_1"],
+      "scene_id": "scene_1",
+      "scene_name": "场景名",
+      "duration_estimate": 10,
+      "split_reason": "scene_switch / action_boundary / description_merge / length_split"
     }
   ],
-  "resolution_statistics": {
-    "total_pronouns_found": int,
-    "total_pronouns_resolved": int,
-    "unresolved_pronouns": [{"text":"原词","position":"seg_X, offset Y","reason":"ambiguous/no_context"}],
-    "alias_substitutions_count": int,
-    "most_common_substitutions": [{"from":"原名","to":"规范名","count":int}]
-  },
-  "metadata": {
-    "generated_at": "ISO8601",
-    "input_sources": {"character_metadata_version":"string","scene_metadata_version":"string","visual_tone_version":"string"},
-    "confidence_score": float
+  "resolution_stats": {
+    "pronouns_found": int,
+    "pronouns_resolved": int
   }
 }
+```
 
 ## 关键约束
 
-- 直接点名置信度 = 1.0，高置信度消解(0.90+) 占 85% 以上
 - sequence_order 必须连续无跳号
 - 每个 segment 必须对应一个可独立生成的视频画面
 - 场景切换是第一优先级硬边界，漏检会导致后续提示词错乱
-- text_original 与 text_resolved 唯一差异是代词/别名替换
+- text_original 与 text_resolved 唯一差异是代词/别名替换，不增减内容
 - 所有原文内容必须分配到某个 segment，不得遗漏
-- 无法确定的歧义代词标记为 unresolved，禁止猜测性消解
+- characters_present 填角色 ID 列表，duration_estimate 单位秒（5-15）
+- **场景绑定必须进行模糊匹配**：判断两个地点是否指向同一物理空间，需比较**空间限定符 + 核心空间标识**的组合（同一限定符的不同表述视为相同，不同限定符视为不同空间），如果是同一空间则必须使用对应的 `scene_id`，不得滥用 `scene_unknown`
 
 ---
 
@@ -148,9 +119,90 @@
 {{SCENE_LIST}}
 
 ## 分段规则
-1. **场景切换必须拆分**（硬边界）——每个 segment 只绑定 1 个场景
-2. **按动作单元拆分**（软边界）——「谁+做了什么完整的一件事」为一段
-3. **超长时保护性拆分** —— >80 字或预估>15 秒时切分
+1. **场景切换必须拆分**（硬边界）——`scene_switch` 仅用于**物理地点真实切换**（校门→礼堂、礼堂→宿舍楼等），同一地点内的时间跳跃/段落切换/视角转换**不得**标注为 `scene_switch`
+2. **描写段必须合并**——同一地点内连续的外貌描写、环境描写、心理描写、旁白叙述**必须全部合并为同一个 segment**；若合并后 ≤80 字，则**必须是 1 段**；合并后 >80 字且 >15 秒，才允许切为 2 段（以动作边界为切分点），但无论如何不得超过 2 段。**不得因句子边界、段落边界、换行拆开**。
+3. **按动作单元拆分**（软边界）——「谁+做了什么完整的一件事」为一段；单一动作短句不单独成段，向前合并；连续的对话+即时反应（如 A 追问→B 微笑回避）属同一动作单元，不拆分
+4. **最短时长下限 5 秒**——预估时长 < 5 秒的段必须与相邻段合并，不得单独成段
+5. **超长时保护性拆分** —— 合并后 >80 字**且** >15 秒时才切分，每段上限 15 秒
+6. **场景绑定**——`scene_id` 必须与实际发生地点一致；必须进行**模糊匹配**：判断两个地点是否指向同一物理空间，需比较核心空间标识（忽略前缀、后缀、称呼差异），如果是同一空间则必须使用对应的 `scene_id`，不能使用 `scene_unknown`；只有当该地点**确实不在场景列表中**且无法模糊匹配时，才填 `"scene_unknown"`，`scene_name` 填真实地点；**禁止将 A 地点内容绑定到 B 场景**
+7. **跨物理空间叙述**——若同一自然段同时描写了 A 地点和 B 地点（如"林守一在厨房…与此同时，林建国在办公室…"），**必须按地点拆成独立 segment**，各自绑定正确的 scene_id；不可将两个物理空间的内容合并进一个 segment
+
+### 分段示例（正确 vs 错误）
+
+**示例 1：连续环境描写 + 外貌描写（同一地点校门口，总字数 >80 字）**
+
+❌ **错误做法**（拆为 2 段，但内容连贯不应拆）：
+```
+seg_1: "六月底的南城，热浪翻涌。……这是南城市最好的武道高中……拿到了这张入场券。" (15s)
+seg_2: "他今天穿得很简单……他的五官轮廓清晰……嘴角微微弯了一下，跟着人流往里走。" (15s)
+```
+→ 问题：两段都只有环境/外貌/心理描写，**没有明确的动作边界**，seg_1 结尾和 seg_2 开头是同一场景同一人的连贯旁白，不应拆开
+
+✅ **正确做法**（若原文超过 80 字，以唯一的动作边界拆分，最多 2 段）：
+```
+seg_1: "六月底的南城，热浪翻涌。……这是南城市最好的武道高中……拿到了这张入场券。" (15s, description_merge)
+       → 环境描写 + 背景介绍，以「入场券」为段落完结点
+seg_2: "林守一拉了拉肩上的背包带，迈步往里走。他今天穿得很简单……不是什么惊艳的长相……
+        嘴角微微弯了一下，跟着人流往里走。" (15s, description_merge)
+       → 外貌描写 + 入场动作，以实际行动为段落完结点
+```
+> ⚠️ **关键原则**：如果两个候选段都是纯描写（无对话、无完整动作），必须合并为 1 段，除非合并后远超 15 秒
+
+---
+
+**示例 2：连续对话 + 即时反应（不拆分）**
+
+❌ **错误做法**（把追问和回避拆成 2 段）：
+```
+seg_9: 陈圆询问林守一走神的事，陈圆低声讲述消息 (15s)
+seg_10: 陈圆追问"你该不会是在偷学吧"→林守一笑了笑，没承认也没否认 (10s)
+```
+→ 问题：seg_9 和 seg_10 是同一场景、同一对话的上下文，陈圆的追问和林守一的回避是一个完整的互动单元
+
+✅ **正确做法**（合并为 1 段）：
+```
+seg_9: "你不是说要考城南二中吗？……陈圆追问→林守一笑了笑，没承认也没否认。" (15s, description_merge)
+```
+
+---
+
+**示例 3：跨物理空间叙述（必须拆开）**
+
+❌ **错误做法**（两个地点内容塞进同一 segment）：
+```
+seg_X: scene_id="scene_unknown", scene_name="林守一家·厨房"
+       // 内容同时包含：林守一在厨房看妈妈哭 + 林建国在公司打电话
+```
+
+✅ **正确做法**（按物理空间各自独立成段）：
+```
+seg_X: scene_id="scene_unknown", scene_name="林守一家·厨房"
+       // 内容：林守一站在厨房门口，看着母亲微微颤抖的肩膀……
+seg_Y: scene_id="scene_unknown", scene_name="林建国公司·办公室"
+       // 内容：林建国接到电话……挂掉后给林守一转了五百块……
+```
+
+---
+
+**示例 4：回忆段（发生在"家里"，不在场景列表中）**
+
+❌ **错误做法**（强行绑定到最近场景）：
+```
+seg_X: scene_id="scene_2", scene_name="礼堂"  // 内容是家里厨房
+```
+
+✅ **正确做法**（使用 scene_unknown）：
+```
+seg_X: scene_id="scene_unknown", scene_name="林守一家·厨房"
+```
+
+---
+
+> ⚠️ split_reason 取值说明：
+> - `scene_switch`：物理地点切换（严格限定，不可滥用）
+> - `action_boundary`：同一场景内的完整动作单元边界
+> - `description_merge`：多个描写句/段合并后形成的段（此标注意味着已做了合并）
+> - `length_split`：超长保护性切分（>80字）
 
 ## 代词消解规则
 - 他/她 → 根据上下文替换为规范角色名
@@ -186,7 +238,7 @@
 注意：
 - characters_present 是本片段出场角色的 ID 列表
 - scene_id 必须匹配上面的场景列表中的 id
-- duration_estimate 单位：秒，范围 5-15
+- duration_estimate 单位：秒，范围 5-15（不足 5 秒必须合并到相邻段）
 - 所有原文内容必须分配到某个 segment，不得遗漏
 
 ---

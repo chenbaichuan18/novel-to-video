@@ -1,0 +1,381 @@
+{
+  "task_id": "46cf6240-7032-47af-83cb-0ef65e2b58bf",
+  "scenes": {
+    "total": 4,
+    "list": [
+      {
+        "id": "scene_1",
+        "name": "南城第一武道高中·校门口",
+        "aliases": [
+          "校门口"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "public_space",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "校门口区域，有校牌、人来人往的新生和家长",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "校门口区域有深蓝色校牌，阳光透过梧桐树的树叶洒在地面，整体环境热闹而庄重。",
+          "architectural_style": [
+            "现代简约风格"
+          ],
+          "key_features": [
+            "校牌",
+            "梧桐树",
+            "新生和家长"
+          ],
+          "textural_details": [
+            "校牌的金属质感",
+            "树荫下的碎金阳光"
+          ]
+        },
+        "visual_description_raw": "林守一站在南城第一武道高中的校门口，仰头看着那块深蓝色底、银灰色字的校牌。阳光把“南城第一武道高中”几个字照得发亮，在他的瞳孔里映出淡淡的光。他正看得出神，旁边忽然有人拍了他一下。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(玻璃门)"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "主要依赖自然光和校牌的反射光，氛围明亮而沉稳"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#000080",
+            "#FFFFFF"
+          ],
+          "accent_color": "#FFD700",
+          "mood_tone": "庄重且充满希望",
+          "material_textures": [
+            "金属校牌",
+            "玻璃门"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "校牌",
+            "description": "深蓝色底、银灰色字，显示学校名称",
+            "significance": "major"
+          },
+          {
+            "name": "背包",
+            "description": "装有笔记本、笔、水和一张手写纸条",
+            "significance": "major"
+          },
+          {
+            "name": "白色T恤",
+            "description": "干净、合身，没有褶皱",
+            "significance": "major"
+          },
+          {
+            "name": "深灰色长裤",
+            "description": "裤线笔直，干净整洁",
+            "significance": "major"
+          },
+          {
+            "name": "白色运动鞋",
+            "description": "干净、整齐，鞋带系得利落",
+            "significance": "major"
+          },
+          {
+            "name": "纸条",
+            "description": "母亲林知夏手写的鼓励和提醒",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "庄重",
+          "阳光",
+          "校牌",
+          "新生",
+          "期待",
+          "秩序",
+          "简洁"
+        ],
+        "scene_function": "故事的起始地点，象征主人公的新起点和身份转变",
+        "frequency": 3,
+        "key_traits": [
+          "校园标志性地点",
+          "阳光照耀",
+          "新生与家长聚集"
+        ]
+      },
+      {
+        "id": "scene_2",
+        "name": "南城第一武道高中·主干道",
+        "aliases": [
+          "主干道"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "public_space",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "笔直的主干道，两侧种有梧桐树，尽头为教学楼",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "主干道两侧种有梧桐树，阳光透过树荫洒在路面上，尽头有灰白色教学楼。",
+          "architectural_style": [
+            "现代方正建筑"
+          ],
+          "key_features": [
+            "梧桐树",
+            "灰白色教学楼",
+            "阳光照射"
+          ],
+          "textural_details": [
+            "树荫下的碎金阳光",
+            "教学楼的灰白色外墙"
+          ]
+        },
+        "visual_description_raw": "走进校门，是一条笔直的主干道，两侧种满了梧桐树，树荫把阳光切成碎金，洒在路面上。主干道尽头是一栋灰白色的教学楼，造型方正，看起来有年头了，但维护得极好，透着一种老牌名校的沉稳气质。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(梧桐树)"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "阳光透过梧桐树叶洒在地面，营造轻盈而明亮的氛围"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#8FBC8F",
+            "#D3D3D3"
+          ],
+          "accent_color": "#FFD700",
+          "mood_tone": "沉稳而充满活力",
+          "material_textures": [
+            "梧桐树的叶子",
+            "灰白色教学楼"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "梧桐树",
+            "description": "主干道两侧种满的植物，树荫洒下阳光",
+            "significance": "major"
+          },
+          {
+            "name": "教学楼",
+            "description": "灰白色，造型方正，维护良好",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "阳光",
+          "梧桐树",
+          "教学楼",
+          "沉稳",
+          "活力",
+          "秩序",
+          "庄重"
+        ],
+        "scene_function": "连接校门口与教学楼的通道，展示学校环境和新生的初步印象",
+        "frequency": 2,
+        "key_traits": [
+          "主干道",
+          "校园一角",
+          "阳光洒落"
+        ]
+      },
+      {
+        "id": "scene_3",
+        "name": "南城第一武道高中·礼堂",
+        "aliases": [
+          "礼堂"
+        ],
+        "scene_type": "indoor",
+        "location_type": "public_space",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "教学楼一楼的礼堂，有排队人群和报到台",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "礼堂门口有排队人群，报到台后坐着一位戴眼镜的女老师，整体环境忙碌而有序。",
+          "architectural_style": [
+            "现代简约风格"
+          ],
+          "key_features": [
+            "排队人群",
+            "报到台",
+            "戴眼镜的女老师"
+          ],
+          "textural_details": [
+            "文件袋",
+            "座位的布料"
+          ]
+        },
+        "visual_description_raw": "报到地点在教学楼一楼的礼堂。礼堂门口排着长长的队伍，大部分是学生，也有不少家长陪着来的。他排在队伍中间，前面是一个穿白色练功服的男生，后背绣着一朵莲花纹样，面料一看就很贵。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(礼堂窗户)"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "礼堂内有自然光从窗户透入，环境明亮但不够鲜艳"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#FFFFFF",
+            "#B0C4DE"
+          ],
+          "accent_color": "#FF6347",
+          "mood_tone": "庄重且带有期待",
+          "material_textures": [
+            "白色练功服",
+            "文件袋"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "文件袋",
+            "description": "装有入学材料、宿舍分配和军训安排",
+            "significance": "major"
+          },
+          {
+            "name": "白衣服男生",
+            "description": "穿白色练功服，后背绣着莲花纹样",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "庄重",
+          "期待",
+          "文件袋",
+          "报到",
+          "秩序",
+          "忙碌"
+        ],
+        "scene_function": "新生报到的核心地点，象征正式入学的开始",
+        "frequency": 2,
+        "key_traits": [
+          "礼堂",
+          "报到",
+          "秩序"
+        ]
+      },
+      {
+        "id": "scene_4",
+        "name": "南城第一武道高中·宿舍楼",
+        "aliases": [
+          "宿舍楼"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime",
+            "night"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "六层灰白色建筑，内部翻新，四楼四人间",
+          "size_scale": "intimate",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "宿舍楼为六层建筑，内部翻新，四楼四人间，有四个室友，环境整洁",
+          "architectural_style": [
+            "现代简约风格"
+          ],
+          "key_features": [
+            "四人间",
+            "四名室友",
+            "整洁环境"
+          ],
+          "textural_details": [
+            "灰白色地板",
+            "红色床单",
+            "书籍"
+          ]
+        },
+        "visual_description_raw": "宿舍楼是一栋六层的灰白色建筑，比教学楼旧一些，但内部翻新过。林守一的402在四楼，是个四人间。他推门进去的时候，里面已经有一个人了。那是一个和他年纪相仿的男生，正蹲在地上铺床单。听到门响，那人抬起头来，露出一张晒得黝黑的脸，笑起来一口白牙。",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "宿舍楼内部有自然光从窗户透入，环境明亮整洁"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#D3D3D3",
+            "#FFB6C1"
+          ],
+          "accent_color": "#000000",
+          "mood_tone": "安静而期待",
+          "material_textures": [
+            "灰白色地板",
+            "红色床单"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "红色床单",
+            "description": "印有牡丹花图案，像窗帘一样",
+            "significance": "major"
+          },
+          {
+            "name": "《灵脉基础理论》",
+            "description": "许明朗带来的书籍，与武道相关",
+            "significance": "major"
+          },
+          {
+            "name": "母亲的纸条",
+            "description": "母亲手写的内容，包含鼓励和提醒",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "安静",
+          "期待",
+          "红色床单",
+          "书籍",
+          "整洁",
+          "家庭关怀",
+          "宿舍生活"
+        ],
+        "scene_function": "主人公的日常生活起点，象征新生活的开始和人际互动",
+        "frequency": 1,
+        "key_traits": [
+          "宿舍生活",
+          "人际关系",
+          "整洁"
+        ]
+      }
+    ]
+  },
+  "extraction_summary": {
+    "total_scenes": 4,
+    "has_inferred_data": true,
+    "inferred_fields": [
+      "color_scheme",
+      "lighting_condition",
+      "scene_function",
+      "key_traits"
+    ],
+    "scene_types_distribution": {
+      "indoor": 2,
+      "outdoor": 2,
+      "mixed": 0
+    }
+  }
+}

@@ -15,11 +15,19 @@ import logging
 import uuid
 import re
 
+from functools import lru_cache
+
 from src.llm_client import get_llm_client
 
 logger = logging.getLogger(__name__)
 
 SKILL_PATH = _P(__file__).resolve().parent.parent / "skills" / "f05_scene_prompt.md"
+
+
+@lru_cache(maxsize=1)
+def _load_skill_content() -> str:
+    """加载 F05 Skill 文件内容（lru_cache 保证只读一次磁盘）"""
+    return SKILL_PATH.read_text(encoding="utf-8")
 
 
 def _clean_text(text: str) -> str:
@@ -57,7 +65,7 @@ def generate_scene_prompt(scene: dict, visual_tone: dict, task_id: str = None) -
     if task_id is None:
         task_id = str(uuid.uuid4())
 
-    system_prompt = SKILL_PATH.read_text(encoding="utf-8")
+    system_prompt = _load_skill_content()
 
     user_content = json.dumps({
         "task_id": task_id,
@@ -78,6 +86,7 @@ def generate_scene_prompt(scene: dict, visual_tone: dict, task_id: str = None) -
         messages=messages,
         temperature=0.7,
         max_tokens=2048,
+        enable_thinking=True,  # 开启思考模式，提高提示词生成质量
     )
 
     result = json.loads(raw_response, strict=False)
@@ -89,16 +98,17 @@ def generate_scene_prompt(scene: dict, visual_tone: dict, task_id: str = None) -
     return result
 
 
-def generate_scene_prompts(f03_output: dict, f01_visual_tone: dict) -> dict:
+def generate_scene_prompts(f03_output: dict, f01_visual_tone: dict, max_workers: int = 5) -> dict:
     """
-    为 F03 输出的所有场景批量生成定妆照提示词（主入口）。
+    为 F03 输出的所有场景批量生成定妆照提示词（主入口，并发版本）。
 
     输入 F03 的完整输出（含 scenes.list）和 F01 的视觉基调，
-    遍历每个场景调用 LLM 生成对应的定妆照提示词。
+    并发调用 LLM 生成对应的定妆照提示词。
 
     Args:
         f03_output: F03 完整输出 JSON（包含 scenes.list 数组）
         f01_visual_tone: F01 完整输出中的 visual_tone 部分
+        max_workers: 最大并发线程数（默认 5）
 
     Returns:
         {
@@ -111,6 +121,8 @@ def generate_scene_prompts(f03_output: dict, f01_visual_tone: dict) -> dict:
             "metadata": { ... }
         }
     """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
     batch_task_id = f"batch-{uuid.uuid4()}"
     # 兼容两种格式：直接数组或包含 list 属性的对象
     scenes_data = f03_output.get("scenes", [])
@@ -122,28 +134,35 @@ def generate_scene_prompts(f03_output: dict, f01_visual_tone: dict) -> dict:
     if not scenes_list:
         raise ValueError("f03_output 中没有找到 scenes.list，请检查输入格式")
 
-    logger.info("F05 批量处理开始: batch_task_id=%s, 场景数量=%d",
-                batch_task_id, len(scenes_list))
+    total = len(scenes_list)
+    logger.info("F05 批量处理开始: batch_task_id=%s, 场景数量=%d, 并发数=%d",
+                batch_task_id, total, max_workers)
 
-    results = []
-    for i, scene in enumerate(scenes_list):
+    def _process_one(args: tuple) -> tuple:
+        i, scene = args
         scene_id = scene.get("id", f"unknown_{i}")
         scene_name = scene.get("name", "未知")
-        logger.info("F05 批量 [%d/%d] 处理场景: %s (%s)",
-                    i + 1, len(scenes_list), scene_id, scene_name)
-
+        logger.info("F05 批量 [%d/%d] 处理场景: %s (%s)", i + 1, total, scene_id, scene_name)
         try:
             single_result = generate_scene_prompt(scene, f01_visual_tone)
-            results.append(single_result)
+            return i, single_result
         except Exception as e:
-            logger.error("F05 批量 [%d/%d] 场景 %s 处理失败: %s",
-                         i + 1, len(scenes_list), scene_id, e)
-            results.append({
+            logger.error("F05 批量 [%d/%d] 场景 %s 处理失败: %s", i + 1, total, scene_id, e)
+            return i, {
                 "task_id": f"{batch_task_id}-{i}",
                 "scene_id": scene_id,
                 "final_prompt": "",
                 "error": str(e),
-            })
+            }
+
+    indexed_results: list[tuple] = []
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {executor.submit(_process_one, (i, scene)): i for i, scene in enumerate(scenes_list)}
+        for future in as_completed(futures):
+            indexed_results.append(future.result())
+
+    indexed_results.sort(key=lambda x: x[0])
+    results = [r for _, r in indexed_results]
 
     output = {
         "task_id": batch_task_id,

@@ -15,11 +15,19 @@ import logging
 import uuid
 import re
 
+from functools import lru_cache
+
 from src.llm_client import get_llm_client
 
 logger = logging.getLogger(__name__)
 
 SKILL_PATH = _P(__file__).resolve().parent.parent / "skills" / "f04_character_prompt.md"
+
+
+@lru_cache(maxsize=1)
+def _load_skill_content() -> str:
+    """加载 F04 Skill 文件内容（lru_cache 保证只读一次磁盘）"""
+    return SKILL_PATH.read_text(encoding="utf-8")
 
 
 def _clean_text(text: str) -> str:
@@ -59,7 +67,7 @@ def generate_character_prompt(character: dict, visual_tone: dict, task_id: str =
     if task_id is None:
         task_id = str(uuid.uuid4())
 
-    system_prompt = SKILL_PATH.read_text(encoding="utf-8")
+    system_prompt = _load_skill_content()
 
     user_content = json.dumps({
         "task_id": task_id,
@@ -80,6 +88,7 @@ def generate_character_prompt(character: dict, visual_tone: dict, task_id: str =
         messages=messages,
         temperature=0.7,
         max_tokens=2048,
+        enable_thinking=True,  # 开启思考模式，提高提示词生成质量
     )
 
     result = json.loads(raw_response, strict=False)
@@ -91,16 +100,17 @@ def generate_character_prompt(character: dict, visual_tone: dict, task_id: str =
     return result
 
 
-def generate_character_prompts(f02_output: dict, f01_visual_tone: dict) -> dict:
+def generate_character_prompts(f02_output: dict, f01_visual_tone: dict, max_workers: int = 5) -> dict:
     """
-    为 F02 输出的所有角色批量生成定妆照提示词（主入口）。
+    为 F02 输出的所有角色批量生成定妆照提示词（主入口，并发版本）。
 
     输入 F02 的完整输出（含 characters.list）和 F01 的视觉基调，
-    遍历每个角色调用 LLM 生成对应的定妆照提示词。
+    并发调用 LLM 生成对应的定妆照提示词。
 
     Args:
         f02_output: F02 完整输出 JSON（包含 characters.list 数组）
         f01_visual_tone: F01 完整输出中的 visual_tone 部分
+        max_workers: 最大并发线程数（默认 5）
 
     Returns:
         {
@@ -117,6 +127,8 @@ def generate_character_prompts(f02_output: dict, f01_visual_tone: dict) -> dict:
             }
         }
     """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
     batch_task_id = f"batch-{uuid.uuid4()}"
     # 兼容两种格式：直接数组或包含 list 属性的对象
     characters_data = f02_output.get("characters", [])
@@ -128,28 +140,35 @@ def generate_character_prompts(f02_output: dict, f01_visual_tone: dict) -> dict:
     if not characters_list:
         raise ValueError("f02_output 中没有找到 characters.list，请检查输入格式")
 
-    logger.info("F04 批量处理开始: batch_task_id=%s, 角色数量=%d",
-                batch_task_id, len(characters_list))
+    total = len(characters_list)
+    logger.info("F04 批量处理开始: batch_task_id=%s, 角色数量=%d, 并发数=%d",
+                batch_task_id, total, max_workers)
 
-    results = []
-    for i, char in enumerate(characters_list):
+    def _process_one(args: tuple) -> tuple:
+        i, char = args
         char_id = char.get("id", f"unknown_{i}")
         char_name = char.get("name", "未知")
-        logger.info("F04 批量 [%d/%d] 处理角色: %s (%s)",
-                    i + 1, len(characters_list), char_id, char_name)
-
+        logger.info("F04 批量 [%d/%d] 处理角色: %s (%s)", i + 1, total, char_id, char_name)
         try:
             single_result = generate_character_prompt(char, f01_visual_tone)
-            results.append(single_result)
+            return i, single_result
         except Exception as e:
-            logger.error("F04 批量 [%d/%d] 角色 %s 处理失败: %s",
-                         i + 1, len(characters_list), char_id, e)
-            results.append({
+            logger.error("F04 批量 [%d/%d] 角色 %s 处理失败: %s", i + 1, total, char_id, e)
+            return i, {
                 "task_id": f"{batch_task_id}-{i}",
                 "character_id": char_id,
                 "final_prompt": "",
                 "error": str(e),
-            })
+            }
+
+    indexed_results: list[tuple] = []
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {executor.submit(_process_one, (i, char)): i for i, char in enumerate(characters_list)}
+        for future in as_completed(futures):
+            indexed_results.append(future.result())
+
+    indexed_results.sort(key=lambda x: x[0])
+    results = [r for _, r in indexed_results]
 
     output = {
         "task_id": batch_task_id,

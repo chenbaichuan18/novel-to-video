@@ -1,18 +1,18 @@
 {
-  "task_id": "c4adbec0-a69f-4190-9ee8-a8c64e12ce2f",
+  "task_id": "b1887493-3618-4b62-936b-138169be3315",
   "characters": {
-    "total": 5,
+    "total": 6,
     "list": [
       {
         "id": "char_1",
         "name": "林守一",
         "aliases": [],
         "gender": "male",
-        "age": "17岁",
-        "appearance": "五官轮廓清晰，眉骨高而舒展，鼻梁挺直，下颌线条利落，皮肤小麦色，眼神安静",
+        "age": "15岁",
+        "appearance": "五官轮廓清晰，眉骨高而舒展，鼻梁挺直，下颌线条利落，皮肤小麦色，安静的眼睛",
         "appearance_raw": "五官轮廓清晰，眉骨高而舒展，鼻梁挺直，下颌线条利落。皮肤是那种常年户外训练晒出来的均匀小麦色，衬着一双很安静的眼睛，像山间不起波澜的湖水。",
         "clothing": "白色短袖T恤，深灰色休闲长裤，白色运动鞋",
-        "personality": "专注、内敛、沉稳",
+        "personality": "专注、冷静、礼貌、有责任感",
         "role_type": "protagonist",
         "is_temporary": false,
         "family_role": "son",
@@ -28,9 +28,6 @@
             ],
             "char_4": [
               "陈圆"
-            ],
-            "char_5": [
-              "方芸"
             ]
           },
           "refers_to_others_as": {
@@ -40,18 +37,18 @@
             "char_3": [
               "你"
             ],
-            "char_4": [
-              "你"
-            ],
             "char_5": [
-              "你"
+              "同学"
+            ],
+            "char_6": [
+              "同学"
             ]
           }
         },
         "key_traits": [
-          "武道特招新生",
-          "专注",
-          "内向"
+          "普通学生",
+          "干净利落",
+          "专注"
         ]
       },
       {
@@ -59,18 +56,18 @@
         "name": "林知夏",
         "aliases": [],
         "gender": "female",
-        "age": "38岁",
-        "appearance": "普通面容，体型匀称",
-        "appearance_raw": "",
-        "clothing": "普通职业装",
-        "personality": "温柔、关心、含蓄",
+        "age": "35岁",
+        "appearance": "普通面容，体型匀称，眼神温柔",
+        "appearance_raw": "林知夏——他的母亲，南城三小的一名普通语文老师——擦了擦手，接过手机，看了一眼，愣住。",
+        "clothing": "普通职业装，未具体描写但可推断为教师日常着装",
+        "personality": "温柔、关心、朴实",
         "role_type": "supporting",
         "is_temporary": false,
         "family_role": "mother",
         "relationship_context": {
           "referred_by_whom": {
             "char_1": [
-              "儿子"
+              "你"
             ]
           },
           "refers_to_others_as": {
@@ -81,7 +78,7 @@
         },
         "key_traits": [
           "语文老师",
-          "母亲"
+          "温柔"
         ]
       },
       {
@@ -89,18 +86,18 @@
         "name": "林建国",
         "aliases": [],
         "gender": "male",
-        "age": "45岁",
-        "appearance": "普通面容，体型匀称",
+        "age": "40岁",
+        "appearance": "普通面容，体型中等，穿着西装",
         "appearance_raw": "",
-        "clothing": "普通职业装",
-        "personality": "务实、节俭、关心儿子",
+        "clothing": "西装",
+        "personality": "严肃、节俭、关心儿子",
         "role_type": "supporting",
         "is_temporary": false,
         "family_role": "father",
         "relationship_context": {
           "referred_by_whom": {
             "char_1": [
-              "儿子"
+              "你"
             ]
           },
           "refers_to_others_as": {
@@ -111,7 +108,8 @@
         },
         "key_traits": [
           "父亲",
-          "节俭"
+          "节俭",
+          "关心"
         ]
       },
       {
@@ -119,11 +117,42 @@
         "name": "陈圆",
         "aliases": [],
         "gender": "male",
-        "age": "17岁",
-        "appearance": "圆脸，圆眼，圆肚子",
-        "appearance_raw": "",
+        "age": "15岁",
+        "appearance": "圆脸、圆眼、圆肚子，整体看起来亲和",
+        "appearance_raw": "一张圆乎乎的脸，笑得眼睛都快看不见了。",
         "clothing": "普通学生装",
-        "personality": "外向、幽默、随性",
+        "personality": "开朗、直率、关心朋友",
+        "role_type": "supporting",
+        "is_temporary": false,
+        "family_role": "friend",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_1": [
+              "同学"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_1": [
+              "你"
+            ]
+          }
+        },
+        "key_traits": [
+          "同学",
+          "开朗",
+          "关心"
+        ]
+      },
+      {
+        "id": "char_5",
+        "name": "赵铁生",
+        "aliases": [],
+        "gender": "male",
+        "age": "15岁",
+        "appearance": "晒得黝黑，笑起来一口白牙，肩宽体壮",
+        "appearance_raw": "晒得黝黑的脸，笑起来一口白牙。",
+        "clothing": "普通学生装",
+        "personality": "热情、幽默、随性",
         "role_type": "supporting",
         "is_temporary": false,
         "family_role": "none",
@@ -140,27 +169,28 @@
           }
         },
         "key_traits": [
-          "初中同学",
-          "外向"
+          "室友",
+          "热情",
+          "幽默"
         ]
       },
       {
-        "id": "char_5",
-        "name": "方芸",
+        "id": "char_6",
+        "name": "沈清辞",
         "aliases": [],
-        "gender": "female",
-        "age": "45岁",
-        "appearance": "戴眼镜，气质干练",
-        "appearance_raw": "",
-        "clothing": "职业装",
-        "personality": "干练、专业、严厉",
+        "gender": "male",
+        "age": "15岁",
+        "appearance": "晒得黝黑，上铺安静",
+        "appearance_raw": "一张晒得黝黑的脸，笑起来一口白牙。",
+        "clothing": "白色练功服，带有莲花纹样",
+        "personality": "沉稳、冷眼旁观",
         "role_type": "supporting",
         "is_temporary": false,
         "family_role": "none",
         "relationship_context": {
           "referred_by_whom": {
             "char_1": [
-              "老师"
+              "同学"
             ]
           },
           "refers_to_others_as": {
@@ -170,20 +200,53 @@
           }
         },
         "key_traits": [
-          "教务处副主任",
-          "干练"
+          "武道世家",
+          "沉稳",
+          "安静"
+        ]
+      },
+      {
+        "id": "char_7",
+        "name": "许明朗",
+        "aliases": [],
+        "gender": "male",
+        "age": "15岁",
+        "appearance": "普通面容，戴眼镜，文静",
+        "appearance_raw": "戴着眼镜，看起来很文静，说话也轻声细语的。",
+        "clothing": "普通学生装",
+        "personality": "文静、内敛、专注",
+        "role_type": "supporting",
+        "is_temporary": false,
+        "family_role": "none",
+        "relationship_context": {
+          "referred_by_whom": {
+            "char_1": [
+              "同学"
+            ]
+          },
+          "refers_to_others_as": {
+            "char_1": [
+              "你"
+            ]
+          }
+        },
+        "key_traits": [
+          "室友",
+          "文静",
+          "专注"
         ]
       }
     ]
   },
   "extraction_summary": {
-    "total_characters": 5,
+    "total_characters": 6,
     "has_inferred_data": true,
     "inferred_fields": [
-      "age",
       "appearance",
       "clothing",
-      "personality"
+      "personality",
+      "age",
+      "family_role"
     ]
   }
 }

@@ -93,6 +93,7 @@ def extract_visual_tone(text: str, user_settings: dict | None = None, task_id: s
         messages=messages,
         temperature=0.7,
         max_tokens=8192,  # 增加以支持完整剧本的视觉基调提取
+        enable_thinking=True,  # 开启思考模式，提高视觉基调提取准确性
     )
 
     # 解析 LLM 返回的 JSON

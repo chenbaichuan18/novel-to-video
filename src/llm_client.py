@@ -43,6 +43,7 @@ class LLMClient:
         response_format: dict | None = None,
         timeout: int = DEFAULT_TIMEOUT,
         max_retries: int = MAX_RETRIES,
+        enable_thinking: bool = False,
     ) -> str:
         """
         调用聊天补全接口,返回助手的文本回复(已去除 markdown 代码块包裹)。
@@ -56,6 +57,8 @@ class LLMClient:
             response_format: 如 {"type": "json_object"} 强制 JSON 输出
             timeout: 单次请求超时秒数
             max_retries: 超时重试次数
+            enable_thinking: 是否开启模型思考模式（Qwen3 等思考模型默认关闭，
+                             避免长时间静默等待思考 token）
 
         Returns:
             助手回复文本(纯 JSON 字符串)
@@ -75,6 +78,9 @@ class LLMClient:
                 "messages": messages,
                 "temperature": temperature,
                 "max_tokens": current_max_tokens,
+                # 关闭思考模式：Qwen3 等模型默认开启 thinking，
+                # thinking token 不计入 max_tokens 但会消耗数分钟，导致控制台无输出
+                "enable_thinking": enable_thinking,
             }
             if response_format:
                 payload["response_format"] = response_format
@@ -134,49 +140,43 @@ class LLMClient:
         """
         检测响应是否因 max_tokens 不足被截断。
 
-        检测策略:
-        1. 如果响应格式要求 JSON,尝试解析,如果 JSON 不完整则可能是截断
-        2. 检查文本是否以未闭合的括号、引号等结束
-        3. 检查是否有截断标记
+        检测策略（按可靠性排序）：
+        1. 优先尝试 JSON 解析（最可靠，避免中文引号误判）
+        2. 检查结构性截断：未闭合的括号/大括号（只统计 ASCII 字符）
+        3. 末尾截断标记
 
         Args:
             text: 响应文本
             response_format: 请求时的响应格式配置
 
         Returns:
-            True 表示可能是被截断
+            True 表示可能被截断
         """
         text = text.strip()
+        if not text:
+            return False
 
-        # 如果要求 JSON 输出,检查 JSON 是否完整
-        if response_format and response_format.get("type") == "json_object":
+        # 1. 尝试 JSON 解析（最可靠，不受中文引号影响）
+        #    如果文本看起来像 JSON（以 { 或 [ 开头），直接用解析结果判断
+        if text.startswith(("{", "[")):
             try:
                 json.loads(text)
-                return False  # JSON 解析成功,说明完整
+                return False  # 解析成功 → 完整
             except json.JSONDecodeError:
-                # JSON 解析失败,可能被截断
+                # 解析失败 → 可能截断，但也可能只是格式问题，继续后续检测
                 pass
 
-        # 检查常见的截断标志
-        # 1. 未闭合的引号
-        quote_count = text.count('"') - text.count('\\"')  # 减去转义引号
-        if quote_count % 2 != 0:
+        # 2. 检查 ASCII 括号是否闭合（只统计半角字符，避免中文全角干扰）
+        open_braces = text.count('{') - text.count('}')
+        open_brackets = text.count('[') - text.count(']')
+        if open_braces > 0 or open_brackets > 0:
             return True
 
-        # 2. 未闭合的大括号/方括号
-        open_braces = text.count('{') + text.count('[')
-        close_braces = text.count('}') + text.count(']')
-        if open_braces > close_braces:
-            return True
-
-        # 3. 以省略号、断句等常见截断标记结尾
-        truncation_markers = ['...', '。...', '......', '...)', '。.)']
+        # 3. 末尾截断标记（仅保留明确意味着中断的标记）
+        truncation_markers = ['......', '...']
         for marker in truncation_markers:
             if text.endswith(marker):
                 return True
-
-        # 4. 检查是否有 finish_reason 信息(某些 API 会返回)
-        # 这里简化处理,仅基于内容判断
 
         return False
 

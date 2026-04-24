@@ -1,275 +1,918 @@
 {
-  "task_id": "b4d18a5f-9df9-4c56-a65f-80c926faa7bf",
+  "task_id": "8d5dded4-1737-4dad-9daf-445c9bfe3ae5",
   "scenes": {
-    "total": 3,
+    "total": 9,
     "list": [
       {
         "id": "scene_1",
         "name": "南城第一武道高中·校门口",
         "aliases": [
-          "学校门口"
+          "高中校门"
         ],
         "scene_type": "outdoor",
-        "location_type": "public_space",
-        "time_setting": {
-          "periods_appeared": [
-            "daytime"
-          ],
-          "season": "summer"
-        },
-        "environment": {
-          "spatial_layout": "校门入口处有主干道，两侧有梧桐树",
-          "size_scale": "medium",
-          "enclosure": "semi_open"
-        },
-        "visual_description": {
-          "summary": "校门口的梧桐树下有阳光洒落，灰白色教学楼和新式训练馆在远处可见",
-          "architectural_style": [
-            "方正造型",
-            "玻璃幕墙"
-          ],
-          "key_features": [
-            "深蓝色校牌",
-            "梧桐树荫"
-          ],
-          "textural_details": [
-            "银灰色字体",
-            "灰白色教学楼"
-          ]
-        },
-        "visual_description_raw": "林守一站在南城第一武道高中的校门口，仰头看着那块深蓝色底、银灰色字的校牌。阳光把“南城第一武道高中”几个字照得发亮，在他的瞳孔里映出淡淡的光；走进校门，是一条笔直的主干道，两侧种满了梧桐树，树荫把阳光切成碎金，洒在路面上。主干道尽头是一栋灰白色的教学楼，造型方正，看起来有年头了，但维护得极好，透着一种老牌名校的沉稳气质。",
-        "lighting_condition": {
-          "primary_light_sources": [
-            "阳光",
-            "自然光"
-          ],
-          "base_light_quality": "varies_by_time",
-          "base_lighting_description": "白天有自然光，夜晚则依赖人工照明"
-        },
-        "color_scheme": {
-          "dominant_colors": [
-            "#87CEEB",
-            "#D3D3D3"
-          ],
-          "accent_color": "#FFD700",
-          "mood_tone": "庄重、清新、充满希望",
-          "material_textures": [
-            "水泥地面",
-            "灰白色建筑"
-          ]
-        },
-        "key_props": [
-          {
-            "name": "校牌",
-            "description": "深蓝色底、银灰色字",
-            "significance": "major"
-          },
-          {
-            "name": "笔记本",
-            "description": "崭新的笔记本",
-            "significance": "major"
-          },
-          {
-            "name": "文件袋",
-            "description": "包含入学材料、宿舍分配和军训安排",
-            "significance": "major"
-          }
-        ],
-        "atmosphere_keywords": [
-          "阳光",
-          "梧桐树",
-          "教学楼",
-          "训练馆",
-          "清新",
-          "庄重",
-          "希望"
-        ],
-        "scene_function": "故事的主要起点，交代林守一的背景和进入新环境的场景",
-        "frequency": 1,
-        "key_traits": [
-          "名校象征",
-          "新生入学"
-        ]
-      },
-      {
-        "id": "scene_2",
-        "name": "南城第一武道高中·教学楼",
-        "aliases": [
-          "学校教学楼"
-        ],
-        "scene_type": "outdoor",
-        "location_type": "public_space",
-        "time_setting": {
-          "periods_appeared": [
-            "daytime"
-          ],
-          "season": "summer"
-        },
-        "environment": {
-          "spatial_layout": "教学楼与操场、训练馆相邻",
-          "size_scale": "large",
-          "enclosure": "semi_open"
-        },
-        "visual_description": {
-          "summary": "教学楼灰白色，造型方正，显得沉稳",
-          "architectural_style": [
-            "方正造型"
-          ],
-          "key_features": [
-            "灰白色建筑",
-            "教学楼"
-          ],
-          "textural_details": [
-            "老式建筑",
-            "整洁外观"
-          ]
-        },
-        "visual_description_raw": "走进校门，是一条笔直的主干道，两侧种满了梧桐树，树荫把阳光切成碎金，洒在路面上。主干道尽头是一栋灰白色的教学楼，造型方正，看起来有年头了，但维护得极好，透着一种老牌名校的沉稳气质。",
-        "lighting_condition": {
-          "primary_light_sources": [
-            "自然光"
-          ],
-          "base_light_quality": "neutral",
-          "base_lighting_description": "白天自然光"
-        },
-        "color_scheme": {
-          "dominant_colors": [
-            "#D3D3D3",
-            "#D3D3D3"
-          ],
-          "accent_color": "#FFD700",
-          "mood_tone": "庄重、沉稳",
-          "material_textures": [
-            "水泥地面",
-            "灰白色建筑"
-          ]
-        },
-        "key_props": [
-          {
-            "name": "文件袋",
-            "description": "包含入学材料、宿舍分配和军训安排",
-            "significance": "major"
-          },
-          {
-            "name": "校牌",
-            "description": "深蓝色底、银灰色字",
-            "significance": "major"
-          }
-        ],
-        "atmosphere_keywords": [
-          "教学楼",
-          "沉稳",
-          "名校",
-          "老式建筑",
-          "阳光",
-          "梧桐树",
-          "庄重",
-          "希望"
-        ],
-        "scene_function": "林守一进入学校后看到的标志性建筑，体现学校的氛围",
-        "frequency": 1,
-        "key_traits": [
-          "名校象征",
-          "建筑沉稳"
-        ]
-      },
-      {
-        "id": "scene_3",
-        "name": "南城第一武道高中·宿舍区",
-        "aliases": [
-          "宿舍楼"
-        ],
-        "scene_type": "mixed",
         "location_type": "residential",
         "time_setting": {
           "periods_appeared": [
             "daytime",
-            "afternoon"
+            "night"
           ],
           "season": "summer"
         },
         "environment": {
-          "spatial_layout": "六层宿舍楼，内部为四人间",
+          "spatial_layout": "校门入口处有宽阔的人行道，两侧为梧桐树",
           "size_scale": "medium",
-          "enclosure": "fully_enclosed"
+          "enclosure": "semi_open"
         },
         "visual_description": {
-          "summary": "六层宿舍楼，四人间，床铺整洁，有牡丹花床单",
+          "summary": "校门为深蓝色校牌与银灰色字的组合，校门区域有密集人流和武道装备包",
           "architectural_style": [
-            "灰白色建筑"
+            "现代简约风格"
           ],
           "key_features": [
-            "四人间",
-            "牡丹花床单"
+            "深蓝色校牌",
+            "银灰色字",
+            "梧桐树影",
+            "武道装备人流"
           ],
           "textural_details": [
-            "灰白色地板",
-            "红花床单"
+            "校牌金属质感",
+            "梧桐树粗糙树皮"
           ]
         },
-        "visual_description_raw": "宿舍楼是一栋六层的灰白色建筑，比教学楼旧一些，但内部翻新过。林守一的402在四楼，是个四人间；他推门进去的时候，里面已经有一个人了。那是和他年纪相仿的男生，正蹲在地上铺床单。听到门响，那人抬起头来，露出一张晒得黝黑的脸，笑起来一口白牙。",
+        "visual_description_raw": "阳光把“南城第一武道高中”几个字照得发亮；在他的瞳孔里映出淡淡的光",
         "lighting_condition": {
           "primary_light_sources": [
-            "自然光"
+            "自然光(玻璃门)"
           ],
-          "base_light_quality": "neutral",
-          "base_lighting_description": "白天自然光"
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "白天自然光与人工照明交替，夜间有校内灯光"
         },
         "color_scheme": {
           "dominant_colors": [
-            "#C0C0C0",
-            "#C0C0C0"
+            "#00008B",
+            "#808080"
           ],
-          "accent_color": "#FF0000",
-          "mood_tone": "温馨、平静",
+          "accent_color": "#8B4513",
+          "mood_tone": "庄严与希望交织的理性氛围",
           "material_textures": [
-            "灰白色地板",
-            "红色床单"
+            "金属校牌",
+            "水泥地面"
           ]
         },
         "key_props": [
           {
-            "name": "床单",
-            "description": "大红色，印着牡丹花",
+            "name": "校牌",
+            "description": "深蓝色底银灰色字的金属标识牌",
             "significance": "major"
           },
           {
-            "name": "纸条",
-            "description": "母亲林知夏的手写小纸条",
+            "name": "武道装备包",
+            "description": "新生背着的训练装备包",
             "significance": "major"
           }
         ],
         "atmosphere_keywords": [
-          "宿舍",
-          "床单",
-          "温馨",
-          "平静",
-          "四人间",
-          "四楼",
-          "四层",
-          "灰白色建筑"
+          "庄严",
+          "希望",
+          "训练气息",
+          "青春",
+          "竞争",
+          "成长",
+          "传统"
         ],
-        "scene_function": "林守一的日常生活起点，展示他的性格和与室友的初步互动",
+        "scene_function": "故事起点，体现主角进入名校的关键转折",
         "frequency": 1,
         "key_traits": [
-          "日常生活起点",
+          "教育机构",
+          "社会阶层象征"
+        ]
+      },
+      {
+        "id": "scene_2",
+        "name": "南城第一武道高中·主干道",
+        "aliases": [
+          "校园主路"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "笔直道路两侧为梧桐树",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "梧桐树荫下的主干道与灰白色教学楼构成校园核心景观",
+          "architectural_style": [
+            "现代建筑",
+            "功能分区明确"
+          ],
+          "key_features": [
+            "梧桐树荫",
+            "碎金阳光",
+            "灰白教学楼",
+            "训练馆玻璃幕墙"
+          ],
+          "textural_details": [
+            "树皮粗糙",
+            "玻璃反光"
+          ]
+        },
+        "visual_description_raw": "阳光切成碎金洒在路面上；灰白色教学楼；玻璃幕墙反射阳光",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "自然光(梧桐树荫)",
+            "训练馆玻璃幕墙反射光"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "树荫区自然光与建筑反射光交织"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#FFFF00",
+            "#D3D3D3"
+          ],
+          "accent_color": "#FF4500",
+          "mood_tone": "明快中带着紧张感",
+          "material_textures": [
+            "木质树干",
+            "玻璃反光"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "梧桐树",
+            "description": "遮荫的行道树",
+            "significance": "major"
+          },
+          {
+            "name": "训练馆",
+            "description": "玻璃幕墙建筑",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "阳光",
+          "新生",
+          "训练馆",
+          "校园",
+          "竞争",
+          "未来"
+        ],
+        "scene_function": "展示校园环境与主角初印象",
+        "frequency": 1,
+        "key_traits": [
+          "教育场所",
+          "过渡空间"
+        ]
+      },
+      {
+        "id": "scene_3",
+        "name": "南城第一武道高中·教学楼",
+        "aliases": [
+          "主教学楼"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "方正造型的灰白色建筑",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "维护良好的老牌名校建筑，体现教育机构的严肃性",
+          "architectural_style": [
+            "现代简约风格"
+          ],
+          "key_features": [
+            "灰白外墙",
+            "方正造型",
+            "年久建筑",
+            "校内走廊"
+          ],
+          "textural_details": [
+            "水泥墙面",
+            "玻璃窗"
+          ]
+        },
+        "visual_description_raw": "造型方正，看起来有年头了，但维护得极好",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "吸顶灯",
+            "自然光(玻璃窗)"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "室内照明与自然光互补"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#D3D3D3",
+            "#FFFFFF"
+          ],
+          "accent_color": "#8B4513",
+          "mood_tone": "沉稳庄重的理性氛围",
+          "material_textures": [
+            "水泥墙面",
+            "玻璃窗"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "教学楼",
+            "description": "老牌名校建筑",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "沉稳",
+          "庄重",
+          "教育",
+          "严肃",
+          "历史感",
+          "学习"
+        ],
+        "scene_function": "体现学校教学环境与学术氛围",
+        "frequency": 1,
+        "key_traits": [
+          "教育机构",
+          "历史传承"
+        ]
+      },
+      {
+        "id": "scene_4",
+        "name": "南城第一武道高中·操场",
+        "aliases": [
+          "训练场"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "开阔的训练场地",
+          "size_scale": "large",
+          "enclosure": "fully_open"
+        },
+        "visual_description": {
+          "summary": "煤渣跑道与训练场地构成的开放空间",
+          "architectural_style": [
+            "实用训练场"
+          ],
+          "key_features": [
+            "煤渣跑道",
+            "训练区",
+            "拳风气流",
+            "高年级学生"
+          ],
+          "textural_details": [
+            "煤渣路面",
+            "汗湿训练服"
+          ]
+        },
+        "visual_description_raw": "煤渣跑道，下雨天全是泥",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "太阳光"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "开阔空间的自然光照"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#8B4513",
+            "#FFFFFF"
+          ],
+          "accent_color": "#FF4500",
+          "mood_tone": "充满活力的竞技氛围",
+          "material_textures": [
+            "煤渣路面",
+            "运动服面料"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "煤渣跑道",
+            "description": "传统训练场地",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "活力",
+          "竞技",
+          "汗水",
+          "训练",
+          "阳光",
+          "青春"
+        ],
+        "scene_function": "展示校园训练环境与武道氛围",
+        "frequency": 1,
+        "key_traits": [
+          "训练场所",
+          "竞技气息"
+        ]
+      },
+      {
+        "id": "scene_5",
+        "name": "南城第一武道高中·训练馆",
+        "aliases": [
+          "训练馆"
+        ],
+        "scene_type": "outdoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "玻璃幕墙建筑群",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "现代化玻璃幕墙训练设施",
+          "architectural_style": [
+            "现代建筑",
+            "功能性设计"
+          ],
+          "key_features": [
+            "玻璃幕墙",
+            "灵气模拟室",
+            "训练设施"
+          ],
+          "textural_details": [
+            "玻璃反光",
+            "金属器械"
+          ]
+        },
+        "visual_description_raw": "玻璃幕墙反射阳光",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "太阳光",
+            "玻璃幕墙反射光"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "玻璃幕墙的强反射光照"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#FFFFFF",
+            "#808080"
+          ],
+          "accent_color": "#FF4500",
+          "mood_tone": "科技感与力量感并存",
+          "material_textures": [
+            "玻璃幕墙",
+            "金属器械"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "灵气模拟室",
+            "description": "可调节灵气浓度的训练设施",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "科技",
+          "训练",
+          "力量",
+          "玻璃",
+          "现代化",
+          "竞技"
+        ],
+        "scene_function": "展示学校先进的训练设施",
+        "frequency": 1,
+        "key_traits": [
+          "训练设施",
+          "现代感"
+        ]
+      },
+      {
+        "id": "scene_6",
+        "name": "南城第一武道高中·礼堂",
+        "aliases": [
+          "报到大厅"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "长队排布的室内大厅",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "功能齐全的室内报到场所",
+          "architectural_style": [
+            "实用主义风格"
+          ],
+          "key_features": [
+            "长队人群",
+            "报到台",
+            "文件袋",
+            "工作牌"
+          ],
+          "textural_details": [
+            "木质报到台",
+            "金属文件夹"
+          ]
+        },
+        "visual_description_raw": "长长的队伍，报到台后面坐着戴眼镜的女老师",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "室内顶灯"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "均匀的室内照明"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#FFFFFF",
+            "#808080"
+          ],
+          "accent_color": "#FF4500",
+          "mood_tone": "严肃的入学仪式氛围",
+          "material_textures": [
+            "木质家具",
+            "金属文件夹"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "文件袋",
+            "description": "包含入学材料的蓝色文件袋",
+            "significance": "major"
+          },
+          {
+            "name": "工作牌",
+            "description": "教务处副主任方芸的金属工作牌",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "正式",
+          "秩序",
+          "文件",
+          "老师",
+          "入学",
+          "期待"
+        ],
+        "scene_function": "完成入学手续的关键场景",
+        "frequency": 1,
+        "key_traits": [
+          "办公场所",
+          "正式仪式"
+        ]
+      },
+      {
+        "id": "scene_7",
+        "name": "南城第一武道高中·宿舍楼",
+        "aliases": [
+          "学生宿舍楼"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime",
+            "night"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "六层灰白色建筑",
+          "size_scale": "medium",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "翻新过的老旧宿舍楼",
+          "architectural_style": [
+            "简约现代风格"
+          ],
+          "key_features": [
+            "灰白外墙",
+            "四人间布局",
+            "木质家具",
+            "床铺"
+          ],
+          "textural_details": [
+            "水泥地面",
+            "木质床架"
+          ]
+        },
+        "visual_description_raw": "宿舍楼是一栋六层的灰白色建筑；走廊尽头的窗户透进来最后一缕光",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "室内顶灯",
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "人工照明与自然光交替"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#D3D3D3",
+            "#FFFFFF"
+          ],
+          "accent_color": "#FF4500",
+          "mood_tone": "温暖中带着青春气息",
+          "material_textures": [
+            "水泥地面",
+            "木质床架"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "床铺",
+            "description": "四人间的上下铺结构",
+            "significance": "major"
+          },
+          {
+            "name": "牡丹床单",
+            "description": "印有牡丹花纹的红色床单",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "青春",
+          "同窗",
+          "成长",
+          "宿舍",
+          "日常",
+          "期待"
+        ],
+        "scene_function": "建立主角与室友关系的重要场所",
+        "frequency": 1,
+        "key_traits": [
+          "居住空间",
+          "集体生活"
+        ]
+      },
+      {
+        "id": "scene_8",
+        "name": "南城第一武道高中·宿舍内部",
+        "aliases": [
+          "402房间"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime",
+            "night"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "四人间宿舍布局",
+          "size_scale": "intimate",
+          "enclosure": "fully_enclosed"
+        },
+        "visual_description": {
+          "summary": "整洁的四人间宿舍",
+          "architectural_style": [
+            "实用主义风格"
+          ],
+          "key_features": [
+            "四人间",
+            "床铺",
+            "书桌",
+            "衣柜"
+          ],
+          "textural_details": [
+            "木质衣柜",
+            "金属床架"
+          ]
+        },
+        "visual_description_raw": "四个人简单认识了之后，宿舍陷入了一阵微妙的沉默；赵铁生在研究食堂菜谱，林守一靠在床头",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "室内顶灯",
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "人工照明与自然光交替"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#808080",
+            "#FFFFFF"
+          ],
+          "accent_color": "#FF4500",
+          "mood_tone": "宁静中带着期待",
+          "material_textures": [
+            "木质家具",
+            "金属器械"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "牡丹床单",
+            "description": "印有牡丹花纹的红色床单",
+            "significance": "major"
+          },
+          {
+            "name": "《灵脉基础理论》",
+            "description": "文静室友携带的教材",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "宁静",
+          "期待",
+          "同窗",
+          "成长",
+          "日常",
+          "整洁"
+        ],
+        "scene_function": "展现主角新生活开始的场景",
+        "frequency": 1,
+        "key_traits": [
+          "生活空间",
           "人际关系"
+        ]
+      },
+      {
+        "id": "scene_9",
+        "name": "林家·厨房",
+        "aliases": [
+          "家厨房"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "紧凑型烹饪空间",
+          "size_scale": "intimate",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "普通家庭厨房环境",
+          "architectural_style": [
+            "实用主义风格"
+          ],
+          "key_features": [
+            "洗碗池",
+            "灶台",
+            "厨房门口",
+            "餐具"
+          ],
+          "textural_details": [
+            "不锈钢台面",
+            "木质橱柜"
+          ]
+        },
+        "visual_description_raw": "母亲在厨房洗碗；母亲擦了擦手，接过手机",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "厨房顶灯",
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "基础照明与自然光结合"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#C0C0C0",
+            "#FFFFFF"
+          ],
+          "accent_color": "#8B4513",
+          "mood_tone": "温暖的家常氛围",
+          "material_textures": [
+            "不锈钢台面",
+            "木质橱柜"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "洗碗池",
+            "description": "不锈钢材质的清洗设备",
+            "significance": "major"
+          },
+          {
+            "name": "手机",
+            "description": "传递录取信息的通讯工具",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "温暖",
+          "家常",
+          "平凡",
+          "牵挂",
+          "支持",
+          "生活"
+        ],
+        "scene_function": "表现家庭支持与情感纽带",
+        "frequency": 1,
+        "key_traits": [
+          "家庭空间",
+          "情感载体"
+        ]
+      },
+      {
+        "id": "scene_10",
+        "name": "林家·客厅",
+        "aliases": [
+          "家客厅"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "night"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "家庭日常活动区域",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "普通家庭客厅环境",
+          "architectural_style": [
+            "简约现代风格"
+          ],
+          "key_features": [
+            "沙发",
+            "电视",
+            "茶几",
+            "家庭日常"
+          ],
+          "textural_details": [
+            "木质茶几",
+            "布艺沙发"
+          ]
+        },
+        "visual_description_raw": "母亲擦了擦手，接过手机",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "客厅吊灯",
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "neutral",
+          "base_lighting_description": "日常基础照明"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#808080",
+            "#FFFFFF"
+          ],
+          "accent_color": "#8B4513",
+          "mood_tone": "平淡中的温馨氛围",
+          "material_textures": [
+            "木质家具",
+            "布艺沙发"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "沙发",
+            "description": "家庭日常家具",
+            "significance": "major"
+          },
+          {
+            "name": "手机",
+            "description": "传递信息的通讯工具",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "温馨",
+          "支持",
+          "家庭",
+          "牵挂",
+          "平凡",
+          "日常生活"
+        ],
+        "scene_function": "家庭支持场景的延伸",
+        "frequency": 1,
+        "key_traits": [
+          "家庭空间",
+          "情感纽带"
+        ]
+      },
+      {
+        "id": "scene_11",
+        "name": "南城第一武道高中·走廊",
+        "aliases": [
+          "校园走廊"
+        ],
+        "scene_type": "indoor",
+        "location_type": "residential",
+        "time_setting": {
+          "periods_appeared": [
+            "daytime",
+            "night"
+          ],
+          "season": "summer"
+        },
+        "environment": {
+          "spatial_layout": "连接宿舍楼与教学区的通道",
+          "size_scale": "medium",
+          "enclosure": "semi_open"
+        },
+        "visual_description": {
+          "summary": "连接不同功能区的过渡空间",
+          "architectural_style": [
+            "实用主义风格"
+          ],
+          "key_features": [
+            "走廊空间",
+            "窗户透光",
+            "宿舍楼出口"
+          ],
+          "textural_details": [
+            "水泥墙面",
+            "玻璃窗"
+          ]
+        },
+        "visual_description_raw": "走廊尽头的窗户透进来最后一缕光",
+        "lighting_condition": {
+          "primary_light_sources": [
+            "室内顶灯",
+            "自然光(窗户)"
+          ],
+          "base_light_quality": "varies_by_time",
+          "base_lighting_description": "人工照明与自然光交替"
+        },
+        "color_scheme": {
+          "dominant_colors": [
+            "#808080",
+            "#FFFFFF"
+          ],
+          "accent_color": "#FF4500",
+          "mood_tone": "过渡空间的中性氛围",
+          "material_textures": [
+            "水泥墙面",
+            "玻璃窗"
+          ]
+        },
+        "key_props": [
+          {
+            "name": "窗户",
+            "description": "透光的建筑结构",
+            "significance": "major"
+          }
+        ],
+        "atmosphere_keywords": [
+          "过渡",
+          "光线",
+          "日常",
+          "成长",
+          "期待",
+          "校园"
+        ],
+        "scene_function": "连接不同场景的过渡空间",
+        "frequency": 1,
+        "key_traits": [
+          "功能性空间",
+          "光线变化"
         ]
       }
     ]
   },
   "extraction_summary": {
-    "total_scenes": 3,
+    "total_scenes": 9,
     "has_inferred_data": true,
     "inferred_fields": [
-      "lighting_condition.base_light_quality",
-      "color_scheme.dominant_colors",
-      "color_scheme.accent_color",
-      "scene_type"
+      "scene_type",
+      "location_type",
+      "color_scheme",
+      "material_textures",
+      "lighting_condition"
     ],
     "scene_types_distribution": {
-      "outdoor": 2,
-      "mixed": 1
+      "indoor": 6,
+      "outdoor": 3
     }
   }
 }
