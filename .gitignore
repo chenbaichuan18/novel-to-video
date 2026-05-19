@@ -1,0 +1,25 @@
+# Python
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+.codebuddy/
+
+# 测试代码、输出及测试数据
+tests/*.py
+tests/output/
+tests/fixtures/
+json/
+*.zip
+
+# 文档（可选，如需提交可删除）
+# documents/
