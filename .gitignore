@@ -15,11 +15,9 @@ venv/
 .codebuddy/
 
 # 测试代码、输出及测试数据
-tests/*.py
-tests/output/
-tests/fixtures/
+tests/
 json/
 *.zip
 
-# 文档（可选，如需提交可删除）
-# documents/
+# 文档
+documents/

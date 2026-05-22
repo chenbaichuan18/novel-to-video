@@ -1635,7 +1635,7 @@ def _post_process_video_prompts(
     #   光影禁项：无光源突变、无色温闪烁、无阴影跳动、无双重阴影
     #
     # 当 LLM 遗漏推荐标准项时，自动补全到 NP 末尾。
-    # 注意：F06 现在返回 scene_prompt(第1-4段) 和 quality_prompt(第5-6段)，
+    # 注意：F06 现在返回 scene_prompt(第1-3段) 和 quality_prompt(第4-6段)，
     #       Negative prompt 在 quality_prompt 字段中
     STANDARD_NP_REQUIRED_ITEMS = [
         "额外人物",           # 基础
@@ -1874,7 +1874,7 @@ def _post_process_video_prompts(
     #   模式B: 质量要求段结束到 NP 之间有叙事性内容（quality-NP gap）
     # 修复策略：将溢出内容迁移到正确的位置（质量要求末尾）
     #
-    # 注意：F06 现在返回 scene_prompt(第1-4段) 和 quality_prompt(第5-6段)，
+    # 注意：F06 现在返回 scene_prompt(第1-3段) 和 quality_prompt(第4-6段)，
     #       质量要求和 Negative prompt 都在 quality_prompt 字段中
     fixed_np_overflow = 0
     NP_ANCHOR_PATTERN = re.compile(r'Negative prompt[：:]')
@@ -1954,18 +1954,18 @@ def _post_process_video_prompts(
         logger.info("F06-B 后处理步骤19：修复 %d 处 quality_prompt 中 NP 溢出问题", fixed_np_overflow)
 
     # ── 20. 6段式结构完整性校验 ──
-    # 强制校验每个 scene_prompt 是否包含6段式结构的所有关键锚点。
-    # 6段顺序：[镜头指令] → 以...为中心 → {动作/对白} → {光影/风格/氛围} → 质量要求： → Negative prompt：
+    # 强制校验每个 scene_prompt / quality_prompt 是否包含6段式结构的所有关键锚点。
+    # 6段顺序：[镜头指令] → 以...为中心 → {动作/对白} → 影像质感 → 色彩基调 → 质量要求 → Negative prompt
+    # scene_prompt 包含第1-3段，quality_prompt 包含第4-6段
     # 缺失段时记录警告（不自动补全，因为缺少上下文无法生成合理内容）
-    # 注意：F06 现在返回 scene_prompt(第1-4段) 和 quality_prompt(第5-6段) 两个独立字段
     fixed_structure = 0
     STRUCTURE_ANCHORS_SCENE = [
         (r'\[', '镜头指令(方括号开头)'),
         (r'以\S+为中心', 'Subject锚定(以...为中心)'),
-        ('影像质感为', '风格锚定(影像质感)'),
-        ('色彩基调为', '风格锚定(色彩基调)'),
     ]
     STRUCTURE_ANCHORS_QUALITY = [
+        ('影像质感为', '风格锚定(影像质感)'),
+        ('色彩基调为', '风格锚定(色彩基调)'),
         (r'质量要求[：:]', '质量要求段'),
         (r'Negative prompt[：:]', 'Negative prompt段'),
     ]
@@ -1977,12 +1977,12 @@ def _post_process_video_prompts(
 
         missing_anchors = []
 
-        # 检查 scene_prompt 字段（第1-4段）
+        # 检查 scene_prompt 字段（第1-3段）
         for pattern, label in STRUCTURE_ANCHORS_SCENE:
             if not re.search(pattern, scene_text):
                 missing_anchors.append(label)
 
-        # 检查 quality_prompt 字段（第5-6段）
+        # 检查 quality_prompt 字段（第4-6段）
         for pattern, label in STRUCTURE_ANCHORS_QUALITY:
             if not re.search(pattern, quality_text):
                 missing_anchors.append(label)
@@ -2000,7 +2000,7 @@ def _post_process_video_prompts(
     # ── 21. Negative prompt 格式统一 ──
     # 规则：Negative prompt 前不添加换行，直接拼接
     # 修复场景：LLM 生成时可能有多余换行符
-    # 注意：F06 现在返回 scene_prompt(第1-4段) 和 quality_prompt(第5-6段)，
+    # 注意：F06 现在返回 scene_prompt(第1-3段) 和 quality_prompt(第4-6段)，
     #       Negative prompt 在 quality_prompt 字段中
     fixed_np_format = 0
     NP_PATTERN = re.compile(r'([ \t]*\n+)\s*(Negative prompt[：:])')
@@ -2535,10 +2535,8 @@ if __name__ == "__main__":
                 seg_id = vp.get("segment_id", "?")
                 duration = vp.get("duration_seconds", 0)
                 scene_prompt = vp.get("scene_prompt", "")
-                quality_prompt = vp.get("quality_prompt", "")
-                prompt_len = len(scene_prompt) + len(quality_prompt)
                 prompt_preview = scene_prompt[:40]
-                print(f"    [{i}] {seg_id} - {duration}秒 | {prompt_len}字 | {prompt_preview}...")
+                print(f"    [{i}] {seg_id} - {duration}秒 | {prompt_preview}...")
 
     # 保存结果
     output_path = Path(args.output)

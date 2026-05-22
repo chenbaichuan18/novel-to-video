@@ -298,13 +298,8 @@
 
 | 字段 | 包含内容 | 说明 |
 |------|---------|------|
-| `scene_prompt` | 第1-4段（镜头指令+主体+动作+风格） | 情节、场景、运镜相关，每个片段独立 |
-| `quality_prompt` | 第5-6段（质量要求+Negative prompt） | 质量控制，可全局复用 |
-
-**【使用方式】**：给大模型时，将两个字段拼接：
-```
-final_prompt = scene_prompt + quality_prompt
-```
+| `scene_prompt` | 第1-3段（镜头指令+主体+动作） | 情节、场景、运镜相关，每个片段独立 |
+| `quality_prompt` | 第4-6段（风格/氛围+质量要求+Negative prompt） | 风格质量等全局属性，可全局复用 |
 
 ## 片段信息
 - ID: {{SEG_ID}}
@@ -362,7 +357,7 @@ final_prompt = scene_prompt + quality_prompt
 
 # scene_prompt / quality_prompt 核心结构
 
-**6段式公式**：`[Camera Instruction] + [Subject锚定] + [动作/对白] + [风格/氛围] + [质量要求] + [Negative prompt]`
+**6段式公式**：`[Camera Instruction] + [Subject锚定] + [动作/对白]` → scene_prompt，`[风格/氛围] + [质量要求] + [Negative prompt]` → quality_prompt
 
 ## 第1段 [Camera Instruction] → scene_prompt
 - **格式**：`[{焦距} {光圈} {机位角度} {运镜方式}{景别}] + [可选：光线/构图/景深效果]`
@@ -649,7 +644,7 @@ final_prompt = scene_prompt + quality_prompt
 - 有"缓慢""渐渐"等词：**必须** ≥8秒
 - 环境音：`第{X}秒，{声源}响起："内容"`
 
-## 第4段 [风格/氛围] → scene_prompt
+## 第4段 [风格/氛围] → quality_prompt
 
 **三段式结构（每个segment必须包含，禁止省略）**：
 1. **影像质感**：`影像质感为{{MEDIUM_STYLE}}，参考{{REFERENCE_WORKS}}的美学风格。`
@@ -681,9 +676,8 @@ final_prompt = scene_prompt + quality_prompt
 
 ## G. 提示词字段分离
 
-- **scene_prompt**：包含第1-4段（镜头指令、主体、动作、风格），每个片段独立生成
-- **quality_prompt**：包含第5-6段（质量要求、Negative prompt），可全局统一复用
-- 使用时拼接：`final_prompt = scene_prompt + quality_prompt`
+- **scene_prompt**：包含第1-3段（镜头指令、主体、动作），每个片段独立生成
+- **quality_prompt**：包含第4-6段（风格/氛围、质量要求、Negative prompt），可全局统一复用
 
 ---
 
@@ -802,8 +796,8 @@ layout 中使用的方位词汇即为标准，禁止自行替换：
     {"character_id": "char_2", "character_name": "陆时言", "line": "我改签了。明天再走。"},
     {"character_id": "char_1", "character_name": "苏念", "line": "你不是说来不及了吗？"}
   ],
-  "scene_prompt": "[50mm f/1.8 环绕拍摄顺时针30°，起点正面终点侧面，近景]。以苏念与陆时言为中心，位于咖啡店·内部，两人站在吧台前。陆时言举起手中的拿铁杯子端详了片刻，脸上浮起一个微笑，然后放下杯子，转向苏念。陆时言（轻声），说："我改签了。明天再走。"苏念攥紧围裙系带，（带着不解），说："你不是说来不及了吗？"影像质感为电影感、东方青春影像，带有岩井俊二式的细腻诗意，参考《你的名字》与《情书》的美学风格。色彩基调为温柔的暖杏色调，点缀少许番茄红。人物外貌与服装及场景空间均须与参考图一致。整个画面弥漫着温柔而略带俏皮的对话氛围。",
-  "quality_prompt": "质量要求：high resolution高清分辨率、cinematic 24fps电影帧率、HDR-like动态范围、高细节、面部表情自然、电影感、人物面孔与场景地域特征符合时代地域设定。Negative prompt：额外人物，面容融合，多人相貌趋同，身体穿透，连体畸形，动态模糊过度，画面过曝或过暗，数字水印，文字叠加，扭曲变形。"
+  "scene_prompt": "[50mm f/1.8 环绕拍摄顺时针30°，起点正面终点侧面，近景]。以苏念与陆时言为中心，位于咖啡店·内部，两人站在吧台前。陆时言举起手中的拿铁杯子端详了片刻，脸上浮起一个微笑，然后放下杯子，转向苏念。陆时言（轻声），说："我改签了。明天再走。"苏念攥紧围裙系带，（带着不解），说："你不是说来不及了吗？"",
+  "quality_prompt": "影像质感为电影感、东方青春影像，带有岩井俊二式的细腻诗意，参考《你的名字》与《情书》的美学风格。色彩基调为温柔的暖杏色调，点缀少许番茄红。人物外貌与服装及场景空间均须与参考图一致。整个画面弥漫着温柔而略带俏皮的对话氛围。质量要求：high resolution高清分辨率、cinematic 24fps电影帧率、HDR-like动态范围、高细节、面部表情自然、电影感、人物面孔与场景地域特征符合时代地域设定。Negative prompt：额外人物，面容融合，多人相貌趋同，身体穿透，连体畸形，动态模糊过度，画面过曝或过暗，数字水印，文字叠加，扭曲变形。"
 }
 ```
 

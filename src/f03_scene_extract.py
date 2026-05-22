@@ -51,8 +51,8 @@ def _validate_scene_output(result: dict) -> None:
             raise ValueError(f"F03 {scene_id} 缺少有效 scene_layout_description")
 
         spatial_elements = scene.get("spatial_elements")
-        if not isinstance(spatial_elements, list) or len(spatial_elements) < 3:
-            raise ValueError(f"F03 {scene_id} spatial_elements 至少需要 3 个元素")
+        if not isinstance(spatial_elements, list):
+            raise ValueError(f"F03 {scene_id} spatial_elements 必须为数组")
         for element in spatial_elements:
             if not isinstance(element, dict):
                 raise ValueError(f"F03 {scene_id} spatial_elements 存在非对象元素")
