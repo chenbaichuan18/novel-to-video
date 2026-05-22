@@ -150,52 +150,73 @@ def extract_visual_tone(text: str, user_settings: dict | None = None, task_id: s
         },
     }, ensure_ascii=False, indent=2)
 
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_content},
-    ]
-
     logger.info("F01 开始处理: task_id=%s, 文本长度=%d 字, 用户设置=%s",
                 task_id, len(text), bool(user_settings))
 
-    raw_response = client.chat(
-        messages=messages,
-        temperature=0.3,  # 降低随机性，保障 JSON 结构稳定
-        max_tokens=8192,  # 增加以支持完整剧本的视觉基调提取
-    )
+    # 重试机制：最多 3 次，逐步降低 temperature 并追加强提示
+    retry_system_prefix = system_prompt + "\n\n⚠️ 注意：你必须只返回合法 JSON，不要输出任何 JSON 以外的文字、说明或代码块标记。"
+    attempts = [
+        (system_prompt, 0.3),          # 第 1 次：正常
+        (retry_system_prefix, 0.1),    # 第 2 次：强提示 + 低温
+        (retry_system_prefix, 0.0),    # 第 3 次：强提示 + 零温
+    ]
+    last_err: Exception = Exception("未知错误")
+    result = None
 
-    # 解析 LLM 返回的 JSON
-    logger.info(f"LLM 原始响应长度: {len(raw_response)} 字")
-    # 尝试清理响应（去除可能的 markdown 代码块标记）
-    cleaned_response = raw_response.strip()
-    if cleaned_response.startswith("```json"):
-        cleaned_response = cleaned_response[7:]
-    if cleaned_response.startswith("```"):
-        cleaned_response = cleaned_response[3:]
-    if cleaned_response.endswith("```"):
-        cleaned_response = cleaned_response[:-3]
-    cleaned_response = cleaned_response.strip()
+    for attempt_idx, (sys_prompt, temp) in enumerate(attempts):
+        try:
+            msgs = [
+                {"role": "system", "content": sys_prompt},
+                {"role": "user", "content": user_content},
+            ]
+            raw_response = client.chat(
+                messages=msgs,
+                temperature=temp,
+                max_tokens=8192,
+            )
+            logger.info("F01 attempt %d: LLM 原始响应长度=%d 字", attempt_idx + 1, len(raw_response))
 
-    try:
-        result = json.loads(cleaned_response)
-    except json.JSONDecodeError as e:
-        logger.error(f"JSON 解析失败: {e}")
-        logger.error(f"原始响应前500字: {raw_response[:500]}")
-        logger.error(f"清理后响应前500字: {cleaned_response[:500]}")
-        logger.error(f"响应后200字: {raw_response[-200:]}")
-        raise
+            # 清理响应（去除可能的 markdown 代码块标记）
+            cleaned_response = raw_response.strip()
+            if cleaned_response.startswith("```json"):
+                cleaned_response = cleaned_response[7:]
+            if cleaned_response.startswith("```"):
+                cleaned_response = cleaned_response[3:]
+            if cleaned_response.endswith("```"):
+                cleaned_response = cleaned_response[:-3]
+            cleaned_response = cleaned_response.strip()
 
-    # 用用户设置强制覆盖对应字段（确保用户输入不被 LLM 改写）
-    if user_settings.get("medium"):
-        result.setdefault("visual_style", {})["medium"] = _resolve_medium(user_settings["medium"])
-    if user_settings.get("genre"):
-        result.setdefault("genre", {})["primary"] = user_settings["genre"]
-    if user_settings.get("era"):
-        result.setdefault("era_setting", {})["era"] = user_settings["era"]
-    if user_settings.get("location"):
-        result.setdefault("world_setting", {})["geographic_context"] = user_settings["location"]
+            result = json.loads(cleaned_response)
+            logger.info("F01 attempt %d: JSON 解析成功", attempt_idx + 1)
 
-    result = _normalize_visual_tone(result)
+            # 用用户设置强制覆盖对应字段（确保用户输入不被 LLM 改写）
+            if user_settings.get("medium"):
+                result.setdefault("visual_style", {})["medium"] = _resolve_medium(user_settings["medium"])
+            if user_settings.get("genre"):
+                result.setdefault("genre", {})["primary"] = user_settings["genre"]
+            if user_settings.get("era"):
+                result.setdefault("era_setting", {})["era"] = user_settings["era"]
+            if user_settings.get("location"):
+                result.setdefault("world_setting", {})["geographic_context"] = user_settings["location"]
+
+            # 兜底归一化 + 必填字段校验（缺失时抛 ValueError → 触发重试）
+            result = _normalize_visual_tone(result)
+            logger.info("F01 attempt %d: 字段校验通过", attempt_idx + 1)
+            break
+        except json.JSONDecodeError as e:
+            last_err = e
+            logger.warning("F01 attempt %d: JSON 解析失败: %s", attempt_idx + 1, e)
+            if attempt_idx == 0:
+                logger.warning("  响应前500字: %s", raw_response[:500])
+        except ValueError as e:
+            last_err = e
+            logger.warning("F01 attempt %d: 字段校验失败: %s", attempt_idx + 1, e)
+        if attempt_idx < len(attempts) - 1:
+            logger.warning("  将在第 %d 次重试...", attempt_idx + 2)
+
+    if result is None:
+        logger.error("F01 全部重试失败: %s", last_err)
+        raise last_err
 
     # 强制覆盖 task_id（确保与上游一致）
     result["task_id"] = task_id
