@@ -104,9 +104,16 @@ def generate_character_prompt(character: dict, f01_data: dict, task_id: str = No
         "人物为全身展示（full body），头部与脚部完整不得裁剪。"
         "站姿统一（自然站姿/A-pose），双臂自然下垂，身体直立但不僵硬，表情中性无情绪变化。"
     )
+    # 固定后缀：质量要求 + 避免出现，拼接到 visual_style 末尾
+    QUALITY_SUFFIX = (
+        "质量要求：超写实(photorealistic)、高细节、面部特征稳定、电影感。"
+        "避免出现：模糊，低质量，畸变，变形，多余/缺失手指，融合肢体，水印，签名，文字，背景元素，室内外场景，地面，天空，家具，非正交透视，单人单视角（必须是三视图），裁剪头部或脚部，改变发色或瞳色，改变服装颜色，不同视角间外观不一致，多个人物混杂。"
+    )
     vs = result.get("visual_style", "")
     if not vs.startswith("画面构图"):  # 避免重复拼接
         result["visual_style"] = COMPOSITION_PREFIX + vs
+    if not vs.endswith("多个人物混杂。"):  # 避免重复拼接
+        result["visual_style"] = result["visual_style"] + QUALITY_SUFFIX
 
     logger.info("F04 处理完成: task_id=%s, character=%s",
                 task_id, result.get("character_id"))

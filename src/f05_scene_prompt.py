@@ -101,9 +101,15 @@ def generate_scene_prompt(scene: dict, f01_data: dict, task_id: str = None) -> d
         "- 突出空间的封闭感/开放感/质感细节；"
         "- 禁止画面中出现任何文字、标签、说明、水印——生成的必须是纯图像，不含任何文字元素。"
     )
+    QUALITY_SUFFIX = (
+        "质量要求：超写实(photorealistic)、高细节、建筑材质真实、电影感。"
+        "避免出现：人物，人，男人，女人，儿童，人形轮廓，人影，文字，标签，标题，说明，水印，签名，三视图，多视角拼贴，分镜头布局，多面板展示，卡通，动漫，绘画，插画，3D渲染，模糊，低质量，畸变，扭曲透视，改变场景核心元素。"
+    )
     vs = result.get("visual_style", "")
     if not vs.startswith("画面构图"):  # 避免重复拼接
         result["visual_style"] = COMPOSITION_PREFIX + vs
+    if not vs.endswith("改变场景核心元素。"):  # 避免重复拼接
+        result["visual_style"] = result["visual_style"] + QUALITY_SUFFIX
 
     logger.info("F05 处理完成: task_id=%s, scene=%s",
                 task_id, result.get("scene_id"))
