@@ -22,7 +22,6 @@
 
 ```json
 {
-  "task_id": "任务UUID；可返回占位值，最终由调用代码覆盖为本次任务ID",
   "genre": {
     "primary": "主类型，如"都市情感"、"悬疑推理"、"古装武侠"",
     "secondary": "次要类型，如"轻喜剧"（可选，没有则省略）",
@@ -128,7 +127,7 @@
   },
   "visual_style": {
     "medium": "cinematic",
-    "reference_works": ["《深夜食堂》电影版", "《迷失东京》"],  // 均为真人电影，与 medium=cinematic 一致
+    "reference_works": ["《深夜食堂》电影版", "《迷失东京》"],
     "director_style": "是枝裕和的静谧与细节感",
     "cinematography": "固定机位长镜头，偶尔缓慢横移"
   },

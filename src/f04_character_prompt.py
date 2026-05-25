@@ -94,6 +94,20 @@ def generate_character_prompt(character: dict, f01_data: dict, task_id: str = No
     result["task_id"] = task_id
     result = _clean_result(result)
 
+    # 固定构图前缀：拼接到 visual_style 开头，保证不遗漏
+    COMPOSITION_PREFIX = (
+        "画面构图："
+        "纯白干净背景（clean background），无任何场景元素干扰，画面仅包含该人物，不得出现第二个人物。"
+        "专业级三视图展示（professional character sheet / orthographic layout）："
+        "严格为正交视图无透视夸张，包含正面（front view）、侧面 90°（true side view）、背面（full back view）三个等比例视角。"
+        "三人物等比例排列、对齐统一、间距一致，必须为同一人物（same identity），禁止脸部或结构变化。"
+        "人物为全身展示（full body），头部与脚部完整不得裁剪。"
+        "站姿统一（自然站姿/A-pose），双臂自然下垂，身体直立但不僵硬，表情中性无情绪变化。"
+    )
+    vs = result.get("visual_style", "")
+    if not vs.startswith("画面构图"):  # 避免重复拼接
+        result["visual_style"] = COMPOSITION_PREFIX + vs
+
     logger.info("F04 处理完成: task_id=%s, character=%s",
                 task_id, result.get("character_id"))
     return result

@@ -92,6 +92,19 @@ def generate_scene_prompt(scene: dict, f01_data: dict, task_id: str = None) -> d
     result["task_id"] = task_id
     result = _clean_result(result)
 
+    # 固定构图前缀：拼接到 visual_style 开头，保证不遗漏
+    COMPOSITION_PREFIX = (
+        "画面构图："
+        "- 纯场景展示，不得出现任何人物或人形轮廓；"
+        "- 背景为该场景的自然空间边界（非纯白——区别于人物定妆照），完整展现场景的空间纵深；"
+        "- 禁止三视图/多视角拼贴/分镜头布局——必须是单张单视角的场景图，选择最具代表性的视角（如广角总览）；"
+        "- 突出空间的封闭感/开放感/质感细节；"
+        "- 禁止画面中出现任何文字、标签、说明、水印——生成的必须是纯图像，不含任何文字元素。"
+    )
+    vs = result.get("visual_style", "")
+    if not vs.startswith("画面构图"):  # 避免重复拼接
+        result["visual_style"] = COMPOSITION_PREFIX + vs
+
     logger.info("F05 处理完成: task_id=%s, scene=%s",
                 task_id, result.get("scene_id"))
     return result

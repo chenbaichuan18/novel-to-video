@@ -1959,6 +1959,7 @@ def _post_process_video_prompts(
     # scene_prompt 包含第1-3段，quality_prompt 包含第4-6段
     # 缺失段时记录警告（不自动补全，因为缺少上下文无法生成合理内容）
     fixed_structure = 0
+    fixed_leak = 0
     STRUCTURE_ANCHORS_SCENE = [
         (r'\[', '镜头指令(方括号开头)'),
         (r'以\S+为中心', 'Subject锚定(以...为中心)'),
@@ -1969,12 +1970,46 @@ def _post_process_video_prompts(
         (r'质量要求[：:]', '质量要求段'),
         (r'Negative prompt[：:]', 'Negative prompt段'),
     ]
+    # 交叉污染检测：quality 内容不应出现在 scene_prompt 中
+    LEAK_PATTERNS = [
+        (r'影像质感为.*?(?=色彩基调为|质量要求[：:]|Negative prompt[：:]|\Z)', '影像质感'),
+        (r'色彩基调为.*?(?=质量要求[：:]|Negative prompt[：:]|\Z)', '色彩基调'),
+        (r'质量要求[：:].*?(?=Negative prompt[：:]|\Z)', '质量要求'),
+        (r'Negative prompt[：:].*', 'Negative prompt'),
+    ]
 
     for vp in video_prompts:
         sid = vp.get("segment_id", "?")
         scene_text = vp.get("scene_prompt", "")
         quality_text = vp.get("quality_prompt", "")
 
+        # ── 20a. 交叉污染检测 + 自动修复 ──
+        # 检测 scene_prompt 中是否泄漏了 quality 内容，若有则迁移到 quality_prompt
+        leaked_parts = []
+        clean_scene = scene_text
+        for pattern, label in LEAK_PATTERNS:
+            m = re.search(pattern, scene_text, re.DOTALL)
+            if m:
+                leaked_parts.append(m.group(0))
+                clean_scene = clean_scene.replace(m.group(0), "")
+
+        if leaked_parts:
+            # 清理多余空白/标点残余
+            clean_scene = re.sub(r'，\s*$|。\s*$', '', clean_scene.strip()).strip()
+            migrated = "".join(leaked_parts)
+            vp["scene_prompt"] = clean_scene
+            # 将泄漏内容并入 quality_prompt 开头（去重）
+            if migrated not in quality_text:
+                vp["quality_prompt"] = migrated + quality_text
+            logger.warning(
+                "[20a]字段泄漏(%s): scene_prompt 包含 quality 内容，已自动迁移 %d 段",
+                sid, len(leaked_parts),
+            )
+            fixed_leak += 1
+            scene_text = clean_scene
+            quality_text = vp["quality_prompt"]
+
+        # ── 20b. 结构完整性检测 ──
         missing_anchors = []
 
         # 检查 scene_prompt 字段（第1-3段）
@@ -1994,6 +2029,8 @@ def _post_process_video_prompts(
             )
             fixed_structure += 1
 
+    if fixed_leak > 0:
+        logger.warning("F06-B 后处理步骤20a：修复 %d 个 segment 的 scene_prompt 字段泄漏问题", fixed_leak)
     if fixed_structure > 0:
         logger.warning("F06-B 后处理步骤20：发现 %d 个 segment 存在结构缺陷（已记录警告，需人工审查或重新生成）", fixed_structure)
 
